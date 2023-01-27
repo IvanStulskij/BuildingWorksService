@@ -5,9 +5,9 @@ using Models.Repositories.Abstractions.Providers;
 
 namespace Models.Repositories.Implementations.Providers
 {
-    public class MaterialPriceRepository : Repository<ContractsByMaterials, int>, IMaterialPriceRepository
+    public class MaterialsPriceRepository : Repository<ContractsByMaterials, int>, IMaterialPriceRepository
     {
-        public MaterialPriceRepository(BuildingWorksDbContext context) : base(context)
+        public MaterialsPriceRepository(BuildingWorksDbContext context) : base(context)
         {
         }
 
