@@ -12,7 +12,7 @@ namespace Models.Repositories.Implementations.Address
 
         public async Task<Town> GetById(int id)
         {
-            return await _context.Towns.FirstOrDefaultAsync(town => town.TownCode == id);
+            return await _context.Towns.FirstOrDefaultAsync(town => town.Id == id);
         }
     }
 }

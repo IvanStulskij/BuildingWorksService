@@ -13,7 +13,7 @@ namespace Models.Repositories.Implementations.BuildingObjects
         public async Task<BuildingObject> GetById(int id)
         {
             return await Get()
-                .FirstOrDefaultAsync(buildingObject => buildingObject.ObjectId == id);
+                .FirstOrDefaultAsync(buildingObject => buildingObject.Id == id);
         }
     }
 }

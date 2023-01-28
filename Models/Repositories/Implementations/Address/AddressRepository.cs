@@ -12,7 +12,7 @@ namespace Models.Repositories.Implementations.Address
 
         public async Task<ObjectAddress> GetById(int id)
         {
-            return await _context.ObjectAddress.FirstOrDefaultAsync(address => address.AddressCode == id);
+            return await _context.ObjectAddress.FirstOrDefaultAsync(address => address.Id == id);
         }
 
         public async Task<ObjectAddress> GetByPosition(string regionName, string townName, string streetName)
