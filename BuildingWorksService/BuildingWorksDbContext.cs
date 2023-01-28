@@ -8,6 +8,7 @@ using BuildingWorks.Models.Databasable.Tables.Workers;
 using Models.Contexts;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using BuildingWorks.Models.Databasable.Tables.Providers;
 
 namespace Models;
 

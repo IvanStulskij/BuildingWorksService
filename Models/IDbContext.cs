@@ -5,6 +5,7 @@ using BuildingWorks.Models.Databasable.Tables.Provides;
 using Microsoft.EntityFrameworkCore;
 using BuildingWorks.Models.Databasable.Tables.Registration;
 using BuildingWorks.Models.Databasable.Tables.Workers;
+using BuildingWorks.Models.Databasable.Tables.Providers;
 
 namespace Models.Contexts
 {

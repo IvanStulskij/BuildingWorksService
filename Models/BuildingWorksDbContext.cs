@@ -7,10 +7,11 @@ using BuildingWorks.Models.Databasable.Tables.Registration;
 using BuildingWorks.Models.Databasable.Tables.Workers;
 using Models.Contexts;
 using Microsoft.EntityFrameworkCore.Storage;
+using BuildingWorks.Models.Databasable.Tables.Providers;
 
 namespace Models;
 
-public sealed class BuildingWorksDbContext : DbContext, IDbContext
+public class BuildingWorksDbContext : DbContext, IDbContext
 {
     public DbSet<Provider> Providers { get; set; }
     public DbSet<Contract> Contracts { get; set; }
