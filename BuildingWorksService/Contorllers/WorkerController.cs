@@ -13,7 +13,5 @@ namespace BuildingWorksService.Contorllers
         {
             _service = service;
         }
-
-        
     }
 }
