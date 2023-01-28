@@ -2,7 +2,7 @@
 
 namespace BuildingWorks.Models.Services.Interfaces.Providers
 {
-    public interface IProviderService : IService<ProviderResource, ProviderForm>
+    public interface IMaterialService : IService<MaterialResource, MaterialForm>
     {
     }
 }
