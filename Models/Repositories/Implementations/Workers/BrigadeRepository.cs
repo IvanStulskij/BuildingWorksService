@@ -19,7 +19,7 @@ namespace Models.Repositories.Implementations.Workers
 
         public IEnumerable<int> SelectBrigadesCodes()
         {
-            return Get().Select(brigade => brigade.BrigadeCode);
+            return Get().Select(brigade => brigade.Id);
         }
     }
 }

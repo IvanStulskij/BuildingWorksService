@@ -1,6 +1,5 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
 using Microsoft.EntityFrameworkCore;
-using Models.Contexts;
 using Models.Repositories.Abstractions.BuildingObjects;
 
 namespace Models.Repositories.Implementations.BuildingObjects
