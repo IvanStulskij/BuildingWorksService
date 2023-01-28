@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingWorksService", "BuildingWorksService\BuildingWorksService.csproj", "{FD84F517-6EE6-460F-B3E6-A232A787B2FF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{B2F0D6C5-C0E8-4B24-AD9D-9C086270C79B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingWorks.Models", "Models\BuildingWorks.Models.csproj", "{B2F0D6C5-C0E8-4B24-AD9D-9C086270C79B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4DBA336-D04B-4ECC-AAAB-6D6363689E8B}"
 	ProjectSection(SolutionItems) = preProject
