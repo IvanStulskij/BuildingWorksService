@@ -1,15 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Models.Databasable.Tables.Registration
 {
-    public class UnregisteredUserCode : ITableRecord
+    public class UnregisteredUserCode : ITableRecord, IPersistable<int>
     {
-        public UnregisteredUserCode(int code)
-        {
-            Code = code;
-        }
-
         [Key]
-        public int Code { get; private set; }
+        public int Id { get; set; }
     }
 }
