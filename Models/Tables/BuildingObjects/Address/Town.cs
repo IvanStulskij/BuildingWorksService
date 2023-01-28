@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address
 {
-    public class Town : ITableRecord
+    public class Town : ITableRecord, IPersistable<int>
     {
         [Key]
         public int Id { get; set; }
