@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Models;
 
@@ -10,9 +11,10 @@ using Models;
 namespace BuildingWorksService.Migrations
 {
     [DbContext(typeof(BuildingWorksDbContext))]
-    partial class BuildingWorksDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230128084640_plans")]
+    partial class plans
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,9 +194,9 @@ namespace BuildingWorksService.Migrations
                     b.ToTable("PlansDetails");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Providers.Contract", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Provides.Contract", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ContractCode")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -205,7 +207,7 @@ namespace BuildingWorksService.Migrations
                     b.Property<int>("ProviderId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ContractCode");
 
                     b.HasIndex("ProviderId");
 
@@ -243,7 +245,7 @@ namespace BuildingWorksService.Migrations
 
             modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Provides.Material", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MaterialCode")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -258,14 +260,14 @@ namespace BuildingWorksService.Migrations
                     b.Property<decimal>("PricePerOne")
                         .HasColumnType("decimal(65,30)");
 
-                    b.HasKey("Id");
+                    b.HasKey("MaterialCode");
 
                     b.ToTable("Materials");
                 });
 
             modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Provides.Provider", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ProviderCode")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -281,7 +283,7 @@ namespace BuildingWorksService.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProviderCode");
 
                     b.ToTable("Providers");
                 });
@@ -398,15 +400,15 @@ namespace BuildingWorksService.Migrations
 
             modelBuilder.Entity("ContractMaterial", b =>
                 {
-                    b.Property<int>("ContractsId")
+                    b.Property<int>("ContractsContractCode")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaterialsId")
+                    b.Property<int>("MaterialsMaterialCode")
                         .HasColumnType("int");
 
-                    b.HasKey("ContractsId", "MaterialsId");
+                    b.HasKey("ContractsContractCode", "MaterialsMaterialCode");
 
-                    b.HasIndex("MaterialsId");
+                    b.HasIndex("MaterialsMaterialCode");
 
                     b.ToTable("ContractMaterial");
                 });
@@ -509,7 +511,7 @@ namespace BuildingWorksService.Migrations
                     b.Navigation("Plan");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Providers.Contract", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Provides.Contract", b =>
                 {
                     b.HasOne("BuildingWorks.Models.Databasable.Tables.Provides.Provider", "Provider")
                         .WithMany("Contracts")
@@ -528,7 +530,7 @@ namespace BuildingWorksService.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.Providers.Contract", "Contract")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.Provides.Contract", "Contract")
                         .WithMany()
                         .HasForeignKey("ContractId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -588,15 +590,15 @@ namespace BuildingWorksService.Migrations
 
             modelBuilder.Entity("ContractMaterial", b =>
                 {
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.Providers.Contract", null)
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.Provides.Contract", null)
                         .WithMany()
-                        .HasForeignKey("ContractsId")
+                        .HasForeignKey("ContractsContractCode")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BuildingWorks.Models.Databasable.Tables.Provides.Material", null)
                         .WithMany()
-                        .HasForeignKey("MaterialsId")
+                        .HasForeignKey("MaterialsMaterialCode")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
