@@ -1,19 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Models.Databasable.Tables.Workers
 {
-    public class WorkerSalary
+    public class WorkerSalary : IPersistable<int>
     {
         [Key]
-        public int SalaryCode { get; set; }
+        public int Id { get; set; }
         public float BaseSalary { get; set; }
         public float Experience { get; set; }
         public int ChildrenCount { get; set; }
         public int WorkedDays { get; set; }
         public float TotalAmount { get; set; }
-        public int PersonnelNumber { get; set; }
-        [ForeignKey("PersonnelNumber")]
-        public Worker Worker { get; set; }
+
+        public int WorkerId { get; set; }
+        public virtual Worker Worker { get; set; }
     }
 }
