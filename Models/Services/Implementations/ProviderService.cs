@@ -33,7 +33,7 @@ namespace Models.Services.Implementations
 
         public override async Task<ProviderResource> GetById(int id)
         {
-            return Mapper.Map<ProviderResource>(await Context.Providers.FirstOrDefaultAsync(provider => provider.ProviderCode == id));
+            return Mapper.Map<ProviderResource>(await Context.Providers.FirstOrDefaultAsync(provider => provider.Id == id));
         }
 
         public async Task<Provider> Update(ProviderResource resource)

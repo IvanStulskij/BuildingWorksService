@@ -20,7 +20,7 @@ namespace Models.Repositories.Implementations.Workers
 
         public IEnumerable<Worker> GetBrigadeWorkers(int brigadeCode)
         {
-            return Get().Where(worker => worker.BrigadeCode == brigadeCode);
+            return Get().Where(worker => worker.BrigadeId == brigadeCode);
         }
 
         public IEnumerable<Worker> GetByCondition(Condition conditition)

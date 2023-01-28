@@ -36,7 +36,7 @@ namespace Models.Services.Implementations
 
         public override async Task<PlanResource> GetById(int id)
         {
-            return Mapper.Map<PlanResource>(await Context.Plans.FirstOrDefaultAsync(plan => plan.PlanCode == id));
+            return Mapper.Map<PlanResource>(await Context.Plans.FirstOrDefaultAsync(plan => plan.Id == id));
         }
 
         public async Task<PlanResource> Create(PlanForm planForm)

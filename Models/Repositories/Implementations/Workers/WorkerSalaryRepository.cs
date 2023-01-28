@@ -12,7 +12,7 @@ namespace Models.Repositories.Implementations.Workers
 
         public float GetObjectTotalSalaries(int objectCode)
         {
-            IEnumerable<Brigade> brigades = _context.Brigades.Where(brigade => brigade.ObjectCode == objectCode);
+            IEnumerable<Brigade> brigades = _context.Brigades.Where(brigade => brigade.ObjectId == objectCode);
             float totalSalariesAmount = 0;
 
             foreach (var brigade in brigades)

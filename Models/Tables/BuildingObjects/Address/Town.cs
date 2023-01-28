@@ -5,10 +5,12 @@ namespace BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address
     public class Town : ITableRecord
     {
         [Key]
-        public int TownCode { get; set; }
+        public int Id { get; set; }
         public string TownName { get; set; }
 
+        public int RegionId { get; set; }
         public Region Region { get; set; }
-        public List<Street> Streets { get; set; }
+        
+        public ICollection<Street> Streets { get; set; }
     }
 }

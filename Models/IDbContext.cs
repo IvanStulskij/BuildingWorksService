@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
+﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
 using BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address;
 using BuildingWorks.Models.Databasable.Tables.Plans;
 using BuildingWorks.Models.Databasable.Tables.Provides;
+using Microsoft.EntityFrameworkCore;
 using BuildingWorks.Models.Databasable.Tables.Registration;
 using BuildingWorks.Models.Databasable.Tables.Workers;
+using BuildingWorks.Models.Databasable.Tables.Providers;
 
 namespace Models.Contexts
 {
-    public sealed class BuildingWorksDbContext : DbContext, IDbContext
+    public interface IDbContext
     {
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Contract> Contracts { get; set; }
@@ -26,14 +27,5 @@ namespace Models.Contexts
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Brigade> Brigades { get; set; }
         public DbSet<WorkerSalary> WorkersSalaries { get; set; }
-
-        public BuildingWorksDbContext(DbContextOptions options) : base(options)
-        {
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            base.OnConfiguring(options);
-        }
     }
 }

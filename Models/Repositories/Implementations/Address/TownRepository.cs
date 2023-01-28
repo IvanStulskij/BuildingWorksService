@@ -1,5 +1,5 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address;
-using Models.Contexts;
+using Microsoft.EntityFrameworkCore;
 using Models.Repositories.Abstractions.Addresses;
 
 namespace Models.Repositories.Implementations.Address
@@ -8,6 +8,11 @@ namespace Models.Repositories.Implementations.Address
     {
         public TownRepository(BuildingWorksDbContext context) : base(context)
         {
+        }
+
+        public async Task<Town> GetById(int id)
+        {
+            return await _context.Towns.FirstOrDefaultAsync(town => town.Id == id);
         }
     }
 }

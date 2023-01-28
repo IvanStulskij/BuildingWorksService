@@ -1,18 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Models.Databasable.Tables.Registration
 {
-    public class User : ITableRecord
+    public class User : ITableRecord, IPersistable<int>
     {
-        /*public User(UnregisteredCode userCode, string fullName, string password)
-        {
-            FullName = fullName;
-            UserCode = userCode.Code;
-            Password = password;
-        }*/
-
         [Key]
-        public int UserCode { get; set; }
+        public int Id { get; set; }
         public string FullName { get; set; }
         public string Password { get; set; }
 

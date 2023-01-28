@@ -1,6 +1,5 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
 using Microsoft.EntityFrameworkCore;
-using Models.Contexts;
 using Models.Repositories.Abstractions.BuildingObjects;
 
 namespace Models.Repositories.Implementations.BuildingObjects
@@ -14,7 +13,7 @@ namespace Models.Repositories.Implementations.BuildingObjects
         public async Task<BuildingObject> GetById(int id)
         {
             return await Get()
-                .FirstOrDefaultAsync(buildingObject => buildingObject.ObjectId == id);
+                .FirstOrDefaultAsync(buildingObject => buildingObject.Id == id);
         }
     }
 }
