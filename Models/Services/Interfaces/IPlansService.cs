@@ -1,23 +1,14 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.Plans;
+using BuildingWorks.Models.Services.Interfaces;
 using Models;
 using Models.Resources.Plans;
 
 namespace BuildingWorksService.Services.Interfaces
 {
-    public interface IPlanService
+    public interface IPlanService : IService<PlanResource, PlanForm>
     {
-        Task<IEnumerable<PlanResource>> GetAll();
-
-        Task<PlanResource> GetById(int id);
-
-        Task<PlanResource> Delete(int id);
-
-        Task<PlanResource> Create(PlanForm plan);
-
-        Task<PlanResource> Update(int id, PlanForm form);
-
         Task<IEnumerable<string>> GetPropertiesNames();
 
-        Task<List<Plan>> GetByCondition(Condition condition);
+        Task<IEnumerable<Plan>> GetByCondition(Condition condition, string tableName);
     }
 }

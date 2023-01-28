@@ -3,6 +3,7 @@ using BuildingWorksService.Services.Interfaces;
 using BuildingWorks.Models.Databasable.Tables.Plans;
 using Models;
 using Models.Resources.Plans;
+using Models.GlobalConstants;
 
 namespace BuildingWorksService.Contorllers
 {
@@ -62,7 +63,7 @@ namespace BuildingWorksService.Contorllers
         [ProducesResponseType(typeof(List<Plan>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetByCondition([FromQuery] Condition condition)
         {
-            var response = await _service.GetByCondition(condition);
+            var response = await _service.GetByCondition(condition, TablesNames.PlansName);
             return Ok(response);
         }
 
