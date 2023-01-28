@@ -1,16 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Models.Databasable.Tables.Plans
 {
-    public class PlanDetail : ITableRecord
+    public class PlanDetail : ITableRecord, IPersistable<int>
     {
         [Key]
-        public int PlanDetailCode { get; set; }
+        public int Id { get; set; }
         public string WorkPart { get; set; }
         public bool IsCompleted { get; set; }
         public float Price { get; set; }
-        [Column("PlanCode")]
+
         public int PlanId { get; set; }
         public Plan Plan { get; set; }
     }
