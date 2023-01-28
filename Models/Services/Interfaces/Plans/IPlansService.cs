@@ -1,9 +1,8 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.Plans;
-using BuildingWorks.Models.Services.Interfaces;
 using Models;
 using Models.Resources.Plans;
 
-namespace BuildingWorksService.Services.Interfaces
+namespace BuildingWorks.Models.Services.Interfaces.Plans
 {
     public interface IPlanService : IService<PlanResource, PlanForm>
     {

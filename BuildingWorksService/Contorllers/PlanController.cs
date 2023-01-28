@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BuildingWorksService.Services.Interfaces;
 using BuildingWorks.Models.Databasable.Tables.Plans;
 using Models;
 using Models.Resources.Plans;
 using Models.GlobalConstants;
+using BuildingWorks.Models.Services.Interfaces.Plans;
 
 namespace BuildingWorksService.Contorllers
 {

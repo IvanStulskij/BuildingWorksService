@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BuildingWorks.Models.Databasable.Tables.Plans;
 using BuildingWorks.Models.Services.Implementations;
-using BuildingWorksService.Services.Interfaces;
+using BuildingWorks.Models.Services.Interfaces.Plans;
 using Models.Repositories.Abstractions.Plans;
 using Models.Resources.Plans;
 
