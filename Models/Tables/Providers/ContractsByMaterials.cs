@@ -1,6 +1,6 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
+using BuildingWorks.Models.Databasable.Tables.Providers;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BuildingWorks.Models.Databasable.Tables.Provides
 {
@@ -8,11 +8,14 @@ namespace BuildingWorks.Models.Databasable.Tables.Provides
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("BuildingObjectId")]
+
+        public int BuildingObjectId { get; set; }
         public BuildingObject BuildingObject { get; set; }
-        [ForeignKey("ContractId")]
+
+        public int ContractId { get; set; }
         public Contract Contract { get; set; }
-        [ForeignKey("MaterialId")]
+
+        public int MaterialId { get; set; }
         public Material Material { get; set; }
         public int Amount { get; set; }
     }
