@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BuildingWorksBackend.Services.Interfaces;
 using Models.Resources.Providers;
+using BuildingWorks.Models.Services.Interfaces.Providers;
 
 namespace BuildingWorksBackend
 {
