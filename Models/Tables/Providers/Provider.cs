@@ -11,6 +11,7 @@ namespace BuildingWorks.Models.Databasable.Tables.Provides
         public string Name { get; set; }
         public string Country { get; set; }
         public string AdditionalData { get; set; }
+
         public virtual ICollection<Contract> Contracts { get; set; }
     }
 }

@@ -14,14 +14,14 @@ namespace BuildingWorks.Models.Databasable.Tables.BuildingObjects
         public string ObjectCustomer { get; set; }
 
         public int RegionId { get; set; }
-        public Region Region { get; set; }
+        public virtual Region Region { get; set; }
 
         public int TownId { get; set; }
-        public Town Town { get; set; }
+        public virtual Town Town { get; set; }
 
         public int StreetId { get; set; }
-        public Street Street { get; set; }
+        public virtual Street Street { get; set; }
 
-        public ICollection<ContractsByMaterials> Contracts { get; set; }
+        public virtual ICollection<ContractsByMaterials> Contracts { get; set; }
     }
 }

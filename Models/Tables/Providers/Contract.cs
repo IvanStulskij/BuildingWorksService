@@ -10,7 +10,8 @@ namespace BuildingWorks.Models.Databasable.Tables.Providers
         public string Conditions { get; set; }
 
         public int ProviderId { get; set; }
-        public Provider Provider { get; set; }
+        public virtual Provider Provider { get; set; }
+
         public virtual ICollection<Material> Materials { get; set; }
     }
 }

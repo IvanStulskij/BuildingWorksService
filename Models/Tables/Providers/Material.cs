@@ -10,6 +10,7 @@ namespace BuildingWorks.Models.Databasable.Tables.Provides
         public string Name { get; set; }
         public decimal PricePerOne { get; set; }
         public string Measure { get; set; }
+
         public virtual ICollection<Contract> Contracts { get; set; }
     }
 }
