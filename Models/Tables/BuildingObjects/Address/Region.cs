@@ -1,12 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address
 {
-    public class Region : ITableRecord
+    public class Region : ITableRecord, IPersistable<int>
     {
         [Key]
-        public int RegionCode { get; set; }
+        public int Id { get; set; }
         public string RegionName { get; set; }
-        public List<Town> Towns { get; set; }
+
+        public ICollection<Town> Towns { get; set; }
     }
 }
