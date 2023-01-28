@@ -14,7 +14,7 @@ namespace Models.Repositories.Implementations.Workers
         public IEnumerable<Brigade> GetObjectBrigades(int objectCode)
         {
             return _context.Brigades.Include(brigade => brigade.Object)
-                .Where(buildingObject => buildingObject.Object.ObjectId == objectCode);
+                .Where(buildingObject => buildingObject.ObjectId == objectCode);
         }
 
         public IEnumerable<int> SelectBrigadesCodes()

@@ -19,8 +19,7 @@ namespace Models.Repositories.Implementations.Providers
         public IEnumerable<ContractsByMaterials> GetMaterialsContracts(int objectId)
         {
             return _context.ContractsByMaterials
-                .Include(contract => contract.BuildingObject)
-                .Where(contractPart => contractPart.BuildingObject.ObjectId == objectId);
+                .Where(contractPart => contractPart.BuildingObjectId == objectId);
         }
 
         public float GetMaterialsPrice(int objectId)
