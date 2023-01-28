@@ -1,10 +1,11 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
 using BuildingWorks.Models.Databasable.Tables.Providers;
+using Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Models.Databasable.Tables.Provides
 {
-    public class ContractsByMaterials : ITableRecord
+    public class ContractsByMaterials : ITableRecord, IPersistable<int>
     {
         [Key]
         public int Id { get; set; }
