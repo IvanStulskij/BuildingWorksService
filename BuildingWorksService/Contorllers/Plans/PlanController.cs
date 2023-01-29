@@ -25,7 +25,7 @@ namespace BuildingWorksService.Contorllers.Plans
         /// <returns> Single plan. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(PlanResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromQuery] int id)
         {
             var activity = await _service.GetById(id);
             return Ok(activity);
