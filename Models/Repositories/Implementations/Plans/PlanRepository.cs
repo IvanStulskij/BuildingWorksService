@@ -1,6 +1,5 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.Plans;
 using Microsoft.EntityFrameworkCore;
-using Models.Contexts;
 using Models.Repositories.Abstractions.Plans;
 
 namespace Models.Repositories.Implementations.Plans
