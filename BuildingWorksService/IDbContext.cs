@@ -7,7 +7,7 @@ using BuildingWorks.Models.Databasable.Tables.Registration;
 using BuildingWorks.Models.Databasable.Tables.Workers;
 using BuildingWorks.Models.Databasable.Tables.Providers;
 
-namespace Models.Contexts
+namespace BuildingWorksService
 {
     public interface IDbContext
     {
