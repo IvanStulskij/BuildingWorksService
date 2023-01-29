@@ -1,6 +1,5 @@
 ﻿using BuildingWorks.Models.Services.Interfaces.Providers;
 using Microsoft.AspNetCore.Mvc;
-using Models.Repositories.Abstractions.Providers;
 using Models.Resources.Providers;
 
 namespace BuildingWorksService.Contorllers.Providers
