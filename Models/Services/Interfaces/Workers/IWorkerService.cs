@@ -7,8 +7,8 @@ namespace BuildingWorks.Models.Services.Interfaces.Workers
     public interface IWorkerService : IService<WorkerResource, WorkerForm>
     {
 
-        IEnumerable<Worker> GetBrigadeWorkers(int brigadeCode);
+        IEnumerable<WorkerResource> GetByBrigade(int brigadeCode);
 
-        IEnumerable<Worker> GetByCondition(Condition condition);
+        IEnumerable<WorkerResource> GetByCondition(Condition condition);
     }
 }
