@@ -2,7 +2,7 @@
 using BuildingWorks.Models.Databasable.Tables.Provides;
 using Models.Resources.Providers;
 
-namespace BuildingWorks.Models.Profilers
+namespace BuildingWorks.Models.Profilers.Providers
 {
     public class MaterialProfiler : Profile
     {

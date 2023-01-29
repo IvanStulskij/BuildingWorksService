@@ -2,7 +2,7 @@
 using BuildingWorks.Models.Databasable.Tables.Provides;
 using Models.Resources.Providers;
 
-namespace Models.Profilers
+namespace BuildingWorks.Models.Profilers.Providers
 {
     public class ProvidersProfiler : Profile
     {
