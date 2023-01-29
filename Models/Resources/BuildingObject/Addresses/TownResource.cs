@@ -1,6 +1,6 @@
 ﻿using Models.Interfaces;
 
-namespace Models.Resources.BuildingObject.Adress
+namespace Models.Resources.BuildingObject.Addresses
 {
     public class TownResource : IResource
     {

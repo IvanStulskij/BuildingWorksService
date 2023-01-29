@@ -1,4 +1,4 @@
-﻿using Models.Resources.BuildingObject.Adress;
+﻿using Models.Resources.BuildingObject.Addresses;
 
 namespace BuildingWorks.Models.Services.Interfaces.BuildingObjects
 {
