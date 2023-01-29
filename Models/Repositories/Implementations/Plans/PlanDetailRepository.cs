@@ -1,5 +1,5 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.Plans;
-using Models.Contexts;
+using Microsoft.EntityFrameworkCore;
 using Models.GlobalConstants;
 using Models.Repositories.Abstractions.Plans;
 
@@ -13,8 +13,8 @@ namespace Models.Repositories.Implementations.Plans
 
         public float CountDonePercent(int planId)
         {
-            IEnumerable<PlanDetail> plansDetails = FindDetailsByPlan(planId);
-            IEnumerable<PlanDetail> donePlanDetails = FindDoneDetailsByPlan(plansDetails);
+            IEnumerable<PlanDetail> plansDetails = FindByPlan(planId);
+            IEnumerable<PlanDetail> donePlanDetails = FindCompleted(plansDetails);
 
             float totalCount = Convert.ToSingle(plansDetails.Count());
             float doneCount = Convert.ToSingle(donePlanDetails.Count());
@@ -24,20 +24,20 @@ namespace Models.Repositories.Implementations.Plans
             return MathF.Round(planBenefit.Count() * 100, MathConstants.DigitsToOutput);
         }
 
-        public IEnumerable<PlanDetail> FindDetailsByPlan(int planId)
+        public IEnumerable<PlanDetail> FindByPlan(int planId)
         {
             return _context.PlansDetails
                 .Where(planDetail => planDetail.PlanId == planId);
         }
 
-        public IEnumerable<PlanDetail> FindDoneDetailsByPlan(IEnumerable<PlanDetail> planDetails)
+        public IEnumerable<PlanDetail> FindCompleted(IEnumerable<PlanDetail> planDetails)
         {
             return planDetails.Where(planDetail => planDetail.IsCompleted);
         }
 
-        public Task<PlanDetail> GetById(int id)
+        public async Task<PlanDetail> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.PlansDetails.FirstOrDefaultAsync(planDetail => planDetail.Id == id);
         }
     }
 }

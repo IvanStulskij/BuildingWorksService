@@ -1,11 +1,10 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.Plans;
 using Microsoft.EntityFrameworkCore;
-using Models.Contexts;
 using Models.Repositories.Abstractions.Plans;
 
 namespace Models.Repositories.Implementations.Plans
 {
-    public sealed class PlanRepository : IPlanRepository
+    public class PlanRepository : IPlanRepository
     {
         private readonly BuildingWorksDbContext _context;
 

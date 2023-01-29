@@ -2,7 +2,7 @@
 
 namespace Models.Resources.Plans
 {
-    public class PlanDetailResource : IResource
+    public class PlanDetailResource : PlanDetailForm, IResource
     {
         public int Id { get; set; }
     }
