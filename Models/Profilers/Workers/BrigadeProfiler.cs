@@ -2,7 +2,7 @@
 using BuildingWorks.Models.Databasable.Tables.Workers;
 using Models.Resources.Workers;
 
-namespace BuildingWorks.Models.Profilers
+namespace BuildingWorks.Models.Profilers.Workers
 {
     public class BrigadeProfiler : Profile
     {
