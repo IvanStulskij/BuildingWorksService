@@ -8,8 +8,8 @@ namespace BuildingWorks.Models.Profilers
     {
         public ContractsProfiler()
         {
-            CreateMap<Contract, ContractResource>().ReverseMap();
             CreateMap<Contract, ContractForm>().ReverseMap();
+            CreateMap<Contract, ContractResource>().ReverseMap();
         }
     }
 }
