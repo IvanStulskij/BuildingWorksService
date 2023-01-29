@@ -78,7 +78,7 @@ namespace BuildingWorksBackend
         [ProducesResponseType(typeof(ProviderResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] ProviderResource provider)
         {
-            var response = await _service.Update(provider);
+            var response = await _service.Update(provider.Id, provider);
             return Ok(response);
         }
     }

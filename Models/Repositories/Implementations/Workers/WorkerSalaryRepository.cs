@@ -1,5 +1,5 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.Workers;
-using Models.Contexts;
+using Microsoft.EntityFrameworkCore;
 using Models.Repositories.Abstractions.Workers;
 
 namespace Models.Repositories.Implementations.Workers
@@ -8,6 +8,11 @@ namespace Models.Repositories.Implementations.Workers
     {
         public WorkerSalaryRepository(BuildingWorksDbContext context) : base(context)
         {
+        }
+
+        public async Task<WorkerSalary> GetById(int id)
+        {
+            return await _context.WorkersSalaries.FirstOrDefaultAsync(workerSalary => workerSalary.Id == id);
         }
 
         public float GetObjectTotalSalaries(int objectCode)
