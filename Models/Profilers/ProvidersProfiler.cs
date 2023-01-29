@@ -9,6 +9,7 @@ namespace Models.Profilers
         public ProvidersProfiler()
         {
             CreateMap<Provider, ProviderResource>().ReverseMap();
+            CreateMap<Provider, ProviderForm>().ReverseMap();
         }
     }
 }

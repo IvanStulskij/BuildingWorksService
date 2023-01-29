@@ -9,6 +9,7 @@ namespace BuildingWorks.Models.Profilers
         public WorkersProfiler()
         {
             CreateMap<Worker, WorkerResource>().ReverseMap();
+            CreateMap<Worker, WorkerForm>().ReverseMap();
         }
     }
 }

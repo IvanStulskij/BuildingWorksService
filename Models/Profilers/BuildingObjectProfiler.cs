@@ -9,6 +9,7 @@ namespace BuildingWorks.Models.Profilers
         public BuildingObjectProfiler()
         {
             CreateMap<BuildingObject, BuildingObjectResource>().ReverseMap();
+            CreateMap<BuildingObject, BuildingObjectForm>().ReverseMap();
         }
     }
 }

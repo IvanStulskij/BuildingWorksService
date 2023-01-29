@@ -9,6 +9,7 @@ namespace Models.Profilers
         public PlansProfiler()
         {
             CreateMap<Plan, PlanResource>().ReverseMap();
+            CreateMap<Plan, PlanForm>().ReverseMap();
         }
     }
 }
