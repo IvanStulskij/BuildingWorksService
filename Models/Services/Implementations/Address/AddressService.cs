@@ -15,9 +15,9 @@ namespace BuildingWorks.Models.Services.Implementations.Addresses
 
         public override IAddressRepository Repository { get; }
 
-        public Task<ObjectAddress> GetByPosition(string regionName, string townName, string streetName)
+        public AddressResource GetByPosition(string regionName, string townName, string streetName)
         {
-            return Repository.GetByPosition(regionName, townName, streetName);
+            return Mapper.Map<AddressResource>(Repository.GetByPosition(regionName, townName, streetName));
         }
     }
 }
