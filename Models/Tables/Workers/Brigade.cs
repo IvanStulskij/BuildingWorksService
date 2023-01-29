@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
+using Models.Interfaces;
 
 namespace BuildingWorks.Models.Databasable.Tables.Workers
 {
-    public class Brigade
+    public class Brigade : IPersistable<int>
     {
         [Key]
         public int Id { get; set; }
