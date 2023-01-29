@@ -5,8 +5,6 @@ namespace Models.Resources.BuildingObject
     public class BuildingObjectResource : BuildingObjectForm, IResource
     {
         public int Id { get; set; }
-
-        public int ObjectId { get; set; }
     }
 
     public class BuildingObjectForm

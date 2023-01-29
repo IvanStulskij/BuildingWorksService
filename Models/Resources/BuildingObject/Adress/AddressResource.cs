@@ -5,8 +5,6 @@ namespace Models.Resources.BuildingObject.Adress
     public class AddressResource : AddressForm, IResource
     {
         public int Id { get; set; }
-
-        public int AddressCode { get; set; }
     }
 
     public class AddressForm

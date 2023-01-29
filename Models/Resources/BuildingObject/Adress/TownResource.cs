@@ -5,8 +5,6 @@ namespace Models.Resources.BuildingObject.Adress
     public class TownResource : IResource
     {
         public int Id { get; set; }
-
-        public string TownCode { get; set; }
     }
 
     public class TownForm
