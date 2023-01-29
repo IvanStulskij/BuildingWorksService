@@ -1,6 +1,8 @@
-﻿namespace Models.Repositories.Abstractions.Workers
+﻿using BuildingWorks.Models.Databasable.Tables.Workers;
+
+namespace Models.Repositories.Abstractions.Workers
 {
-    public interface IWorkerSalaryRepository
+    public interface IWorkerSalaryRepository : IRepository<WorkerSalary, int>
     {
         float GetObjectTotalSalaries(int objectCode);
     }
