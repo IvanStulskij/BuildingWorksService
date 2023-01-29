@@ -5,7 +5,6 @@ namespace Models.Resources.Providers
     public class MaterialResource : MaterialForm, IResource
     {
         public int Id { get; set; }
-        public int MaterialCode { get; set; }
     }
 
     public class MaterialForm
