@@ -9,7 +9,7 @@ namespace BuildingWorks.Models.Profilers.Providers
         public MaterialsPriceProfiler()
         {
             CreateMap<ContractsByMaterials, ContractsByMaterialForm>().ReverseMap();
-            CreateMap<ContractsByMaterials, ContractsByMaterialsResource>().ReverseMap();
+            CreateMap<ContractsByMaterials, ContractsByMaterialResource>().ReverseMap();
         }
     }
 }

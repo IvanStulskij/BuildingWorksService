@@ -2,7 +2,7 @@
 using Models.Resources.Providers;
 using BuildingWorks.Models.Services.Interfaces.Providers;
 
-namespace BuildingWorksBackend
+namespace BuildingWorksService.Contorllers.Providers
 {
     [ApiController]
     [Route("/api/providers")]
