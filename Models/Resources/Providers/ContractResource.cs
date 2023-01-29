@@ -5,8 +5,6 @@ namespace Models.Resources.Providers
     public class ContractResource : ContractForm, IResource
     {
         public int Id { get ; set; }
-
-        public int ContractCode { get; set; }
     }
 
     public class ContractForm

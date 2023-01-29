@@ -4,7 +4,6 @@ namespace Models.Resources.Providers
 {
     public class ProviderResource : ProviderForm, IResource
     {
-        public int ProviderCode { get; set; }
         public int Id { get; set; }
     }
 
