@@ -5,8 +5,6 @@ namespace Models.Resources.Workers
     public class WorkerSalaryResource : WorkerSalaryForm, IPersistable<int>
     {
         public int Id { get; set; }
-
-        public int SalaryCode { get; set; }
     }
 
     public class WorkerSalaryForm
