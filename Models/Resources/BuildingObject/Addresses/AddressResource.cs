@@ -1,12 +1,10 @@
 ﻿using Models.Interfaces;
 
-namespace Models.Resources.BuildingObject.Adress
+namespace Models.Resources.BuildingObject.Addresses
 {
     public class AddressResource : AddressForm, IResource
     {
         public int Id { get; set; }
-
-        public int AddressCode { get; set; }
     }
 
     public class AddressForm

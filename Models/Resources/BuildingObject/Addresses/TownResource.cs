@@ -1,12 +1,10 @@
 ﻿using Models.Interfaces;
 
-namespace Models.Resources.BuildingObject.Adress
+namespace Models.Resources.BuildingObject.Addresses
 {
     public class TownResource : IResource
     {
         public int Id { get; set; }
-
-        public string TownCode { get; set; }
     }
 
     public class TownForm

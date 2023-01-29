@@ -5,8 +5,6 @@ namespace Models.Resources.Plans
     public sealed class PlanResource : PlanForm, IResource
     {
         public int Id { get; set; }
-
-        public int PlanCode { get; set; }
     }
 
     public class PlanForm
