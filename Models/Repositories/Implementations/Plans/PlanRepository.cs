@@ -4,7 +4,7 @@ using Models.Repositories.Abstractions.Plans;
 
 namespace Models.Repositories.Implementations.Plans
 {
-    public sealed class PlanRepository : IPlanRepository
+    public class PlanRepository : IPlanRepository
     {
         private readonly BuildingWorksDbContext _context;
 
