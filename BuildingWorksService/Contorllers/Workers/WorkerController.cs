@@ -24,7 +24,7 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> Single worker. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(WorkerResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromQuery] int id)
         {
             var worker = await _service.GetById(id);
 
@@ -58,10 +58,10 @@ namespace BuildingWorksService.Contorllers.Workers
         }
 
         /// <summary>
-        /// Get workers by brigade id.
+        /// Get workers by condition.
         /// </summary>
-        /// <param name="brigadeCode"> Brigade id to get workers. </param>
-        /// <returns> The list of workers by brigade. </returns>
+        /// <param name="condition"> Condition id to get workers. </param>
+        /// <returns> The list of workers by condition. </returns>
         [HttpGet("getByCondition")]
         [ProducesResponseType(typeof(IEnumerable<WorkerResource>), StatusCodes.Status200OK)]
         public IActionResult GetByCondition([FromBody] Condition condition)
