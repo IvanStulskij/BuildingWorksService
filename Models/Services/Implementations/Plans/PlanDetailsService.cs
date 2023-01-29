@@ -16,5 +16,20 @@ namespace BuildingWorks.Models.Services.Implementations.Plans
         }
 
         public override IPlanDetailRepository Repository { get; }
+
+        public float CountDonePercent(int planId)
+        {
+            return Repository.CountDonePercent(planId);
+        }
+
+        public IEnumerable<PlanDetail> GetByPlan(int planId)
+        {
+            return Repository.FindByPlan(planId);
+        }
+
+        public IEnumerable<PlanDetail> GetCompleted(IEnumerable<PlanDetail> planDetails)
+        {
+            return Repository.FindCompleted(planDetails);
+        }
     }
 }
