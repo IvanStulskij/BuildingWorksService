@@ -25,9 +25,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         [ProducesResponseType(typeof(ProviderResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromQuery] int id)
         {
-            var activity = await _service.GetById(id);
+            var buildingObject = await _service.GetById(id);
 
-            return Ok(activity);
+            return Ok(buildingObject);
         }
 
         /// <summary>
@@ -38,9 +38,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         [ProducesResponseType(typeof(IEnumerable<BuildingObjectResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var providers = await _service.GetAll();
+            var buildingObjects = await _service.GetAll();
 
-            return Ok(providers);
+            return Ok(buildingObjects);
         }
 
         /// <summary>
