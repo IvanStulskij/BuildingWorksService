@@ -11,11 +11,11 @@ namespace BuildingWorks.Models.Services.Implementations.Workers
         Service<Worker, WorkerResource, WorkerForm>,
         IWorkerService
     {
-        public override IWorkerRepository Repository { get; }
-
         public WorkerService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
         {
         }
+
+        public override IWorkerRepository Repository { get; }
 
         public IEnumerable<Worker> GetBrigadeWorkers(int brigadeCode)
         {
