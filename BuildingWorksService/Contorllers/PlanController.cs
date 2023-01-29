@@ -102,7 +102,7 @@ namespace BuildingWorksService.Contorllers
         [ProducesResponseType(typeof(PlanResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] PlanResource resource)
         {
-            var response = await _service.Update(resource.PlanCode, resource);
+            var response = await _service.Update(resource.Id, resource);
             return Ok(response);
         }
     }
