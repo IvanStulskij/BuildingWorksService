@@ -17,12 +17,12 @@ namespace BuildingWorks.Models.Services.Implementations.Workers
 
         public override IBrigadeRepository Repository { get; }
 
-        public IEnumerable<Brigade> GetObjectBrigades(int objectCode)
+        public IEnumerable<BrigadeResource> GetByObject(int objectId)
         {
-            return Repository.GetObjectBrigades(objectCode);
+            return Mapper.Map<IEnumerable<BrigadeResource>>(Repository.GetObjectBrigades(objectId));
         }
 
-        public IEnumerable<int> SelectBrigadesCodes()
+        public IEnumerable<int> GetBrigadesCodes()
         {
             return Repository.SelectBrigadesCodes();
         }
