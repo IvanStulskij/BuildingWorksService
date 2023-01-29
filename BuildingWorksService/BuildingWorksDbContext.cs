@@ -48,8 +48,8 @@ namespace BuildingWorksService
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql(_connectionString, ServerVersion.Parse("6.14"));
-            //base.OnConfiguring(optionsBuilder);
+            //optionsBuilder.UseMySql(_connectionString, ServerVersion.Parse("6.14"));
+            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

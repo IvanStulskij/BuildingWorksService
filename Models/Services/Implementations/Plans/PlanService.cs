@@ -7,7 +7,7 @@ using Models.Resources.Plans;
 
 namespace Models.Services.Implementations
 {
-    public sealed class PlanService :
+    public class PlanService :
         ConditionalService<Plan, PlanResource, PlanForm>,
         IPlanService
     {
