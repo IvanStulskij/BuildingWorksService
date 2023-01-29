@@ -17,14 +17,14 @@ namespace BuildingWorks.Models.Services.Implementations.Workers
 
         public override IWorkerRepository Repository { get; }
 
-        public IEnumerable<Worker> GetBrigadeWorkers(int brigadeCode)
+        public IEnumerable<WorkerResource> GetByBrigade(int brigadeCode)
         {
-            return Repository.GetBrigadeWorkers(brigadeCode);
+            return Mapper.Map<IEnumerable<WorkerResource>>(Repository.GetBrigadeWorkers(brigadeCode));
         }
 
-        public IEnumerable<Worker> GetByCondition(Condition condition)
+        public IEnumerable<WorkerResource> GetByCondition(Condition condition)
         {
-            return Repository.GetByCondition(condition);
+            return Mapper.Map<IEnumerable<WorkerResource>>(Repository.GetByCondition(condition));
         }
     }
 }

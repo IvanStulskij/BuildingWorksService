@@ -8,9 +8,9 @@ namespace BuildingWorksService.Contorllers.Providers
     [Route("api/materials-price")]
     public class ContractsByMaterialController : ControllerBase
     {
-        private readonly IMaterialsPriceService _service;
+        private readonly IContractsByMaterialService _service;
 
-        public ContractsByMaterialController(IMaterialsPriceService service)
+        public ContractsByMaterialController(IContractsByMaterialService service)
         {
             _service = service;
         }
@@ -22,7 +22,7 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <returns> Single material. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ContractsByMaterialResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromQuery] int id)
         {
             var entitiy = await _service.GetById(id);
 

@@ -17,7 +17,7 @@ namespace BuildingWorks.Models.Services.Implementations.Workers
 
         public override IWorkerSalaryRepository Repository { get; }
 
-        public float GetObjectTotalSalaries(int objectId)
+        public float GetTotalByObject(int objectId)
         {
             return Repository.GetObjectTotalSalaries(objectId);
         }
