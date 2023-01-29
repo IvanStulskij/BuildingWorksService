@@ -2,7 +2,7 @@
 
 namespace Models.Repositories.Abstractions.Workers
 {
-    public interface IBrigadeRepository : IRepository<Brigade>
+    public interface IBrigadeRepository : IRepository<Brigade, int>
     {
         IEnumerable<int> SelectBrigadesCodes();
 

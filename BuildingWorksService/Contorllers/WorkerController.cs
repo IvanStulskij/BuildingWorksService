@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Models.Services.Interfaces;
+﻿using BuildingWorks.Models.Services.Interfaces.Workers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BuildingWorksService.Contorllers
 {

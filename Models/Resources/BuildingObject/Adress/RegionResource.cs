@@ -2,7 +2,7 @@
 
 namespace Models.Resources.BuildingObject.Adress
 {
-    public class RegionResource : IResource
+    public class RegionResource : RegionForm, IResource 
     {
         public int Id { get; set; }
 

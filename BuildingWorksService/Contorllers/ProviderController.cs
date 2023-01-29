@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BuildingWorksBackend.Services.Interfaces;
 using Models.Resources.Providers;
+using BuildingWorks.Models.Services.Interfaces.Providers;
 
 namespace BuildingWorksBackend
 {
@@ -78,7 +78,7 @@ namespace BuildingWorksBackend
         [ProducesResponseType(typeof(ProviderResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] ProviderResource provider)
         {
-            var response = await _service.Update(provider);
+            var response = await _service.Update(provider.Id, provider);
             return Ok(response);
         }
     }
