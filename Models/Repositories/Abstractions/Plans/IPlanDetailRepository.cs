@@ -6,9 +6,9 @@ namespace Models.Repositories.Abstractions.Plans
     {
         float CountDonePercent(int planId);
 
-        IEnumerable<PlanDetail> FindDoneDetailsByPlan(IEnumerable<PlanDetail> planDetails);
+        IEnumerable<PlanDetail> FindCompleted(IEnumerable<PlanDetail> planDetails);
 
-        IEnumerable<PlanDetail> FindDetailsByPlan(int planId);
+        IEnumerable<PlanDetail> FindByPlan(int planId);
 
     }
 }
