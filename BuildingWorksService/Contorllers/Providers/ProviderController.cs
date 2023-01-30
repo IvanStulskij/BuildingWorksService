@@ -2,7 +2,7 @@
 using Models.Resources.Providers;
 using BuildingWorks.Models.Services.Interfaces.Providers;
 
-namespace BuildingWorksBackend
+namespace BuildingWorksService.Contorllers.Providers
 {
     [ApiController]
     [Route("/api/providers")]
@@ -22,7 +22,7 @@ namespace BuildingWorksBackend
         /// <returns> Single provider. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ProviderResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromQuery] int id)
         {
             var activity = await _service.GetById(id);
 

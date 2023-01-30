@@ -8,7 +8,7 @@ using Models.Repositories.Abstractions.Providers;
 namespace BuildingWorks.Models.Services.Implementations.Providers
 {
     public class MaterialsPriceService : Service<ContractsByMaterials, ContractsByMaterialsResource, ContractsByMaterialForm>,
-        IMaterialsPriceService
+        IContractsByMaterialService
     {
         public MaterialsPriceService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
         {

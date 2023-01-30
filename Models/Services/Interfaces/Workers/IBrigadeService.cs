@@ -5,8 +5,8 @@ namespace BuildingWorks.Models.Services.Interfaces.Workers
 {
     public interface IBrigadeService : IService<BrigadeResource, BrigadeForm>
     {
-        IEnumerable<Brigade> GetObjectBrigades(int objectCode);
+        IEnumerable<BrigadeResource> GetByObject(int objectCode);
 
-        IEnumerable<int> SelectBrigadesCodes();
+        IEnumerable<int> GetBrigadesCodes();
     }
 }
