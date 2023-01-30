@@ -16,17 +16,17 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         }
 
         /// <summary>
-        /// Get region by id.
+        /// Get street by id.
         /// </summary>
-        /// <param name="id"> Id to get region. </param>
-        /// <returns> Single region. </returns>
+        /// <param name="id"> Id to get street. </param>
+        /// <returns> Single street. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(StreetResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromQuery] int id)
         {
-            var region = await _service.GetById(id);
+            var street = await _service.GetById(id);
 
-            return Ok(region);
+            return Ok(street);
         }
 
         /// <summary>
