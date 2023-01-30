@@ -2,7 +2,7 @@
 
 namespace BuildingWorks.Models.Services.Interfaces.Providers
 {
-    public interface IContractsByMaterialService : IService<ContractsByMaterialResource, ContractsByMaterialForm>
+    public interface IMaterialsPriceService : IService<ContractsByMaterialResource, ContractsByMaterialForm>
     {
         IEnumerable<ContractsByMaterialForm> GetMaterialsContracts(int objectId);
 
