@@ -49,7 +49,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// </summary>
         /// <returns> The list of addresses. </returns>
         [HttpGet("getByPosition")]
-        [ProducesResponseType(typeof(IEnumerable<BuildingObjectResource>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<AddressResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetByPosition([FromQuery] string regionName, string townName, string streetName)
         {
             var address = await _service.GetByPosition(regionName, townName, streetName);
@@ -63,7 +63,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// <param name="form"> Form to create address. </param>
         /// <returns> Created address. </returns>
         [HttpPost]
-        [ProducesResponseType(typeof(ProviderResource), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(AddressResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] AddressForm form)
         {
             var response = await _service.Create(form);
@@ -77,7 +77,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// <param name="id"> Id to delete address. </param>
         /// <returns> Deleted address. </returns>
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(BuildingObjectResource), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(AddressResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromQuery] int id)
         {
             var response = await _service.Delete(id);
@@ -91,7 +91,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// <param name="resource"> Resource to update address. </param>
         /// <returns> Updated address. </returns>
         [HttpPut]
-        [ProducesResponseType(typeof(BuildingObjectResource), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(AddressResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] AddressResource resource)
         {
             var response = await _service.Update(resource.Id, resource);
