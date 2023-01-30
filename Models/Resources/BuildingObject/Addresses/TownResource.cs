@@ -2,7 +2,7 @@
 
 namespace Models.Resources.BuildingObject.Addresses
 {
-    public class TownResource : IResource
+    public class TownResource : TownForm, IResource
     {
         public int Id { get; set; }
     }
