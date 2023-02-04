@@ -1,8 +1,9 @@
-﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
-using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Models.Databasable.Tables;
+using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
 using System.ComponentModel.DataAnnotations;
 
-namespace BuildingWorks.Models.Databasable.Tables.Plans
+namespace BuildingWorks.Databasable.Entities.Plans
 {
     public class Plan : ITableRecord, IPersistable<int>
     {
