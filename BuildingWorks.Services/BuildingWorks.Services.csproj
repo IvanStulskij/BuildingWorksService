@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BuildingWorks.Interfaces\BuildingWorks.Common.csproj" />
+    <ProjectReference Include="..\BuildingWorks.Repositories\BuildingWorks.Repositories.csproj" />
+    <ProjectReference Include="..\BuildingWorksService\BuildingWorksService.csproj" />
     <ProjectReference Include="..\Models\BuildingWorks.Models.csproj" />
   </ItemGroup>
 

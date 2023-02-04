@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BuildingWorks.Databasable\BuildingWorks.Databasable.csproj" />
     <ProjectReference Include="..\Models\BuildingWorks.Models.csproj" />
   </ItemGroup>
 
