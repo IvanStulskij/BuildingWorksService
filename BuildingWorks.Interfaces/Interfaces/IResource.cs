@@ -1,4 +1,4 @@
-﻿namespace Models.Interfaces
+﻿namespace BuildingWorks.Common.Extensions
 {
     public interface IResource : IPersistable<int>
     {

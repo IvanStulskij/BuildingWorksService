@@ -2,7 +2,7 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 
-namespace Models.Extensions
+namespace BuildingWorks.Common.Extensions
 {
     public static class MapperExtensions
     {

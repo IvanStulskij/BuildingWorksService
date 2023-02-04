@@ -1,4 +1,4 @@
-﻿namespace Models.GlobalConstants
+﻿namespace BuildingWorks.Common.Extensions
 {
     public static class TablesNames
     {
