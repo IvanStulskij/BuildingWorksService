@@ -5,6 +5,6 @@ namespace BuildingWorks.Models.Services.Interfaces.BuildingObjects
 {
     public interface IAddressService : IService<AddressResource, AddressForm>
     {
-        Task<AddressResource> GetByPosition(string regionName, string townName, string streetName);
+        AddressResource GetByPosition(string regionName, string townName, string streetName);
     }
 }

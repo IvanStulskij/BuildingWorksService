@@ -8,9 +8,9 @@ namespace BuildingWorksService.Contorllers.Providers
     [Route("api/materials-price")]
     public class ContractsByMaterialController : ControllerBase
     {
-        private readonly IContractsByMaterialService _service;
+        private readonly IMaterialsPriceService _service;
 
-        public ContractsByMaterialController(IContractsByMaterialService service)
+        public ContractsByMaterialController(IMaterialsPriceService service)
         {
             _service = service;
         }

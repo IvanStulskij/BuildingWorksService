@@ -50,9 +50,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// <returns> The list of addresses. </returns>
         [HttpGet("getByPosition")]
         [ProducesResponseType(typeof(IEnumerable<AddressResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetByPosition([FromQuery] string regionName, string townName, string streetName)
+        public IActionResult GetByPosition([FromQuery] string regionName, string townName, string streetName)
         {
-            var address = await _service.GetByPosition(regionName, townName, streetName);
+            var address = _service.GetByPosition(regionName, townName, streetName);
 
             return Ok(address);
         }
