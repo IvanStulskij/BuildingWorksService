@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address;
 using BuildingWorks.Models.Services.Interfaces.BuildingObjects;
 using Models;
