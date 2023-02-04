@@ -1,7 +1,8 @@
-﻿using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Models.Databasable.Tables;
 using System.ComponentModel.DataAnnotations;
 
-namespace BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address
+namespace BuildingWorks.Databasable.Entities.BuildingObjects.Address
 {
     public class ObjectAddress : ITableRecord, IPersistable<int>
     {
