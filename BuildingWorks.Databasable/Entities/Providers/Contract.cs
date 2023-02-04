@@ -1,7 +1,7 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.Provides;
 using System.ComponentModel.DataAnnotations;
 
-namespace BuildingWorks.Models.Databasable.Tables.Providers
+namespace BuildingWorks.Databasable.Entities.Providers
 {
     public class Contract : IProvidersNamespaceRecord
     {

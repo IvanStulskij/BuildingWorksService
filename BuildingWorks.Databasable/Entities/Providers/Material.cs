@@ -1,8 +1,8 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Providers;
-using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Databasable.Entities.Providers;
 using System.ComponentModel.DataAnnotations;
 
-namespace BuildingWorks.Models.Databasable.Tables.Provides
+namespace BuildingWorks.Databasable.Entities.Provides
 {
     public class Material : IProvidersNamespaceRecord, IPersistable<int>
     {
