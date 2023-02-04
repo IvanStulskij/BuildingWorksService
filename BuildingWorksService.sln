@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingWorks.Interfaces", "BuildingWorks.Interfaces\BuildingWorks.Interfaces.csproj", "{73163746-1257-4667-9B55-A68ECD84E6A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingWorks.Common", "BuildingWorks.Interfaces\BuildingWorks.Common.csproj", "{73163746-1257-4667-9B55-A68ECD84E6A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingWorks.Profilers", "BuildingWorks.Profilers\BuildingWorks.Profilers.csproj", "{FC81630A-73B8-4F9D-AC09-E2347EA8FDF6}"
 EndProject
