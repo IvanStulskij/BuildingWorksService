@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Models.Contexts;
 using Models.Extensions;
 using Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
