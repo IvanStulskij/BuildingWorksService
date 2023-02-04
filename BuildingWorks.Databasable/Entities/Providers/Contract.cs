@@ -1,5 +1,4 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Provides;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Databasable.Entities.Providers
 {

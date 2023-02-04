@@ -1,8 +1,7 @@
 ﻿using BuildingWorks.Common.Extensions;
-using BuildingWorks.Databasable.Entities.Providers;
 using System.ComponentModel.DataAnnotations;
 
-namespace BuildingWorks.Databasable.Entities.Provides
+namespace BuildingWorks.Databasable.Entities.Providers
 {
     public class Provider : IProvidersNamespaceRecord, IPersistable<int>
     {

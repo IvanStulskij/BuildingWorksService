@@ -1,11 +1,9 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
-using BuildingWorks.Databasable.Entities.Providers;
 using System.ComponentModel.DataAnnotations;
 using BuildingWorks.Models.Databasable.Tables;
-using BuildingWorks.Models.Databasable.Tables.Provides;
 using BuildingWorks.Common.Extensions;
 
-namespace BuildingWorks.Databasable.Entities.Provides
+namespace BuildingWorks.Databasable.Entities.Providers
 {
     public class ContractsByMaterials : ITableRecord, IPersistable<int>
     {
