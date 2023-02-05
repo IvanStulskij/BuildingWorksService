@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
-using Models.Resources.BuildingObject;
+using BuildingWorks.Models.Resources.BuildingObject;
 
-namespace BuildingWorks.Models.Profilers
+namespace BuildingWorks.Profilers.Profilers.BuildingObjects
 {
     public class BuildingObjectProfiler : Profile
     {

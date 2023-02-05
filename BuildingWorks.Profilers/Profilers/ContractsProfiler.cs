@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable.Tables.Providers;
-using Models.Resources.Providers;
+using BuildingWorks.Databasable.Entities.Providers;
+using BuildingWorks.Models.Resources.Providers;
 
-namespace BuildingWorks.Models.Profilers
+namespace BuildingWorks.Profilers.Profilers.Contracts
 {
     public class ContractsProfiler : Profile
     {
