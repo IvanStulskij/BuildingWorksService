@@ -1,6 +1,6 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Provides;
+﻿using BuildingWorks.Databasable.Entities.Providers;
 
-namespace Models.Repositories.Abstractions.Providers
+namespace BuildingWorks.Repositories.Repositories.Abstractions.Providers
 {
     public interface IProviderRepository : IRepository<Provider, int>
     {
