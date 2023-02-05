@@ -2,7 +2,7 @@
 using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Models.Resources.Plans;
 
-namespace BuildingWorks.Models.Profilers.Plans
+namespace BuildingWorks.Profilers.Profilers.Plans
 {
     public class PlanDetailsProfiler : Profile
     {
