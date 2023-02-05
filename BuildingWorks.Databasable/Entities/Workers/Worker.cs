@@ -1,5 +1,4 @@
 ﻿using BuildingWorks.Common.Extensions;
-using BuildingWorks.Databasable.Entities.Workers;
 using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Databasable.Entities.Workers

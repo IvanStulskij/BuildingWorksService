@@ -1,6 +1,6 @@
-﻿using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
 
-namespace Models.Resources.BuildingObject.Addresses
+namespace BuildingWorks.Models.Resources.BuildingObject.Addresses
 {
     public class TownResource : TownForm, IResource
     {
