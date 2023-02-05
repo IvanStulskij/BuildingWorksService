@@ -1,6 +1,6 @@
-﻿using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
 
-namespace Models.Resources.Providers
+namespace BuildingWorks.Models.Resources.Providers
 {
     public class ProviderResource : ProviderForm, IResource
     {
