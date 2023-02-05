@@ -1,6 +1,7 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Workers;
+﻿using BuildingWorks.Databasable.Entities.Workers;
+using Models;
 
-namespace Models.Repositories.Abstractions.Workers
+namespace BuildingWorks.Repositories.Repositories.Abstractions.Workers
 {
     public interface IWorkerRepository : IRepository<Worker, int>
     {

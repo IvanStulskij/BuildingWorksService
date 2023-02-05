@@ -1,4 +1,4 @@
-﻿namespace Models.Repositories.Abstractions
+﻿namespace BuildingWorks.Repositories.Repositories.Abstractions
 {
     public interface IPropertiesNamesRepository<T>
     {
