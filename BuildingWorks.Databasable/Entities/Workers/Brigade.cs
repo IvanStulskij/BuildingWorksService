@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using BuildingWorks.Common.Extensions;
 using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
-using Models.Interfaces;
 
-namespace BuildingWorks.Models.Databasable.Tables.Workers
+namespace BuildingWorks.Databasable.Entities.Workers
 {
     public class Brigade : IPersistable<int>
     {

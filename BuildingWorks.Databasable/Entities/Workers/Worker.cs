@@ -1,7 +1,8 @@
-﻿using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Databasable.Entities.Workers;
 using System.ComponentModel.DataAnnotations;
 
-namespace BuildingWorks.Models.Databasable.Tables.Workers
+namespace BuildingWorks.Databasable.Entities.Workers
 {
     public class Worker : IPersistable<int>
     {
