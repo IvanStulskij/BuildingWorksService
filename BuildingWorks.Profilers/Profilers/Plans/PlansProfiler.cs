@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable.Tables.Plans;
-using Models.Resources.Plans;
+using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Models.Resources.Plans;
 
 namespace BuildingWorks.Models.Profilers.Plans
 {
