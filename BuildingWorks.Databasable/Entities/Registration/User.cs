@@ -1,7 +1,8 @@
-﻿using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Models.Databasable.Tables;
 using System.ComponentModel.DataAnnotations;
 
-namespace BuildingWorks.Models.Databasable.Tables.Registration
+namespace BuildingWorks.Databasable.Entities.Registration
 {
     public class User : ITableRecord, IPersistable<int>
     {
