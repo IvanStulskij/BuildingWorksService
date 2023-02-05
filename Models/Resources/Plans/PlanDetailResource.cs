@@ -1,6 +1,6 @@
-﻿using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
 
-namespace Models.Resources.Plans
+namespace BuildingWorks.Models.Resources.Plans
 {
     public class PlanDetailResource : PlanDetailForm, IResource
     {
