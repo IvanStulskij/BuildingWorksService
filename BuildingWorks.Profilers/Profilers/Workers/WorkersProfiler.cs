@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable.Tables.Workers;
-using Models.Resources.Workers;
+using BuildingWorks.Databasable.Entities.Workers;
+using BuildingWorks.Models.Resources.Workers;
 
-namespace BuildingWorks.Models.Profilers.Workers
+namespace BuildingWorks.Profilers.Profilers.Workers
 {
     public class WorkersProfiler : Profile
     {
