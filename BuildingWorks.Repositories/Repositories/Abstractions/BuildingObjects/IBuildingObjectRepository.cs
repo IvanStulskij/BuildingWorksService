@@ -1,6 +1,6 @@
 ﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
 
-namespace Models.Repositories.Abstractions.BuildingObjects
+namespace BuildingWorks.Repositories.Repositories.Abstractions.BuildingObjects
 {
     public interface IBuildingObjectRepository : IRepository<BuildingObject, int>
     {
