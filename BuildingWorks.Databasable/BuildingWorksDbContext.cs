@@ -1,15 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
-using BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address;
-using BuildingWorks.Models.Databasable.Tables.Plans;
-using BuildingWorks.Models.Databasable.Tables.Provides;
-using BuildingWorks.Models.Databasable.Tables.Registration;
-using BuildingWorks.Models.Databasable.Tables.Workers;
 using Models.Contexts;
 using Microsoft.EntityFrameworkCore.Storage;
-using BuildingWorks.Models.Databasable.Tables.Providers;
+using BuildingWorks.Databasable.Entities.Providers;
+using BuildingWorks.Databasable.Entities.BuildingObjects.Address;
+using BuildingWorks.Databasable.Entities.Registration;
+using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Databasable.Entities.Workers;
 
-namespace Models;
+namespace BuildingWorks.Databasable;
 
 public class BuildingWorksDbContext : DbContext, IDbContext
 {
