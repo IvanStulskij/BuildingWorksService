@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable.Tables.Workers;
-using BuildingWorks.Models.Services.Interfaces.Workers;
-using Models;
-using Models.Repositories.Abstractions.Workers;
-using Models.Resources.Workers;
+using BuildingWorks.Databasable;
+using BuildingWorks.Databasable.Entities.Workers;
+using BuildingWorks.Models.Resources.Workers;
+using BuildingWorks.Repositories.Repositories.Abstractions.Workers;
+using BuildingWorks.Services.Interfaces.Workers;
 
-namespace BuildingWorks.Models.Services.Implementations.Workers
+namespace BuildingWorks.Services.Implementations.Workers
 {
     public class WorkerSalaryService :
         Service<WorkerSalary, WorkerSalaryResource, WorkerSalaryForm>,

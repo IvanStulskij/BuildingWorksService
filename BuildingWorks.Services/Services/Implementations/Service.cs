@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable.Tables.Plans;
 using BuildingWorks.Models.Databasable;
-using BuildingWorks.Models.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Models;
-using Models.Extensions;
-using Models.Interfaces;
-using Models.Repositories.Abstractions;
+using BuildingWorks.Databasable;
+using BuildingWorks.Common.Extensions;
+using BuildingWorks.Repositories.Repositories.Abstractions;
+using BuildingWorks.Services.Interfaces;
+using BuildingWorks.Databasable.Entities.Plans;
 
-namespace BuildingWorks.Models.Services.Implementations
+namespace BuildingWorks.Services.Implementations
 {
     public abstract class Service<T, TResource, TForm> : IService<TResource, TForm>
         where T : class, IPersistable<int>
