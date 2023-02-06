@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address;
-using BuildingWorks.Models.Services.Interfaces.BuildingObjects;
-using Models;
-using Models.Repositories.Abstractions.Addresses;
-using Models.Resources.BuildingObject.Addresses;
+using BuildingWorks.Databasable;
+using BuildingWorks.Databasable.Entities.BuildingObjects.Address;
+using BuildingWorks.Models.Resources.BuildingObject.Addresses;
+using BuildingWorks.Repositories.Repositories.Abstractions.Addresses;
+using BuildingWorks.Services.Interfaces.BuildingObjects;
 
-namespace BuildingWorks.Models.Services.Implementations.Addresses
+namespace BuildingWorks.Services.Implementations.BuildingObjects.Addresses
 {
     public class TownService : Service<Town, TownResource, TownForm>, ITownService
     {

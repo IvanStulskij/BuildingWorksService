@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using BuildingWorks.Databasable;
 using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
-using BuildingWorks.Models.Services.Interfaces.BuildingObjects;
-using Models;
-using Models.Repositories.Abstractions.BuildingObjects;
-using Models.Resources.BuildingObject;
+using BuildingWorks.Models.Resources.BuildingObject;
+using BuildingWorks.Repositories.Repositories.Abstractions.BuildingObjects;
+using BuildingWorks.Services.Interfaces.BuildingObjects;
 
-namespace BuildingWorks.Models.Services.Implementations.BuildingObjects
+namespace BuildingWorks.Services.Implementations.BuildingObjects
 {
     public class BuildingObjectService : Service<BuildingObject, BuildingObjectResource, BuildingObjectForm>, IBuildingObjectService
     {
