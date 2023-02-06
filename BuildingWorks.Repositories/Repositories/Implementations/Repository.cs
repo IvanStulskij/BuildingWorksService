@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Models.Repositories.Abstractions;
+﻿using BuildingWorks.Databasable;
+using BuildingWorks.Repositories.Repositories.Abstractions;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Models.Repositories.Implementations
+namespace BuildingWorks.Repositories.Implementations
 {
     public abstract class Repository<T, TKey> : IRepository<T> where T : class
     {

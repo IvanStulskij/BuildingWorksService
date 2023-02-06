@@ -1,8 +1,9 @@
-﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
+﻿using BuildingWorks.Databasable;
+using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
+using BuildingWorks.Repositories.Repositories.Abstractions.BuildingObjects;
 using Microsoft.EntityFrameworkCore;
-using Models.Repositories.Abstractions.BuildingObjects;
 
-namespace Models.Repositories.Implementations.BuildingObjects
+namespace BuildingWorks.Repositories.Implementations.BuildingObjects
 {
     public class BuildingObjectRepository : Repository<BuildingObject, int>, IBuildingObjectRepository
     {

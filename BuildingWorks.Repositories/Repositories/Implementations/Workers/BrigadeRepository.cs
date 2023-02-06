@@ -1,6 +1,8 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Workers;
+﻿using BuildingWorks.Databasable;
+using BuildingWorks.Databasable.Entities.Workers;
+using BuildingWorks.Repositories.Implementations;
+using BuildingWorks.Repositories.Repositories.Abstractions.Workers;
 using Microsoft.EntityFrameworkCore;
-using Models.Repositories.Abstractions.Workers;
 
 namespace Models.Repositories.Implementations.Workers
 {

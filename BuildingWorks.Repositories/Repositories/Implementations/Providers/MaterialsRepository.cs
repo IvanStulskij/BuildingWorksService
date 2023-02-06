@@ -1,8 +1,10 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Provides;
+﻿using BuildingWorks.Databasable;
+using BuildingWorks.Databasable.Entities.Providers;
+using BuildingWorks.Repositories.Implementations;
+using BuildingWorks.Repositories.Repositories.Abstractions.Providers;
 using Microsoft.EntityFrameworkCore;
-using Models.Repositories.Abstractions.Providers;
 
-namespace Models.Repositories.Implementations.Providers
+namespace BuildingWorks.Repositories.Implementation.Providers
 {
     public class MaterialsRepository : Repository<Material, int>, IMaterialRepository
     {

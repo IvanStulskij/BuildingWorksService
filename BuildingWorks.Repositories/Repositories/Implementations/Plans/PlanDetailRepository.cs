@@ -1,9 +1,11 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Plans;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Databasable;
+using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Repositories.Repositories.Abstractions.Plans;
 using Microsoft.EntityFrameworkCore;
-using Models.GlobalConstants;
-using Models.Repositories.Abstractions.Plans;
+using Models;
 
-namespace Models.Repositories.Implementations.Plans
+namespace BuildingWorks.Repositories.Implementations.Plans
 {
     public class PlanDetailRepository : Repository<PlanDetail, int>, IPlanDetailRepository
     {

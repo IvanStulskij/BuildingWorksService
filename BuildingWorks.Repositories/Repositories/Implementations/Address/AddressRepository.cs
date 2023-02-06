@@ -1,8 +1,9 @@
-﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address;
+﻿using BuildingWorks.Databasable;
+using BuildingWorks.Databasable.Entities.BuildingObjects.Address;
+using BuildingWorks.Repositories.Repositories.Abstractions.Addresses;
 using Microsoft.EntityFrameworkCore;
-using Models.Repositories.Abstractions.Addresses;
 
-namespace Models.Repositories.Implementations.Address
+namespace BuildingWorks.Repositories.Implementations.Addresses
 {
     public class AddressRepository : Repository<ObjectAddress, int>, IAddressRepository
     {
