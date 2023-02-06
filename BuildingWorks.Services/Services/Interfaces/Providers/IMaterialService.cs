@@ -1,6 +1,6 @@
-﻿using Models.Resources.Providers;
+﻿using BuildingWorks.Models.Resources.Providers;
 
-namespace BuildingWorks.Models.Services.Interfaces.Providers
+namespace BuildingWorks.Services.Interfaces.Providers
 {
     public interface IMaterialService : IService<MaterialResource, MaterialForm>
     {

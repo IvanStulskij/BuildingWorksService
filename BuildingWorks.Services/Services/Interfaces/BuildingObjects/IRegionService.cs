@@ -1,6 +1,6 @@
-﻿using Models.Resources.BuildingObject.Addresses;
+﻿using BuildingWorks.Models.Resources.BuildingObject.Addresses;
 
-namespace BuildingWorks.Models.Services.Interfaces.BuildingObjects
+namespace BuildingWorks.Services.Interfaces.BuildingObjects
 {
     public interface IRegionService : IService<RegionResource, RegionForm>
     {

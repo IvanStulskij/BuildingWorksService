@@ -1,6 +1,6 @@
 ﻿using BuildingWorks.Models.Resources.Providers;
 
-namespace BuildingWorks.Models.Services.Interfaces.Providers
+namespace BuildingWorks.Services.Interfaces.Providers
 {
     public interface IMaterialsPriceService : IService<ContractsByMaterialResource, ContractsByMaterialForm>
     {

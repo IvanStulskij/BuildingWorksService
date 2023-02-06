@@ -1,8 +1,7 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Workers;
+﻿using BuildingWorks.Models.Resources.Workers;
 using Models;
-using Models.Resources.Workers;
 
-namespace BuildingWorks.Models.Services.Interfaces.Workers
+namespace BuildingWorks.Services.Interfaces.Workers
 {
     public interface IWorkerService : IService<WorkerResource, WorkerForm>
     {

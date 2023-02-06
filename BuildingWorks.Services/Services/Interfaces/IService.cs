@@ -1,4 +1,4 @@
-﻿namespace BuildingWorks.Models.Services.Interfaces
+﻿namespace BuildingWorks.Services.Interfaces
 {
     public interface IService<TResource, TResourceForm> where TResource : class
     {

@@ -1,7 +1,6 @@
-﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address;
-using Models.Resources.BuildingObject.Addresses;
+﻿using BuildingWorks.Models.Resources.BuildingObject.Addresses;
 
-namespace BuildingWorks.Models.Services.Interfaces.BuildingObjects
+namespace BuildingWorks.Services.Interfaces.BuildingObjects
 {
     public interface IAddressService : IService<AddressResource, AddressForm>
     {

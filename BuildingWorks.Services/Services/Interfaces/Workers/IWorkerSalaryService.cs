@@ -1,6 +1,6 @@
-﻿using Models.Resources.Workers;
+﻿using BuildingWorks.Models.Resources.Workers;
 
-namespace BuildingWorks.Models.Services.Interfaces.Workers
+namespace BuildingWorks.Services.Interfaces.Workers
 {
     public interface IWorkerSalaryService : IService<WorkerSalaryResource, WorkerSalaryForm>
     {

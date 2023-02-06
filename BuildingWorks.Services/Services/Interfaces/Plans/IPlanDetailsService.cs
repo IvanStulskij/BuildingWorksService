@@ -1,7 +1,7 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Plans;
-using Models.Resources.Plans;
+﻿using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Models.Resources.Plans;
 
-namespace BuildingWorks.Models.Services.Interfaces.Plans
+namespace BuildingWorks.Services.Interfaces.Plans
 {
     public interface IPlanDetailsService : IService<PlanDetailResource, PlanDetailForm>
     {
