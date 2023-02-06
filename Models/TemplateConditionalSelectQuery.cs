@@ -1,4 +1,4 @@
-﻿namespace BuildingWorks.Models.Databasable
+﻿namespace BuildingWorks.Models
 {
     public class TemplateConditionalSelectQuery
     {
