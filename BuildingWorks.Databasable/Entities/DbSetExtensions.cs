@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using BuildingWorks.Models.Databasable.Tables;
+using BuildingWorks.Models;
 
-namespace BuildingWorks.Models.Databasable.Tables
+namespace BuildingWorks.Databasable.Tables
 {
     public static class DbSetExtensions
     {

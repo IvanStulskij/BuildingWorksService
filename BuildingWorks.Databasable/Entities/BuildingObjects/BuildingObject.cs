@@ -1,6 +1,6 @@
 ﻿using BuildingWorks.Common.Extensions;
-using BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address;
-using BuildingWorks.Models.Databasable.Tables.Provides;
+using BuildingWorks.Databasable.Entities.BuildingObjects.Address;
+using BuildingWorks.Databasable.Entities.Providers;
 using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Models.Databasable.Tables.BuildingObjects
