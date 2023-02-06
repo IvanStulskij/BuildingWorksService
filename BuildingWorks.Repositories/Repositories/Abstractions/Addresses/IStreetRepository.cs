@@ -1,6 +1,6 @@
-﻿using BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address;
+﻿using BuildingWorks.Databasable.Entities.BuildingObjects.Address;
 
-namespace Models.Repositories.Abstractions.Addresses
+namespace BuildingWorks.Repositories.Repositories.Abstractions.Addresses
 {
     public interface IStreetRepository : IRepository<Street, int>
     {

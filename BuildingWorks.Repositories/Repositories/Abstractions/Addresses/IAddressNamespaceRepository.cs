@@ -1,4 +1,4 @@
-﻿namespace Models.Repositories.Abstractions.Addresses
+﻿namespace BuildingWorks.Repositories.Repositories.Abstractions.Addresses
 {
     public interface IAddressNamespaceRepository<T> : IRepository<T>
     {
