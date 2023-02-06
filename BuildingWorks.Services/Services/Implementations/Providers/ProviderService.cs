@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable.Tables.Provides;
-using Models.Resources.Providers;
-using Models.Repositories.Abstractions.Providers;
-using Models;
-using BuildingWorks.Models.Services.Interfaces.Providers;
+using BuildingWorks.Databasable.Entities.Providers;
+using BuildingWorks.Models.Resources.Providers;
+using BuildingWorks.Services.Interfaces.Providers;
+using BuildingWorks.Databasable;
+using BuildingWorks.Repositories.Repositories.Abstractions.Providers;
 
-namespace BuildingWorks.Models.Services.Implementations.Providers
+namespace BuildingWorks.Services.Implementations.Providers
 {
     public class ProviderService :
         Service<Provider, ProviderResource, ProviderForm>,
