@@ -5,9 +5,9 @@ using BuildingWorks.Repositories.Repositories.Abstractions;
 using BuildingWorks.Common.Extensions;
 using BuildingWorks.Databasable;
 
-namespace Models.Services
+namespace BuildingWorks.Services
 {
-    public abstract class Service<T, TResource> 
+    public abstract class Service<T, TResource>
         where T : class, IPersistable<int>
         where TResource : class, IResource
     {

@@ -5,14 +5,14 @@ using BuildingWorks.Models.Resources.BuildingObject.Addresses;
 using BuildingWorks.Repositories.Repositories.Abstractions.Addresses;
 using BuildingWorks.Services.Interfaces.BuildingObjects;
 
-namespace BuildingWorks.Services.Implementations.BuildingObjects.Addresses
+namespace BuildingWorks.Services.Implementations.Address
 {
-    public class StreetService : Service<Street, StreetResource, StreetForm>, IStreetService
+    public class TownService : Service<Town, TownResource, TownForm>, ITownService
     {
-        public StreetService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public TownService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
         {
         }
 
-        public override IStreetRepository Repository { get; }
+        public override ITownRepository Repository { get; }
     }
 }

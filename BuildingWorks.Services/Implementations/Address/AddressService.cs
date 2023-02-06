@@ -5,7 +5,7 @@ using BuildingWorks.Models.Resources.BuildingObject.Addresses;
 using BuildingWorks.Repositories.Repositories.Abstractions.Addresses;
 using BuildingWorks.Services.Interfaces.BuildingObjects;
 
-namespace BuildingWorks.Services.Implementations.BuildingObjects.Addresses
+namespace BuildingWorks.Services.Implementations.Address
 {
     public class AddressService : Service<ObjectAddress, AddressResource, AddressForm>, IAddressService
     {

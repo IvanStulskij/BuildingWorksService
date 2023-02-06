@@ -1,4 +1,4 @@
-﻿namespace Models.Services
+﻿namespace BuildingWorks.Services
 {
     public static class AssemblyInfo
     {
