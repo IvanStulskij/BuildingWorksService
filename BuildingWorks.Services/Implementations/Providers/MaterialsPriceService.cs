@@ -2,7 +2,7 @@
 using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Providers;
 using BuildingWorks.Models.Resources.Providers;
-using BuildingWorks.Repositories.Repositories.Abstractions.Providers;
+using BuildingWorks.Repositories.Abstractions.Providers;
 using BuildingWorks.Services.Interfaces.Providers;
 
 namespace BuildingWorks.Services.Implementations.Providers

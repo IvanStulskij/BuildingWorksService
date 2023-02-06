@@ -2,7 +2,7 @@
 using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Models.Resources.Plans;
-using BuildingWorks.Repositories.Repositories.Abstractions.Plans;
+using BuildingWorks.Repositories.Abstractions.Plans;
 using BuildingWorks.Services.Interfaces.Plans;
 
 namespace BuildingWorks.Services.Implementations.Plans

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using BuildingWorks.Repositories.Repositories.Abstractions;
 using BuildingWorks.Common.Extensions;
 using BuildingWorks.Databasable;
+using BuildingWorks.Repositories.Abstractions;
 
 namespace BuildingWorks.Services
 {
