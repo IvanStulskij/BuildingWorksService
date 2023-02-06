@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable.Tables.Plans;
-using BuildingWorks.Models.Services.Implementations;
-using BuildingWorks.Models.Services.Interfaces.Plans;
-using Models.Repositories.Abstractions.Plans;
-using Models.Resources.Plans;
+using BuildingWorks.Databasable;
+using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Models.Resources.Plans;
+using BuildingWorks.Repositories.Repositories.Abstractions.Plans;
+using BuildingWorks.Services.Interfaces.Plans;
 
-namespace Models.Services.Implementations
+namespace BuildingWorks.Services.Implementations.Plans
 {
     public class PlanService :
         ConditionalService<Plan, PlanResource, PlanForm>,

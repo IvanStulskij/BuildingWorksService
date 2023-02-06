@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable.Tables.Plans;
-using BuildingWorks.Models.Services.Interfaces.Plans;
-using Models;
-using Models.Repositories.Abstractions.Plans;
-using Models.Resources.Plans;
+using BuildingWorks.Databasable;
+using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Models.Resources.Plans;
+using BuildingWorks.Repositories.Repositories.Abstractions.Plans;
+using BuildingWorks.Services.Interfaces.Plans;
 
-namespace BuildingWorks.Models.Services.Implementations.Plans
+namespace BuildingWorks.Services.Implementations.Plans
 {
     public class PlanDetailsService :
         Service<PlanDetail, PlanDetailResource, PlanDetailForm>,
