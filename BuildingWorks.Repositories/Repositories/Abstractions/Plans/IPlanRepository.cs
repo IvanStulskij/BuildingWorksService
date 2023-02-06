@@ -1,6 +1,6 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Plans;
+﻿using BuildingWorks.Databasable.Entities.Plans;
 
-namespace Models.Repositories.Abstractions.Plans
+namespace BuildingWorks.Repositories.Repositories.Abstractions.Plans
 {
     public interface IPlanRepository : IRepository<Plan, int>
     {
