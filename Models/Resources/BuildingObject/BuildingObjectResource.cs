@@ -1,6 +1,6 @@
-﻿using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
 
-namespace Models.Resources.BuildingObject
+namespace BuildingWorks.Models.Resources.BuildingObject
 {
     public class BuildingObjectResource : BuildingObjectForm, IResource
     {

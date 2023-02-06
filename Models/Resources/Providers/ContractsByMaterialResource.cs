@@ -1,4 +1,4 @@
-﻿using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
 
 namespace BuildingWorks.Models.Resources.Providers
 {

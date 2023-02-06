@@ -1,6 +1,6 @@
-﻿using Models.Interfaces;
+﻿using BuildingWorks.Common.Extensions;
 
-namespace Models.Resources.Workers
+namespace BuildingWorks.Models.Resources.Workers
 {
     public class WorkerResource : WorkerForm, IResource
     {
