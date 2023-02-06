@@ -1,4 +1,5 @@
 ﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Models.Databasable.Tables;
 using System.ComponentModel.DataAnnotations;
 
 namespace BuildingWorks.Databasable.Entities.BuildingObjects.Address
