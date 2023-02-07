@@ -8,6 +8,6 @@
         
         public string Post { get; set; }
 
-        public int Brigade { get; set; }
+        public int BrigadeId { get; set; }
     }
 }
