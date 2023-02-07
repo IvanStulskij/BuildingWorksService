@@ -319,7 +319,7 @@ namespace BuildingWorksService.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Workers.Brigade", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Workers.BrigadeId", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -550,11 +550,11 @@ namespace BuildingWorksService.Migrations
                     b.Navigation("Material");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Workers.Brigade", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Workers.BrigadeId", b =>
                 {
                     b.HasOne("BuildingWorks.Models.Databasable.Tables.Workers.Worker", "Brigadier")
-                        .WithOne("Brigade")
-                        .HasForeignKey("BuildingWorks.Models.Databasable.Tables.Workers.Brigade", "BrigadierId")
+                        .WithOne("BrigadeId")
+                        .HasForeignKey("BuildingWorks.Models.Databasable.Tables.Workers.BrigadeId", "BrigadierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -571,7 +571,7 @@ namespace BuildingWorksService.Migrations
 
             modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Workers.Worker", b =>
                 {
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.Workers.Brigade", null)
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.Workers.BrigadeId", null)
                         .WithMany("Workers")
                         .HasForeignKey("BrigadeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -624,14 +624,14 @@ namespace BuildingWorksService.Migrations
                     b.Navigation("Contracts");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Workers.Brigade", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Workers.BrigadeId", b =>
                 {
                     b.Navigation("Workers");
                 });
 
             modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Workers.Worker", b =>
                 {
-                    b.Navigation("Brigade")
+                    b.Navigation("BrigadeId")
                         .IsRequired();
 
                     b.Navigation("WorkersSalaries");
