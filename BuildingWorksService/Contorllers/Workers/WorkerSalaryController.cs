@@ -1,8 +1,7 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Workers;
-using BuildingWorks.Models.Services.Interfaces.Workers;
+﻿using BuildingWorks.Databasable.Entities.Workers;
+using BuildingWorks.Models.Resources.Workers;
+using BuildingWorks.Services.Interfaces.Workers;
 using Microsoft.AspNetCore.Mvc;
-using Models.Resources.Providers;
-using Models.Resources.Workers;
 
 namespace BuildingWorksService.Contorllers.Workers
 {

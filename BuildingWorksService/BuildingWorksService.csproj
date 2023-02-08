@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BuildingWorks.Databasable\BuildingWorks.Databasable.csproj" />
+    <ProjectReference Include="..\BuildingWorks.Services\BuildingWorks.Services.csproj" />
     <ProjectReference Include="..\Models\BuildingWorks.Models.csproj" />
   </ItemGroup>
 

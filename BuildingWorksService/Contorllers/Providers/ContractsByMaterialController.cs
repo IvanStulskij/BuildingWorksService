@@ -1,11 +1,11 @@
 ﻿using BuildingWorks.Models.Resources.Providers;
-using BuildingWorks.Models.Services.Interfaces.Providers;
+using BuildingWorks.Services.Interfaces.Providers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildingWorksService.Contorllers.Providers
 {
     [ApiController]
-    [Route("api/materials-price")]
+    [Route("/api/materials-price")]
     public class ContractsByMaterialController : ControllerBase
     {
         private readonly IMaterialsPriceService _service;

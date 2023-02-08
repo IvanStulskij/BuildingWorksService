@@ -1,6 +1,6 @@
-﻿using BuildingWorks.Models.Services.Interfaces.BuildingObjects;
+﻿using BuildingWorks.Models.Resources.BuildingObject.Addresses;
+using BuildingWorks.Services.Interfaces.BuildingObjects;
 using Microsoft.AspNetCore.Mvc;
-using Models.Resources.BuildingObject.Addresses;
 
 namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 {
