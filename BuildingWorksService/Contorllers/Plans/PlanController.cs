@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using BuildingWorks.Models.Databasable.Tables.Plans;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Models.Resources.Plans;
+using BuildingWorks.Services.Interfaces.Plans;
+using Microsoft.AspNetCore.Mvc;
 using Models;
-using Models.Resources.Plans;
-using Models.GlobalConstants;
-using BuildingWorks.Models.Services.Interfaces.Plans;
 
 namespace BuildingWorksService.Contorllers.Plans
 {
     [ApiController]
-    [Route("api/plans")]
+    [Route("/api/plans")]
     public sealed class PlanController : ControllerBase
     {
         private readonly IPlanService _service;

@@ -1,12 +1,12 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Plans;
-using BuildingWorks.Models.Services.Interfaces.Plans;
+﻿using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Models.Resources.Plans;
+using BuildingWorks.Services.Interfaces.Plans;
 using Microsoft.AspNetCore.Mvc;
-using Models.Resources.Plans;
 
 namespace BuildingWorksService.Contorllers.Plans
 {
     [ApiController]
-    [Route("api/plan-details")]
+    [Route("/api/plan-details")]
     public class PlanDetailsController : ControllerBase
     {
         private readonly IPlanDetailsService _service;

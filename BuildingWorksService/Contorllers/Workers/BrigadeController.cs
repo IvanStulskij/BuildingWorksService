@@ -1,12 +1,11 @@
-﻿using BuildingWorks.Models.Databasable.Tables.Workers;
-using BuildingWorks.Models.Services.Interfaces.Workers;
+﻿using BuildingWorks.Models.Resources.Workers;
+using BuildingWorks.Services.Interfaces.Workers;
 using Microsoft.AspNetCore.Mvc;
-using Models.Resources.Workers;
 
 namespace BuildingWorksService.Contorllers.Workers
 {
     [ApiController]
-    [Route("api/brigades")]
+    [Route("/api/brigades")]
     public class BrigadeController : ControllerBase
     {
         private readonly IBrigadeService _service;
@@ -73,7 +72,7 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <summary>
         /// Create brigade.
         /// </summary>
-        /// <param name="form"> Brigade form to create brigade. </param>
+        /// <param name="form"> BrigadeId form to create brigade. </param>
         /// <returns> Created brigade. </returns>
         [HttpPost]
         [ProducesResponseType(typeof(BrigadeResource), StatusCodes.Status200OK)]

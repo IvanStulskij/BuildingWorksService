@@ -1,9 +1,9 @@
 ﻿using BuildingWorks.Common.Extensions;
 using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Models;
 using BuildingWorks.Repositories.Abstractions.Plans;
 using Microsoft.EntityFrameworkCore;
-using Models;
 
 namespace BuildingWorks.Repositories.Implementations.Plans
 {

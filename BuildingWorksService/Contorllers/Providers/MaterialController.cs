@@ -1,11 +1,11 @@
-﻿using BuildingWorks.Models.Services.Interfaces.Providers;
+﻿using BuildingWorks.Models.Resources.Providers;
+using BuildingWorks.Services.Interfaces.Providers;
 using Microsoft.AspNetCore.Mvc;
-using Models.Resources.Providers;
 
 namespace BuildingWorksService.Contorllers.Providers
 {
     [ApiController]
-    [Route("api/materials")]
+    [Route("/api/materials")]
     public class MaterialController : ControllerBase
     {
         private readonly IMaterialService _service;

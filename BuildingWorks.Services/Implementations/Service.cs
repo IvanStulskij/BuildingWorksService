@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using BuildingWorks.Models.Databasable;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using BuildingWorks.Databasable;
@@ -7,6 +6,7 @@ using BuildingWorks.Common.Extensions;
 using BuildingWorks.Services.Interfaces;
 using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Repositories.Abstractions;
+using BuildingWorks.Models;
 
 namespace BuildingWorks.Services.Implementations
 {
