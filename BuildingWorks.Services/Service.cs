@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using BuildingWorks.Common.Extensions;
 using BuildingWorks.Databasable;
 using BuildingWorks.Repositories.Abstractions;
+using BuildingWorks.Common.Exceptions;
 
 namespace BuildingWorks.Services
 {
@@ -26,6 +27,11 @@ namespace BuildingWorks.Services
         {
             var entity = await Repository.GetById(id);
 
+            if (entity == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
             return Mapper.Map<TResource>(entity);
         }
 
@@ -41,6 +47,12 @@ namespace BuildingWorks.Services
         public virtual async Task<TResource> Delete(int id)
         {
             var entity = await Find(id);
+
+            if (entity == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
             Repository.Delete(entity);
             await Context.SaveChangesAsync();
 
@@ -49,7 +61,13 @@ namespace BuildingWorks.Services
 
         public virtual async Task<TResource> Create(T form)
         {
+            if (form == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
             var entity = Mapper.Map<T>(form);
+
             entity = await Insert(entity);
 
             await Context.SaveChangesAsync();
@@ -61,9 +79,9 @@ namespace BuildingWorks.Services
         {
             var entity = await Context.FindAsync<T>(id);
 
-            if (entity is null)
+            if (entity == null)
             {
-                throw new Exception("Сущность не существует");
+                throw new EntityNotFoundException();
             }
 
             return entity;

@@ -7,6 +7,7 @@ using BuildingWorks.Services.Interfaces;
 using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Repositories.Abstractions;
 using BuildingWorks.Models;
+using BuildingWorks.Common.Exceptions;
 
 namespace BuildingWorks.Services.Implementations
 {
@@ -29,8 +30,14 @@ namespace BuildingWorks.Services.Implementations
 
         public async Task<TResource> Create(TForm form)
         {
+            if (form == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
             var entity = Mapper.Map<T>(form);
             entity = await Insert(entity);
+
             await Context.SaveChangesAsync();
             return Mapper.Map<TResource>(entity);
         }
@@ -38,6 +45,12 @@ namespace BuildingWorks.Services.Implementations
         public async Task<TResource> Delete(int id)
         {
             var entity = await Find(id);
+
+            if (entity == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
             Repository.Delete(entity);
             await Context.SaveChangesAsync();
             return Mapper.Map<TResource>(entity);
@@ -54,12 +67,25 @@ namespace BuildingWorks.Services.Implementations
 
         public async Task<TResource> GetById(int id)
         {
-            return Mapper.Map<TResource>(Repository.GetById(id));
+            var entity = Repository.GetById(id);
+
+            if (entity == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
+            return Mapper.Map<TResource>(entity);
         }
 
         public async Task<TResource> Update(int id, TForm form)
         {
             var entity = await Find(id);
+
+            if (entity == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
             entity = await Repository.Update(Mapper.Map<T>(form));
             await Context.SaveChangesAsync();
             return Mapper.Map<TResource>(entity);
@@ -67,6 +93,11 @@ namespace BuildingWorks.Services.Implementations
 
         protected virtual async ValueTask<T> Insert(T entity)
         {
+            if (entity == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
             entity = await Repository.Insert(entity);
             return entity;
         }
@@ -75,7 +106,10 @@ namespace BuildingWorks.Services.Implementations
         {
             var entity = await Context.FindAsync<T>(id);
             if (entity is null)
-                throw new Exception("Resource does not exist.");
+            {
+                throw new EntityNotFoundException();
+            }
+                
 
             return entity;
         }
