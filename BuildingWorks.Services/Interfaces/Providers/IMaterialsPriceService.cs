@@ -2,10 +2,10 @@
 
 namespace BuildingWorks.Services.Interfaces.Providers
 {
-    public interface IMaterialsPriceService : IService<ContractsByMaterialResource, ContractsByMaterialForm>
+    public interface IMaterialsPriceService : IService<MaterialsPriceResource, MaterialsPriceForm>
     {
-        IEnumerable<ContractsByMaterialForm> GetMaterialsContracts(int objectId);
+        IEnumerable<MaterialsPriceForm> GetMaterialsContracts(int objectId);
 
-        float GetMaterialPrice(int objectId);
+        float GetByObject(int objectId);
     }
 }

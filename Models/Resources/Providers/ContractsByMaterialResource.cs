@@ -2,12 +2,12 @@
 
 namespace BuildingWorks.Models.Resources.Providers
 {
-    public class ContractsByMaterialResource : ContractsByMaterialForm, IResource
+    public class MaterialsPriceResource : MaterialsPriceForm, IResource
     {
         public int Id { get; set; }
     }
 
-    public class ContractsByMaterialForm
+    public class MaterialsPriceForm
     {
         public int Amount { get; set; }
 

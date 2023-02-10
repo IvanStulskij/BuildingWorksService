@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Query
 {
-    public static class ContractsByMaterialsQuery
+    public static class MaterialsPriceQuery
     {
         public static IQueryable<ContractsByMaterials> IncludeHierarchy(this IQueryable<ContractsByMaterials> query)
         {

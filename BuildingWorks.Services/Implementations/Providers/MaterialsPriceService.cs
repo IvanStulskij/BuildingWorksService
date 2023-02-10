@@ -7,7 +7,7 @@ using BuildingWorks.Services.Interfaces.Providers;
 
 namespace BuildingWorks.Services.Implementations.Providers
 {
-    public class MaterialsPriceService : Service<ContractsByMaterials, ContractsByMaterialResource, ContractsByMaterialForm>,
+    public class MaterialsPriceService : Service<ContractsByMaterials, MaterialsPriceResource, MaterialsPriceForm>,
         IMaterialsPriceService
     {
         public MaterialsPriceService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
@@ -16,14 +16,14 @@ namespace BuildingWorks.Services.Implementations.Providers
 
         public override IMaterialPriceRepository Repository { get; }
 
-        public float GetMaterialPrice(int objectId)
+        public float GetByObject(int objectId)
         {
             return Repository.GetMaterialsPrice(objectId);
         }
 
-        public IEnumerable<ContractsByMaterialForm> GetMaterialsContracts(int objectId)
+        public IEnumerable<MaterialsPriceForm> GetMaterialsContracts(int objectId)
         {
-            return Mapper.Map<IEnumerable<ContractsByMaterialForm>>(Repository.GetMaterialsContracts(objectId));
+            return Mapper.Map<IEnumerable<MaterialsPriceForm>>(Repository.GetMaterialsContracts(objectId));
         }
     }
 }
