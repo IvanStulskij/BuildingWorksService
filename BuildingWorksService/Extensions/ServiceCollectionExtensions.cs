@@ -1,8 +1,10 @@
 ﻿using BuildingWorks.Repositories.Abstractions.Addresses;
+using BuildingWorks.Repositories.Abstractions.BuildingObjects;
 using BuildingWorks.Repositories.Abstractions.Plans;
 using BuildingWorks.Repositories.Abstractions.Providers;
 using BuildingWorks.Repositories.Abstractions.Workers;
 using BuildingWorks.Repositories.Implementations.Address;
+using BuildingWorks.Repositories.Implementations.BuildingObjects;
 using BuildingWorks.Repositories.Implementations.Plans;
 using BuildingWorks.Repositories.Implementations.Providers;
 using BuildingWorks.Repositories.Implementations.Workers;
@@ -48,6 +50,7 @@ namespace BuildingWorksService.Extensions
             services.AddScoped<IWorkerRepository, WorkerRepository>();
             services.AddScoped<IBrigadeRepository, BrigadeRepository>();
             services.AddScoped<IWorkerSalaryRepository, WorkerSalaryRepository>();
+            services.AddScoped<IBuildingObjectRepository, BuildingObjectRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IRegionRepository, RegionRepository>();
             services.AddScoped<ITownRepository, TownRepository>();
