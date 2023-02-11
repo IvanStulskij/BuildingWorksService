@@ -22,7 +22,7 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <returns> Single provider. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ProviderResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromQuery] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var activity = await _service.GetById(id);
 
@@ -63,7 +63,7 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <returns> Deleted provider. </returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(List<ProviderResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var response = await _service.Delete(id);
             return Ok(response);

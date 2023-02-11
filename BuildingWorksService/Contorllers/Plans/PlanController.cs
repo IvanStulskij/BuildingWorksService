@@ -25,7 +25,7 @@ namespace BuildingWorksService.Contorllers.Plans
         /// <returns> Single plan. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(PlanResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromQuery] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var activity = await _service.GetById(id);
             return Ok(activity);
@@ -87,7 +87,7 @@ namespace BuildingWorksService.Contorllers.Plans
         /// <returns> Deleted plan. </returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(PlanResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var response = await _service.Delete(id);
             return Ok(response);
