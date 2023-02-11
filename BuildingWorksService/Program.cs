@@ -1,5 +1,4 @@
 using BuildingWorks.Databasable;
-using BuildingWorksService;
 using BuildingWorksService.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Models.Contexts;
@@ -28,6 +27,8 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapDefaultControllerRoute();
 });
+
+app.ConfigureExceptionHandler();
 
 app.UseSwagger();
 app.UseSwaggerUI(options =>
