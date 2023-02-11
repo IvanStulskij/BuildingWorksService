@@ -9,7 +9,10 @@ namespace BuildingWorks.Models.Resources.BuildingObject
 
     public class BuildingObjectForm
     {
+        public string ObjectName { get; set; }
+
         public string ObjectType { get; set; }
+
         public string ObjectCustomer { get; set; }
 
         public int RegionId { get; set; }
