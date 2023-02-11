@@ -22,7 +22,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// <returns> Single street. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(StreetResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromQuery] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var street = await _service.GetById(id);
 
@@ -63,7 +63,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// <returns> Deleted street. </returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(StreetResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var response = await _service.Delete(id);
 

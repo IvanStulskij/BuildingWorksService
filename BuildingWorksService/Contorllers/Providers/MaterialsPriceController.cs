@@ -22,7 +22,7 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <returns> Single material. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(MaterialsPriceResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromQuery] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var entitiy = await _service.GetById(id);
 
@@ -45,11 +45,11 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <summary>
         /// Get contracts-by-material
         /// </summary>
-        /// <param name="objectId"> Object id to get contracts-by-material. </param>
+        /// <param name="objectId"> BuildingObject id to get contracts-by-material. </param>
         /// <returns> The list of contracts-by-material. </returns>
         [HttpGet("getMaterialsContracts")]
         [ProducesResponseType(typeof(IEnumerable<MaterialsPriceResource>), StatusCodes.Status200OK)]
-        public IActionResult GetMaterialsContracts([FromQuery] int objectId)
+        public IActionResult GetMaterialsContracts([FromRoute] int objectId)
         {
             var entities = _service.GetMaterialsContracts(objectId);
             return Ok(entities);
@@ -84,7 +84,7 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <returns> Deleted material. </returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(IEnumerable<MaterialsPriceResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var response = await _service.Delete(id);
             return Ok(response);

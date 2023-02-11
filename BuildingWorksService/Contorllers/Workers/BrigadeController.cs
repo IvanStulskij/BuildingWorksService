@@ -22,7 +22,7 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> Single brigade. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(BrigadeResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromQuery] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var brigade = await _service.GetById(id);
 
@@ -45,7 +45,7 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <summary>
         /// Get brigades by building-object.
         /// </summary>
-        /// <param name="objectId"> Object id to get brigades. </param>
+        /// <param name="objectId"> BuildingObject id to get brigades. </param>
         /// <returns> The list of brigades. </returns>
         [HttpGet("getByObject")]
         [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
@@ -90,7 +90,7 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> Deleted brigade. </returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var response = await _service.Delete(id);
             return Ok(response);

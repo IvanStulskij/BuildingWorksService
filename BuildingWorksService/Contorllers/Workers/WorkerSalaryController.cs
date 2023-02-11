@@ -23,7 +23,7 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> Single worker-salary. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(WorkerSalaryResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromQuery] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var workerSalary = await _service.GetById(id);
 
@@ -78,7 +78,7 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> Deleted worker-salary. </returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(WorkerSalaryResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var response = await _service.Delete(id);
 

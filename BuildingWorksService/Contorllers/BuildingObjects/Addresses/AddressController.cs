@@ -22,7 +22,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// <returns> Single address. </returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(AddressResource), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById([FromQuery] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var address = await _service.GetById(id);
 
