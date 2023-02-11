@@ -9,10 +9,10 @@ namespace BuildingWorks.Models.Resources.BuildingObject.Addresses
 
     public class AddressForm
     {
-        public string Region { get; set; }
+        public int RegionId { get; set; }
 
-        public string Town { get; set; }
+        public int TownId { get; set; }
 
-        public string Street { get; set; }
+        public int StreetId { get; set; }
     }
 }

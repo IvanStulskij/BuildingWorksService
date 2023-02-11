@@ -9,8 +9,8 @@ namespace BuildingWorks.Models.Resources.BuildingObject.Addresses
 
     public class TownForm
     {
-        public string TownName { get; set; }
+        public int TownId { get; set; }
 
-        public string RegionName { get; set; }
+        public int RegionId { get; set; }
     }
 }

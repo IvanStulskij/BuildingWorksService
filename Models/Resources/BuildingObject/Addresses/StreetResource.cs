@@ -12,6 +12,6 @@ namespace BuildingWorks.Models.Resources.BuildingObject.Addresses
     {
         public string Name { get; set; }
 
-        public string TownName { get; set; }
+        public int TownId { get; set; }
     }
 }
