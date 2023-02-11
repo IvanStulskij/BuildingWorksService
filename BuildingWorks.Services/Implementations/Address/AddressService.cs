@@ -9,8 +9,9 @@ namespace BuildingWorks.Services.Implementations.Address
 {
     public class AddressService : Service<ObjectAddress, AddressResource, AddressForm>, IAddressService
     {
-        public AddressService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public AddressService(BuildingWorksDbContext context, IMapper mapper, IAddressRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IAddressRepository Repository { get; }

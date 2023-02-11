@@ -10,8 +10,9 @@ namespace BuildingWorks.Services.Implementations.Providers
     public class MaterialsPriceService : Service<ContractsByMaterials, MaterialsPriceResource, MaterialsPriceForm>,
         IMaterialsPriceService
     {
-        public MaterialsPriceService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public MaterialsPriceService(BuildingWorksDbContext context, IMapper mapper, IMaterialPriceRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IMaterialPriceRepository Repository { get; }

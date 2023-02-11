@@ -11,8 +11,9 @@ namespace BuildingWorks.Services.Implementations.Providers
         Service<Provider, ProviderResource, ProviderForm>,
         IProviderService
     {
-        public ProviderService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public ProviderService(BuildingWorksDbContext context, IMapper mapper, IProviderRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IProviderRepository Repository { get; }

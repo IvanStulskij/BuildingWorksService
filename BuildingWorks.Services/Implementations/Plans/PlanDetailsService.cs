@@ -11,8 +11,9 @@ namespace BuildingWorks.Services.Implementations.Plans
         Service<PlanDetail, PlanDetailResource, PlanDetailForm>,
         IPlanDetailsService
     {
-        public PlanDetailsService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public PlanDetailsService(BuildingWorksDbContext context, IMapper mapper, IPlanDetailRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IPlanDetailRepository Repository { get; }

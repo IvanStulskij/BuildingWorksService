@@ -9,8 +9,12 @@ namespace BuildingWorks.Services.Implementations.BuildingObjects
 {
     public class BuildingObjectService : Service<BuildingObject, BuildingObjectResource, BuildingObjectForm>, IBuildingObjectService
     {
-        public BuildingObjectService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public BuildingObjectService(
+            BuildingWorksDbContext context,
+            IMapper mapper,
+            IBuildingObjectRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IBuildingObjectRepository Repository { get; }

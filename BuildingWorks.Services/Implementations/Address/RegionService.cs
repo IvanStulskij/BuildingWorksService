@@ -9,8 +9,9 @@ namespace BuildingWorks.Services.Implementations.Address
 {
     public class RegionService : Service<Region, RegionResource, RegionForm>, IRegionService
     {
-        public RegionService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public RegionService(BuildingWorksDbContext context, IMapper mapper, IRegionRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IRegionRepository Repository { get; }

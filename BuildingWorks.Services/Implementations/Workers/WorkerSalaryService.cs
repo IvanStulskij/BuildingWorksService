@@ -11,8 +11,9 @@ namespace BuildingWorks.Services.Implementations.Workers
         Service<WorkerSalary, WorkerSalaryResource, WorkerSalaryForm>,
         IWorkerSalaryService
     {
-        public WorkerSalaryService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public WorkerSalaryService(BuildingWorksDbContext context, IMapper mapper, IWorkerSalaryRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IWorkerSalaryRepository Repository { get; }

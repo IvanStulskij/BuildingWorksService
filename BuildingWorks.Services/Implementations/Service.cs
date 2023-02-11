@@ -22,7 +22,7 @@ namespace BuildingWorks.Services.Implementations
 
         public abstract IRepository<T, int> Repository { get; }
 
-        public Service(BuildingWorksDbContext context, Mapper mapper)
+        public Service(BuildingWorksDbContext context, IMapper mapper)
         {
             Mapper = mapper;
             Context = context;
@@ -67,7 +67,7 @@ namespace BuildingWorks.Services.Implementations
 
         public async Task<TResource> GetById(int id)
         {
-            var entity = Repository.GetById(id);
+            var entity = await Repository.GetById(id);
 
             if (entity == null)
             {
@@ -119,10 +119,11 @@ namespace BuildingWorks.Services.Implementations
         where T : class, IPersistable<int>
         where TResource : class
         where TForm : class
+
     {
         private readonly DbSet<T> _set;
 
-        public ConditionalService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public ConditionalService(BuildingWorksDbContext context, IMapper mapper) : base(context, mapper)
         {
             _set = context.Set<T>();
         }

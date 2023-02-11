@@ -12,8 +12,9 @@ namespace BuildingWorks.Services.Implementations.Workers
         Service<Worker, WorkerResource, WorkerForm>,
         IWorkerService
     {
-        public WorkerService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public WorkerService(BuildingWorksDbContext context, IMapper mapper, IWorkerRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IWorkerRepository Repository { get; }

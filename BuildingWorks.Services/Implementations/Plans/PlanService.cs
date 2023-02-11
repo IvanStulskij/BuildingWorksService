@@ -11,8 +11,9 @@ namespace BuildingWorks.Services.Implementations.Plans
         ConditionalService<Plan, PlanResource, PlanForm>,
         IPlanService
     {
-        public PlanService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public PlanService(BuildingWorksDbContext context, IMapper mapper, IPlanRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IPlanRepository Repository { get; }

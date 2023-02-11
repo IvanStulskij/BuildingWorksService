@@ -11,8 +11,9 @@ namespace BuildingWorks.Services.Implementations.Workers
         Service<Brigade, BrigadeResource, BrigadeForm>,
         IBrigadeService
     {
-        public BrigadeService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public BrigadeService(BuildingWorksDbContext context, IMapper mapper, IBrigadeRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IBrigadeRepository Repository { get; }

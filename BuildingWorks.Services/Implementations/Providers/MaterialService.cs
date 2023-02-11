@@ -11,8 +11,9 @@ namespace BuildingWorks.Services.Implementations.Providers
         Service<Material, MaterialResource, MaterialForm>,
         IMaterialService
     {
-        public MaterialService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public MaterialService(BuildingWorksDbContext context, IMapper mapper, IMaterialRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IMaterialRepository Repository { get; }

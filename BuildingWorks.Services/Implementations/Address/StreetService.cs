@@ -9,8 +9,9 @@ namespace BuildingWorks.Services.Implementations.Address
 {
     public class StreetService : Service<Street, StreetResource, StreetForm>, IStreetService
     {
-        public StreetService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public StreetService(BuildingWorksDbContext context, IMapper mapper, IStreetRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override IStreetRepository Repository { get; }

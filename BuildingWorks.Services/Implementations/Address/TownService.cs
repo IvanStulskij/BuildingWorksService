@@ -9,8 +9,9 @@ namespace BuildingWorks.Services.Implementations.Address
 {
     public class TownService : Service<Town, TownResource, TownForm>, ITownService
     {
-        public TownService(BuildingWorksDbContext context, Mapper mapper) : base(context, mapper)
+        public TownService(BuildingWorksDbContext context, IMapper mapper, ITownRepository repository) : base(context, mapper)
         {
+            Repository = repository;
         }
 
         public override ITownRepository Repository { get; }
