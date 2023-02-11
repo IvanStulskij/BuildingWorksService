@@ -12,10 +12,19 @@ namespace BuildingWorks.Profilers.Profilers.BuildingObjects
             CreateMap<BuildingObject, BuildingObjectResource>().ReverseMap();
             CreateMap<BuildingObject, BuildingObjectForm>().ReverseMap();
             CreateMap<BuildingObject, BuildingObjectOverview>()
+                .BeforeMap((src, dest) =>
+                {
+                    if (src.Town != null && src.Region != null && src.Street != null)
+                    {
+                        dest.Address = $"{src.Town.TownName} {src.Region.RegionName} {src.Street.StreetName}";
+                    }
+
+                    dest.Address = string.Empty;
+                })
                 .ForMember(x => x.Name, c => c.MapFrom(x => x.ObjectName))
                 .ForMember(x => x.Customer, c => c.MapFrom(x => x.ObjectCustomer))
-                .ForMember(x => x.Address, c => c.MapFrom(x => $"{x.Town.TownName} {x.Region.RegionName} {x.Street.StreetName}"))
                 .ForMember(x => x.Type, c => c.MapFrom(x => x.ObjectType));
+                
         }
     }
 }
