@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using BuildingWorks.Common.Extensions;
 using BuildingWorks.Models.Databasable.Tables.BuildingObjects;
 
@@ -13,6 +14,7 @@ namespace BuildingWorks.Databasable.Entities.Workers
         public virtual BuildingObject Object { get; set; }
 
         public int BrigadierId { get; set; }
+        [NotMapped]
         public virtual Worker Brigadier { get; set; }
 
         public virtual ICollection<Worker> Workers { get; set; }
