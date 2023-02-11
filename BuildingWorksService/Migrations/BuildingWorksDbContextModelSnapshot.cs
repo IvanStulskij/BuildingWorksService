@@ -46,13 +46,13 @@ namespace BuildingWorksService.Migrations
                     b.ToTable("ObjectAddress");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Region", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.RegionId", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("RegionName")
+                    b.Property<string>("RegionId")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -61,7 +61,7 @@ namespace BuildingWorksService.Migrations
                     b.ToTable("Regions");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Street", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.StreetId", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,7 +81,7 @@ namespace BuildingWorksService.Migrations
                     b.ToTable("Streets");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Town", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.TownId", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,7 +90,7 @@ namespace BuildingWorksService.Migrations
                     b.Property<int>("RegionId")
                         .HasColumnType("int");
 
-                    b.Property<string>("TownName")
+                    b.Property<string>("TownId")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -414,89 +414,89 @@ namespace BuildingWorksService.Migrations
 
             modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.ObjectAddress", b =>
                 {
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Region", "Region")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.RegionId", "RegionId")
                         .WithMany()
                         .HasForeignKey("RegionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Street", "Street")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.StreetId", "StreetId")
                         .WithMany()
                         .HasForeignKey("StreetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Town", "Town")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.TownId", "TownId")
                         .WithMany()
                         .HasForeignKey("TownId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Region");
+                    b.Navigation("RegionId");
 
-                    b.Navigation("Street");
+                    b.Navigation("StreetId");
 
-                    b.Navigation("Town");
+                    b.Navigation("TownId");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Street", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.StreetId", b =>
                 {
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Town", "Town")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.TownId", "TownId")
                         .WithMany("Streets")
                         .HasForeignKey("TownId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Town");
+                    b.Navigation("TownId");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Town", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.TownId", b =>
                 {
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Region", "Region")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.RegionId", "RegionId")
                         .WithMany("Towns")
                         .HasForeignKey("RegionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Region");
+                    b.Navigation("RegionId");
                 });
 
             modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.BuildingObject", b =>
                 {
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Region", "Region")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.RegionId", "RegionId")
                         .WithMany()
                         .HasForeignKey("RegionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Street", "Street")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.StreetId", "StreetId")
                         .WithMany()
                         .HasForeignKey("StreetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Town", "Town")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.TownId", "TownId")
                         .WithMany()
                         .HasForeignKey("TownId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Region");
+                    b.Navigation("RegionId");
 
-                    b.Navigation("Street");
+                    b.Navigation("StreetId");
 
-                    b.Navigation("Town");
+                    b.Navigation("TownId");
                 });
 
             modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Plans.Plan", b =>
                 {
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.BuildingObject", "Object")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.BuildingObject", "BuildingObject")
                         .WithMany()
                         .HasForeignKey("ObjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Object");
+                    b.Navigation("BuildingObject");
                 });
 
             modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Plans.PlanDetail", b =>
@@ -556,7 +556,7 @@ namespace BuildingWorksService.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.BuildingObject", "Object")
+                    b.HasOne("BuildingWorks.Models.Databasable.Tables.BuildingObjects.BuildingObject", "BuildingObject")
                         .WithMany()
                         .HasForeignKey("ObjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -564,7 +564,7 @@ namespace BuildingWorksService.Migrations
 
                     b.Navigation("Brigadier");
 
-                    b.Navigation("Object");
+                    b.Navigation("BuildingObject");
                 });
 
             modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.Workers.Worker", b =>
@@ -602,12 +602,12 @@ namespace BuildingWorksService.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Region", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.RegionId", b =>
                 {
                     b.Navigation("Towns");
                 });
 
-            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.Town", b =>
+            modelBuilder.Entity("BuildingWorks.Models.Databasable.Tables.BuildingObjects.Address.TownId", b =>
                 {
                     b.Navigation("Streets");
                 });
