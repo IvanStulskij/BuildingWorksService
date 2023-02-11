@@ -12,10 +12,10 @@ namespace BuildingWorks.Models.Resources.BuildingObject
         public string ObjectType { get; set; }
         public string ObjectCustomer { get; set; }
 
-        public string Region { get; set; }
+        public int RegionId { get; set; }
 
-        public string Town { get; set; }
+        public int TownId { get; set; }
 
-        public string Street { get; set; }
+        public int StreetId { get; set; }
     }
 }
