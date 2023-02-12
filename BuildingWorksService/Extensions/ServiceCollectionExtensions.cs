@@ -18,6 +18,7 @@ using BuildingWorks.Services.Interfaces.BuildingObjects;
 using BuildingWorks.Services.Interfaces.Plans;
 using BuildingWorks.Services.Interfaces.Providers;
 using BuildingWorks.Services.Interfaces.Workers;
+using BuildingWorksService.ActionFilters;
 
 namespace BuildingWorksService.Extensions
 {
@@ -55,6 +56,11 @@ namespace BuildingWorksService.Extensions
             services.AddScoped<IRegionRepository, RegionRepository>();
             services.AddScoped<ITownRepository, TownRepository>();
             services.AddScoped<IStreetRepository, StreetRepository>();
+        }
+
+        public static void AddAttributes(this IServiceCollection services)
+        {
+            services.AddScoped<ValidationFilterAttribute>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

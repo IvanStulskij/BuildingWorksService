@@ -1,4 +1,5 @@
 using BuildingWorks.Databasable;
+using BuildingWorksService.ActionFilters;
 using BuildingWorksService.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Models.Contexts;
@@ -14,9 +15,13 @@ builder.Services.AddDbContext<BuildingWorksDbContext>(options =>
 builder.Services.AddScoped<IDbContext>(provider => provider.GetService<BuildingWorksDbContext>());
 builder.Services.AddRepositories();
 builder.Services.AddServices();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(config =>
+{
+    config.Filters.Add(new ValidationFilterAttribute());
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper();
+builder.Services.AddAttributes();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
