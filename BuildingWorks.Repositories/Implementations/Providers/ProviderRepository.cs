@@ -11,10 +11,5 @@ namespace BuildingWorks.Repositories.Implementations.Providers
         public ProviderRepository(BuildingWorksDbContext context) : base(context)
         {
         }
-
-        public async Task<Provider> GetById(int id)
-        {
-            return await _context.Providers.FirstOrDefaultAsync(provider => provider.Id == id);
-        }
     }
 }

@@ -11,10 +11,5 @@ namespace BuildingWorks.Repositories.Implementations.Providers
         public MaterialsRepository(BuildingWorksDbContext context) : base(context)
         {
         }
-
-        public async Task<Material> GetById(int id)
-        {
-            return await _context.Materials.FirstOrDefaultAsync(material => material.Id == id);
-        }
     }
 }

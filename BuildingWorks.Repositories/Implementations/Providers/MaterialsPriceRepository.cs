@@ -1,7 +1,6 @@
 ﻿using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Providers;
 using BuildingWorks.Repositories.Abstractions.Providers;
-using BuildingWorks.Repositories.Implementations;
 using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations.Providers
@@ -10,11 +9,6 @@ namespace BuildingWorks.Repositories.Implementations.Providers
     {
         public MaterialsPriceRepository(BuildingWorksDbContext context) : base(context)
         {
-        }
-
-        public async Task<ContractsByMaterials> GetById(int id)
-        {
-            return await Get().FirstOrDefaultAsync(contractByMaterial => contractByMaterial.Id == id);
         }
 
         public IEnumerable<ContractsByMaterials> GetMaterialsContracts(int objectId)

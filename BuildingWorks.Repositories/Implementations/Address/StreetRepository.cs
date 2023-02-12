@@ -10,10 +10,5 @@ namespace BuildingWorks.Repositories.Implementations.Address
         public StreetRepository(BuildingWorksDbContext context) : base(context)
         {
         }
-
-        public async Task<Street> GetById(int id)
-        {
-            return await _context.Streets.FirstOrDefaultAsync(street => street.Id == id);
-        }
     }
 }

@@ -14,11 +14,6 @@ namespace BuildingWorks.Repositories.Implementations.Workers
         {
         }
 
-        public async Task<Worker> GetById(int id)
-        {
-            return await Get().FirstOrDefaultAsync(worker => worker.Id == id);
-        }
-
         public IEnumerable<Worker> GetBrigadeWorkers(int brigadeCode)
         {
             return Get().Where(worker => worker.BrigadeId == brigadeCode);

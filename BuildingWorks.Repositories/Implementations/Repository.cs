@@ -1,11 +1,12 @@
-﻿using BuildingWorks.Databasable;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Databasable;
 using BuildingWorks.Repositories.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace BuildingWorks.Repositories.Implementations
 {
-    public abstract class Repository<T, TKey> : IRepository<T> where T : class
+    public abstract class Repository<T, TKey> : IRepository<T> where T : class, IPersistable<int>
     {
         protected readonly BuildingWorksDbContext _context;
         private readonly DbSet<T> _set;
@@ -18,7 +19,12 @@ namespace BuildingWorks.Repositories.Implementations
 
         public IQueryable<T> Get()
         {
-            return _set;
+            return _set;//.Skip(;
+        }
+
+        public async Task<T> GetById(int id)
+        {
+            return await _set.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<T> Insert(T entity)

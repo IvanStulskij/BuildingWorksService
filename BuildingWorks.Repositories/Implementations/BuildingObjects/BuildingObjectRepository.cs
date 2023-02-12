@@ -10,11 +10,5 @@ namespace BuildingWorks.Repositories.Implementations.BuildingObjects
         public BuildingObjectRepository(BuildingWorksDbContext context) : base(context)
         {
         }
-
-        public async Task<BuildingObject> GetById(int id)
-        {
-            return await Get()
-                .FirstOrDefaultAsync(buildingObject => buildingObject.Id == id);
-        }
     }
 }
