@@ -4,13 +4,13 @@ using BuildingWorks.Models.Types;
 
 namespace BuildingWorks.Databasable.ValidationAttributes
 {
-    public class ObjectTypeAttribute : ValidationAttribute
+    public class ObjectTypeValidationAttribute : ValidationAttribute
     {
         public BuildingObject BuildingObject { get; set; }
 
         public string Error => $"The type of the object should require that ";
 
-        public ObjectTypeAttribute(BuildingObject buildingObject)
+        public ObjectTypeValidationAttribute(BuildingObject buildingObject)
         {
             BuildingObject = buildingObject;
         }
