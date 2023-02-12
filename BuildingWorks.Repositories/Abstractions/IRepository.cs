@@ -1,8 +1,10 @@
-﻿namespace BuildingWorks.Repositories.Abstractions
+﻿using BuildingWorks.Models.RequestParameters;
+
+namespace BuildingWorks.Repositories.Abstractions
 {
     public interface IRepository<T>
     {
-        IQueryable<T> Get();
+        IQueryable<T> Get(RequestParameters parameters);
         Task<T> Insert(T entity);
         Task Insert(IEnumerable<T> entities);
         Task<T> Update(T entity);

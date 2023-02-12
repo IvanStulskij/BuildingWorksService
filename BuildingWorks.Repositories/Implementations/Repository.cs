@@ -1,8 +1,10 @@
 ﻿using BuildingWorks.Common.Extensions;
 using BuildingWorks.Databasable;
+using BuildingWorks.Models.RequestParameters;
 using BuildingWorks.Repositories.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BuildingWorks.Repositories.Implementations
 {
@@ -17,9 +19,11 @@ namespace BuildingWorks.Repositories.Implementations
             _set = context.Set<T>();
         }
 
-        public IQueryable<T> Get()
+        public IQueryable<T> Get(RequestParameters parameters)
         {
-            return _set;//.Skip(;
+            return _set
+                .Skip((parameters.PageNumber - 1) * parameters.PageSize)
+                .Take(parameters.PageSize);
         }
 
         public async Task<T> GetById(int id)
