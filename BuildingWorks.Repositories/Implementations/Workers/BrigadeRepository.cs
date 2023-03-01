@@ -1,6 +1,7 @@
 ﻿using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Workers;
 using BuildingWorks.Repositories.Abstractions.Workers;
+using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations.Workers
 {
@@ -12,7 +13,7 @@ namespace BuildingWorks.Repositories.Implementations.Workers
 
         public IEnumerable<Brigade> GetObjectBrigades(int objectCode)
         {
-            return _context.Brigades
+            return _context.Brigades.AsNoTracking()
                 .Where(buildingObject => buildingObject.ObjectId == objectCode);
         }
 

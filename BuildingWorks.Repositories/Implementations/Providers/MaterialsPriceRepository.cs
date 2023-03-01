@@ -13,7 +13,7 @@ namespace BuildingWorks.Repositories.Implementations.Providers
 
         public IEnumerable<ContractsByMaterials> GetMaterialsContracts(int objectId)
         {
-            return _context.ContractsByMaterials
+            return _context.ContractsByMaterials.AsNoTracking()
                 .Where(contractPart => contractPart.BuildingObjectId == objectId);
         }
 

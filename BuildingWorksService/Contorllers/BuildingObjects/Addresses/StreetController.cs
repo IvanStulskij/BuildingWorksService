@@ -53,6 +53,11 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         {
             var response = await _service.Create(form);
 
+            if (response == null)
+            {
+                return BadRequest(response);
+            }
+
             return Ok(response);
         }
 

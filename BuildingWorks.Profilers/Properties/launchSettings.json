@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "BuildingWorks.Profilers": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:55119;http://localhost:55124"
+    }
+  }
+}

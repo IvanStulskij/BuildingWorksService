@@ -1,54 +1,14 @@
 ﻿using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Repositories.Abstractions.Plans;
-using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations.Plans
 {
-    public class PlanRepository : IPlanRepository
+    public class PlanRepository : Repository<Plan, int>, IPlanRepository
     {
-        private readonly BuildingWorksDbContext _context;
-
-        public PlanRepository(BuildingWorksDbContext context)
+        public PlanRepository(BuildingWorksDbContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public void Delete(Plan entity)
-        {
-            _context.Remove(entity);
-
-            _context.SaveChanges();
-        }
-
-        public IQueryable<Plan> Get()
-        {
-            return _context.Plans;
-        }
-
-        public async Task<Plan> GetById(int id)
-        {
-            return await _context.Plans.FirstOrDefaultAsync(plan => plan.Id == id);
-        }
-
-        public async Task<Plan> Insert(Plan entity)
-        {
-            await _context.Plans.AddAsync(entity);
-
-            return entity;
-        }
-
-        public async Task Insert(IEnumerable<Plan> entities)
-        {
-            await _context.Plans.AddRangeAsync(entities);
-        }
-
-        public async Task<Plan> Update(Plan entity)
-        {
-            _context.Update(entity);
-            await _context.SaveChangesAsync();
-
-            return entity;
+            
         }
     }
 }

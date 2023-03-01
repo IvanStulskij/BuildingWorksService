@@ -26,7 +26,7 @@ namespace BuildingWorks.Repositories.Implementations.Workers
 
             var conditionalSelectQuery = new TemplateConditionalSelectQuery(TablesNames.WorkersTableName, propertyName, compatibleValue);
 
-            return _context.Workers.FromSqlRaw(conditionalSelectQuery.Query).AsEnumerable();
+            return _context.Workers.FromSqlRaw(conditionalSelectQuery.Query).AsNoTracking().AsEnumerable();
         }
     }
 }

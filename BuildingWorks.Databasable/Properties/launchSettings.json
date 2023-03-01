@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "BuildingWorks.Databasable": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:55117;http://localhost:55125"
+    }
+  }
+}

@@ -22,13 +22,16 @@ namespace BuildingWorks.Repositories.Implementations
         public IQueryable<T> Get(RequestParameters parameters)
         {
             return _set
+                .AsNoTracking()
                 .Skip((parameters.PageNumber - 1) * parameters.PageSize)
                 .Take(parameters.PageSize);
         }
 
         public async Task<T> GetById(int id)
         {
-            return await _set.FirstOrDefaultAsync(x => x.Id == id);
+            return await _set
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<T> Insert(T entity)

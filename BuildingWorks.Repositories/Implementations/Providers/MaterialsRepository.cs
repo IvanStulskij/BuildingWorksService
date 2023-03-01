@@ -1,8 +1,6 @@
 ﻿using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Providers;
 using BuildingWorks.Repositories.Abstractions.Providers;
-using BuildingWorks.Repositories.Implementations;
-using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations.Providers
 {

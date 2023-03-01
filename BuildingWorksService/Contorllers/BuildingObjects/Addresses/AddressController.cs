@@ -46,9 +46,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// Get by position.
         /// </summary>
         /// <returns> The list of addresses. </returns>
-        [HttpGet("getByPosition")]
+        [HttpGet("getByPosition/{regionName}/{townName}/{streetName}")]
         [ProducesResponseType(typeof(IEnumerable<AddressResource>), StatusCodes.Status200OK)]
-        public IActionResult GetByPosition([FromQuery] string regionName, string townName, string streetName)
+        public IActionResult GetByPosition(string regionName, string townName, string streetName)
         {
             var address = _service.GetByPosition(regionName, townName, streetName);
 
