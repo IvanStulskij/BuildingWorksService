@@ -60,7 +60,7 @@ namespace BuildingWorksService.Extensions
 
         public static void AddAttributes(this IServiceCollection services)
         {
-            services.AddScoped<ValidationFilterAttribute>();
+            services.AddScoped<IdsValidationAttributes>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)
@@ -69,7 +69,7 @@ namespace BuildingWorksService.Extensions
             {
                 typeof(AssemblyInfo)
             };
-
+            
             services.AddAutoMapper(assemblyTypes);
         }
     }

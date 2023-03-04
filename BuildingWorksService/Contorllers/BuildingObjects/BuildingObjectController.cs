@@ -22,7 +22,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         /// <param name="id"> Id to get provider. </param>
         /// <returns> Single provider. </returns>
         [HttpGet("{id}")]
-        [ServiceFilter(typeof(ValidationFilterAttribute), Order = 1)]
+        [ServiceFilter(typeof(IdsValidationAttributes))]
         [ProducesResponseType(typeof(BuildingObjectResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {

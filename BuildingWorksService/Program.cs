@@ -17,7 +17,6 @@ builder.Services.AddRepositories();
 builder.Services.AddServices();
 builder.Services.AddControllersWithViews(config =>
 {
-    config.Filters.Add(new ValidationFilterAttribute());
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper();
