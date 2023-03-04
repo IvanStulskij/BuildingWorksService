@@ -17,7 +17,7 @@ namespace BuildingWorks.Repositories.Implementations.Providers
                 .Where(contractPart => contractPart.BuildingObjectId == objectId);
         }
 
-        public float GetMaterialsPrice(int objectId)
+        public float CountMaterialsPrice(int objectId)
         {
             IEnumerable<ContractsByMaterials> contractsByMaterials = GetMaterialsContracts(objectId).AsQueryable()
                 .Include(contractPart => contractPart.Material);

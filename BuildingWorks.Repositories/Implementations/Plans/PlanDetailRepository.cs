@@ -3,7 +3,6 @@ using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Models;
 using BuildingWorks.Repositories.Abstractions.Plans;
-using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations.Plans
 {

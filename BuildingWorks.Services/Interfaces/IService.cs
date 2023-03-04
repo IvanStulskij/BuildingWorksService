@@ -8,7 +8,7 @@
 
         Task<TResource> Create(TResourceForm form);
 
-        Task<TResource> Update(int id, TResourceForm form);
+        Task<TResource> Update(TResource resource);
 
         Task<TResource> Delete(int id);
     }

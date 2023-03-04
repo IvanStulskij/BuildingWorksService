@@ -19,7 +19,7 @@ namespace BuildingWorks.Services.Implementations.Providers
 
         public float GetByObject(int objectId)
         {
-            return Repository.GetMaterialsPrice(objectId);
+            return Repository.CountMaterialsPrice(objectId);
         }
 
         public IEnumerable<MaterialsPriceForm> GetMaterialsContracts(int objectId)

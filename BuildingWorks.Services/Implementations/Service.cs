@@ -13,7 +13,7 @@ namespace BuildingWorks.Services.Implementations
 {
     public abstract class Service<T, TResource, TForm> : IService<TResource, TForm>
         where T : class, IPersistable<int>
-        where TResource: class
+        where TResource: class, IResource
         where TForm: class
 
     {
@@ -51,7 +51,7 @@ namespace BuildingWorks.Services.Implementations
                 throw new EntityNotFoundException();
             }
 
-            Repository.Delete(entity);
+            await Repository.Delete(entity);
             await Context.SaveChangesAsync();
             return Mapper.Map<TResource>(entity);
         }
@@ -77,16 +77,16 @@ namespace BuildingWorks.Services.Implementations
             return Mapper.Map<TResource>(entity);
         }
 
-        public async Task<TResource> Update(int id, TForm form)
+        public async Task<TResource> Update(TResource resource)
         {
-            var entity = await Find(id);
+            var entity = await Find(resource.Id);
 
             if (entity == null)
             {
                 throw new EntityNotFoundException();
             }
 
-            entity = await Repository.Update(Mapper.Map<T>(form));
+            entity = await Repository.Update(Mapper.Map<T>(resource));
             await Context.SaveChangesAsync();
             return Mapper.Map<TResource>(entity);
         }
@@ -117,7 +117,7 @@ namespace BuildingWorks.Services.Implementations
 
     public abstract class ConditionalService<T, TResource, TForm> : Service<T, TResource, TForm>
         where T : class, IPersistable<int>
-        where TResource : class
+        where TResource : IResource
         where TForm : class
 
     {
@@ -137,10 +137,9 @@ namespace BuildingWorks.Services.Implementations
                     condition.CompatibleValue
                 );
 
-            return await Context
-                .Plans
+            return await _set
                 .FromSqlRaw(conditionalSelectQuery.Query)
-                .ToListAsync();
+                .AsAsyncEnumerable();
         }
     }
 }
