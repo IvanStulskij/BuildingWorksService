@@ -15,10 +15,10 @@ namespace BuildingWorks.Models.Resources.BuildingObject
 
         public string ObjectCustomer { get; set; }
 
-        public int RegionId { get; set; }
+        public int? RegionId { get; set; }
 
-        public int TownId { get; set; }
+        public int? TownId { get; set; }
 
-        public int StreetId { get; set; }
+        public int? StreetId { get; set; }
     }
 }
