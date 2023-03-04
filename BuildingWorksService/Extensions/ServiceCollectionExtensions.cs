@@ -46,7 +46,7 @@ namespace BuildingWorksService.Extensions
             services.AddScoped<IPlanDetailRepository, PlanDetailRepository>();
             services.AddScoped<IProviderRepository, ProviderRepository>();
             services.AddScoped<IMaterialRepository, MaterialsRepository>();
-            services.AddScoped<IMaterialPriceRepository, MaterialsPriceRepository>();
+            services.AddScoped<IContractsByMaterialsRepository, ContractsByMaterialsRepository>();
             services.AddScoped<IWorkerRepository, WorkerRepository>();
             services.AddScoped<IBrigadeRepository, BrigadeRepository>();
             services.AddScoped<IWorkerSalaryRepository, WorkerSalaryRepository>();

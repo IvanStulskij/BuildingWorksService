@@ -12,18 +12,13 @@ namespace BuildingWorks.Repositories.Implementations.Workers
         {
         }
 
-        public async Task<Brigade> GetById(int id)
-        {
-            return await _context.Brigades.FirstOrDefaultAsync(brigade => brigade.Id == id);
-        }
-
         public IEnumerable<Brigade> GetObjectBrigades(int objectCode)
         {
             return _context.Brigades
                 .Where(buildingObject => buildingObject.ObjectId == objectCode);
         }
 
-        public IEnumerable<int> SelectBrigadesCodes()
+        public IEnumerable<int> GetBrigadesCodes()
         {
             return Get().Select(brigade => brigade.Id);
         }

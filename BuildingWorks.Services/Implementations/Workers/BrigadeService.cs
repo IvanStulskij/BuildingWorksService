@@ -25,7 +25,7 @@ namespace BuildingWorks.Services.Implementations.Workers
 
         public IEnumerable<int> GetBrigadesCodes()
         {
-            return Repository.SelectBrigadesCodes();
+            return Repository.GetBrigadesCodes();
         }
     }
 }

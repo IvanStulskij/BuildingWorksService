@@ -6,7 +6,7 @@
         Task<T> Insert(T entity);
         Task Insert(IEnumerable<T> entities);
         Task<T> Update(T entity);
-        void Delete(T entity);
+        Task Delete(T entity);
     }
 
     public interface IRepository<T, TKey> : IRepository<T>
