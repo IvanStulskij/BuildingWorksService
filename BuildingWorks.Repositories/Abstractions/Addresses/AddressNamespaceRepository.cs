@@ -4,7 +4,7 @@ using BuildingWorks.Repositories.Implementations;
 
 namespace BuildingWorks.Repositories.Abstractions.Addresses
 {
-    public abstract class AddressNamespaceRepository<T, TKey> : Repository<T, TKey>, IAddressNamespaceRepository<T> where T : IPersistable<int>, class
+    public abstract class AddressNamespaceRepository<T, TKey> : Repository<T, TKey>, IAddressNamespaceRepository<T> where T : class, IPersistable<int>
     {
         protected AddressNamespaceRepository(BuildingWorksDbContext context) : base(context)
         {
