@@ -20,7 +20,7 @@ namespace BuildingWorks.Services.Implementations.Workers
 
         public float GetTotalByObject(int objectId)
         {
-            return Repository.GetObjectTotalSalaries(objectId);
+            return Repository.GetTotalSalaries(objectId);
         }
     }
 }

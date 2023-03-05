@@ -8,6 +8,6 @@ namespace BuildingWorks.Services.Interfaces.Plans
     {
         Task<IEnumerable<string>> GetPropertiesNames();
 
-        Task<IEnumerable<Plan>> GetByCondition(Condition condition, string tableName);
+        IEnumerable<Plan> GetByCondition(Condition condition, string tableName);
     }
 }

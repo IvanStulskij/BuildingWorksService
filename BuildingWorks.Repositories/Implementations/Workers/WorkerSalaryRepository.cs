@@ -10,14 +10,14 @@ namespace BuildingWorks.Repositories.Implementations.Workers
         {
         }
 
-        public float GetObjectTotalSalaries(int objectCode)
+        public float GetTotalSalaries(int objectCode)
         {
             IEnumerable<Brigade> brigades = _context.Brigades.Where(brigade => brigade.ObjectId == objectCode);
             float totalSalariesAmount = 0;
 
-            foreach (var brigade in brigades)
+            foreach (Brigade brigade in brigades)
             {
-                foreach (var worker in brigade.Workers)
+                foreach (Worker worker in brigade.Workers)
                 {
                     IEnumerable<WorkerSalary> workerSalaries = worker.WorkersSalaries;
                     float workerSalaryByPeriod = 0;
