@@ -109,7 +109,6 @@ namespace BuildingWorks.Services.Implementations
             {
                 throw new EntityNotFoundException();
             }
-                
 
             return entity;
         }
@@ -117,7 +116,7 @@ namespace BuildingWorks.Services.Implementations
 
     public abstract class ConditionalService<T, TResource, TForm> : Service<T, TResource, TForm>
         where T : class, IPersistable<int>
-        where TResource : IResource
+        where TResource : class, IResource
         where TForm : class
 
     {
@@ -128,7 +127,7 @@ namespace BuildingWorks.Services.Implementations
             _set = context.Set<T>();
         }
 
-        public async Task<IEnumerable<Plan>> GetByCondition(Condition condition, string tableName)
+        public IEnumerable<T> GetByCondition(Condition condition, string tableName)
         {
             var conditionalSelectQuery = new TemplateConditionalSelectQuery
                 (
@@ -137,9 +136,9 @@ namespace BuildingWorks.Services.Implementations
                     condition.CompatibleValue
                 );
 
-            return await _set
+            return _set
                 .FromSqlRaw(conditionalSelectQuery.Query)
-                .AsAsyncEnumerable();
+                .AsNoTracking();
         }
     }
 }
