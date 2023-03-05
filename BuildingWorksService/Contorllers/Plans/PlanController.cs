@@ -61,9 +61,9 @@ namespace BuildingWorksService.Contorllers.Plans
         /// <returns> The list of plans by condition </returns>
         [HttpGet("getByCondition")]
         [ProducesResponseType(typeof(List<Plan>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetByCondition([FromQuery] Condition condition)
+        public IActionResult GetByCondition([FromQuery] Condition condition)
         {
-            var response = await _service.GetByCondition(condition, TablesNames.PlansName);
+            var response = _service.GetByCondition(condition, TablesNames.PlansName);
             return Ok(response);
         }
 
@@ -102,7 +102,7 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] PlanResource resource)
         {
-            var response = await _service.Update(resource.Id, resource);
+            var response = await _service.Update(resource);
             return Ok(response);
         }
     }

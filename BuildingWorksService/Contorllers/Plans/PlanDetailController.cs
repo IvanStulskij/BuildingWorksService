@@ -7,11 +7,11 @@ namespace BuildingWorksService.Contorllers.Plans
 {
     [ApiController]
     [Route("/api/plan-details")]
-    public class PlanDetailsController : ControllerBase
+    public class PlanDetailController : ControllerBase
     {
         private readonly IPlanDetailsService _service;
 
-        public PlanDetailsController(IPlanDetailsService service)
+        public PlanDetailController(IPlanDetailsService service)
         {
             _service = service;
         }
@@ -115,7 +115,7 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanDetailResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] PlanDetailResource resource)
         {
-            var response = await _service.Update(resource.Id, resource);
+            var response = await _service.Update(resource);
             return Ok(response);
         }
     }

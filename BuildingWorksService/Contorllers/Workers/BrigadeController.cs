@@ -105,7 +105,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(BrigadeResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] BrigadeResource brigade)
         {
-            var response = await _service.Update(brigade.Id, brigade);
+            var response = await _service.Update(brigade);
             return Ok(response);
         }
     }

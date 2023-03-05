@@ -6,11 +6,11 @@ namespace BuildingWorksService.Contorllers.Providers
 {
     [ApiController]
     [Route("/api/materials-price")]
-    public class MaterialsPriceController : ControllerBase
+    public class MaterialPriceController : ControllerBase
     {
         private readonly IMaterialsPriceService _service;
 
-        public MaterialsPriceController(IMaterialsPriceService service)
+        public MaterialPriceController(IMaterialsPriceService service)
         {
             _service = service;
         }
@@ -99,7 +99,7 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(MaterialsPriceResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] MaterialsPriceResource resource)
         {
-            var response = await _service.Update(resource.Id, resource);
+            var response = await _service.Update(resource);
             return Ok(response);
         }
     }

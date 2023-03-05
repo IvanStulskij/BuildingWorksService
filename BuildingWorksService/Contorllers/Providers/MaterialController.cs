@@ -78,7 +78,7 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(MaterialResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] MaterialResource resource)
         {
-            var response = await _service.Update(resource.Id, resource);
+            var response = await _service.Update(resource);
             return Ok(response);
         }
     }

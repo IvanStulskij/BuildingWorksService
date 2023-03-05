@@ -79,7 +79,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(TownResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] TownResource resource)
         {
-            var response = await _service.Update(resource.Id, resource);
+            var response = await _service.Update(resource);
 
             return Ok(response);
         }
