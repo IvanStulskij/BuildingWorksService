@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Models.Resources.Providers;
+﻿using BuildingWorks.Models;
+using BuildingWorks.Models.Resources.Providers;
 using BuildingWorks.Services.Interfaces.Providers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +29,7 @@ namespace BuildingWorksService.Contorllers.Providers
 
             if (material == null)
             {
-                return NotFound("Entity with such id doesn't exist");
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
             }
 
             return Ok(material);
@@ -40,9 +41,9 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <returns> The list of materials. </returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<MaterialResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            IEnumerable<MaterialResource> materials = await _service.GetAll();
+            IEnumerable<MaterialResource> materials = await _service.GetAll(pagination);
 
             return Ok(materials);
         }

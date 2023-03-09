@@ -5,6 +5,7 @@ using BuildingWorks.Common.Extensions;
 using BuildingWorks.Databasable;
 using BuildingWorks.Repositories.Abstractions;
 using BuildingWorks.Common.Exceptions;
+using BuildingWorks.Models;
 
 namespace BuildingWorks.Services
 {
@@ -35,10 +36,10 @@ namespace BuildingWorks.Services
             return Mapper.Map<TResource>(entity);
         }
 
-        public virtual async Task<IEnumerable<TResource>> GetList()
+        public virtual async Task<IEnumerable<TResource>> GetList(PaginationParameters pagination)
         {
             return await Repository
-                .Get()
+                .Get(pagination)
                 .OrderBy(element => element.Id)
                 .ProjectTo<TResource>(Mapper)
                 .ToListAsync();

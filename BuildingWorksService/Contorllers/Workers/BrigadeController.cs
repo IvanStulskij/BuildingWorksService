@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Models.Resources.Workers;
+﻿using BuildingWorks.Models;
+using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,9 +41,9 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> The list of brigades. </returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            var brigades = await _service.GetAll();
+            var brigades = await _service.GetAll(pagination);
 
             return Ok(brigades);
         }

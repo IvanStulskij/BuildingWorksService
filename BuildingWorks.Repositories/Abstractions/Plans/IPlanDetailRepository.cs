@@ -6,9 +6,9 @@ namespace BuildingWorks.Repositories.Abstractions.Plans
     {
         float CountDonePercent(int planId);
 
-        IEnumerable<PlanDetail> FindCompleted(IEnumerable<PlanDetail> planDetails);
+        IEnumerable<PlanDetail> GetCompleted(IEnumerable<PlanDetail> planDetails);
 
-        IEnumerable<PlanDetail> FindByPlan(int planId);
+        IEnumerable<PlanDetail> GetByPlan(int planId);
 
     }
 }
