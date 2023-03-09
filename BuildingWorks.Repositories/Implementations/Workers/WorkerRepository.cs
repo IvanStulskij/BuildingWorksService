@@ -14,15 +14,15 @@ namespace BuildingWorks.Repositories.Implementations.Workers
         {
         }
 
-        public IEnumerable<Worker> GetByBrigade(int brigadeCode)
+        public IEnumerable<Worker> GetByBrigade(int brigadeId)
         {
-            return Get().Where(worker => worker.BrigadeId == brigadeCode);
+            return Get().Where(worker => worker.BrigadeId == brigadeId);
         }
 
         public IEnumerable<Worker> GetByCondition(Condition conditition)
         {
-            var propertyName = conditition.PropertyName;
-            var compatibleValue = conditition.CompatibleValue;
+            string propertyName = conditition.PropertyName;
+            string compatibleValue = conditition.CompatibleValue;
 
             var conditionalSelectQuery = new TemplateConditionalSelectQuery(TablesNames.WorkersTableName, propertyName, compatibleValue);
 

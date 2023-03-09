@@ -23,7 +23,7 @@ namespace BuildingWorks.Services.Implementations.Workers
             return Mapper.Map<IEnumerable<BrigadeResource>>(Repository.GetObjectBrigades(objectId));
         }
 
-        public IEnumerable<int> GetBrigadesCodes()
+        public IEnumerable<int> GetCodes()
         {
             return Repository.GetCodes();
         }

@@ -10,10 +10,10 @@ namespace BuildingWorks.Repositories.Implementations.Workers
         {
         }
 
-        public IEnumerable<Brigade> GetObjectBrigades(int objectCode)
+        public IEnumerable<Brigade> GetObjectBrigades(int objectId)
         {
             return _context.Brigades
-                .Where(buildingObject => buildingObject.ObjectId == objectCode);
+                .Where(buildingObject => buildingObject.ObjectId == objectId);
         }
 
         public IEnumerable<int> GetCodes()

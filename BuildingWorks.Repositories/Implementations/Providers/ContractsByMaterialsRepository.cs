@@ -1,7 +1,7 @@
 ﻿using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Providers;
 using BuildingWorks.Repositories.Abstractions.Providers;
-using Microsoft.EntityFrameworkCore;
+using BuildingWorks.Repositories.Query;
 
 namespace BuildingWorks.Repositories.Implementations.Providers
 {
@@ -19,8 +19,7 @@ namespace BuildingWorks.Repositories.Implementations.Providers
 
         public float CountMaterialsPrice(int objectId)
         {
-            IEnumerable<ContractsByMaterials> contractsByMaterials = GetMaterialsContracts(objectId).AsQueryable()
-                .Include(contractPart => contractPart.Material);
+            IEnumerable<ContractsByMaterials> contractsByMaterials = GetMaterialsContracts(objectId).AsQueryable().IncludeMaterials();
 
             return (float)contractsByMaterials
                 .Select(contractsByMaterial => contractsByMaterial.Material.PricePerOne * contractsByMaterial.Amount).Sum();

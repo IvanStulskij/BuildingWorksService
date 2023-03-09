@@ -35,7 +35,7 @@ namespace BuildingWorks.Services.Implementations
                 throw new EntityNotFoundException();
             }
 
-            var entity = Mapper.Map<T>(form);
+            T entity = Mapper.Map<T>(form);
             entity = await Insert(entity);
 
             await Context.SaveChangesAsync();
@@ -44,7 +44,7 @@ namespace BuildingWorks.Services.Implementations
 
         public async Task<TResource> Delete(int id)
         {
-            var entity = await Find(id);
+            T entity = await Find(id);
 
             if (entity == null)
             {
@@ -67,7 +67,7 @@ namespace BuildingWorks.Services.Implementations
 
         public async Task<TResource> GetById(int id)
         {
-            var entity = await Repository.GetById(id);
+            T entity = await Repository.GetById(id);
 
             if (entity == null)
             {
@@ -79,7 +79,7 @@ namespace BuildingWorks.Services.Implementations
 
         public async Task<TResource> Update(TResource resource)
         {
-            var entity = await Find(resource.Id);
+            T entity = await Find(resource.Id);
 
             if (entity == null)
             {
@@ -104,7 +104,8 @@ namespace BuildingWorks.Services.Implementations
 
         protected async ValueTask<T> Find(int id)
         {
-            var entity = await Context.FindAsync<T>(id);
+            T entity = await Context.FindAsync<T>(id);
+
             if (entity is null)
             {
                 throw new EntityNotFoundException();

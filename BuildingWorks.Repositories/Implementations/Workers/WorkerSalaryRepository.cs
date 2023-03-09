@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Databasable;
+﻿using BuildingWorks.Common.Exceptions;
+using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Workers;
 using BuildingWorks.Repositories.Abstractions.Workers;
 
@@ -13,6 +14,12 @@ namespace BuildingWorks.Repositories.Implementations.Workers
         public float GetTotalSalaries(int objectCode)
         {
             IEnumerable<Brigade> brigades = _context.Brigades.Where(brigade => brigade.ObjectId == objectCode);
+
+            if (brigades == null || !brigades.Any())
+            {
+                throw new EntityNotFoundException();
+            }
+            
             float totalSalariesAmount = 0;
 
             foreach (Brigade brigade in brigades)

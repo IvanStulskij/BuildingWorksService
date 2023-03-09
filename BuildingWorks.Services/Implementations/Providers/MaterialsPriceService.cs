@@ -17,12 +17,12 @@ namespace BuildingWorks.Services.Implementations.Providers
 
         public override IContractsByMaterialsRepository Repository { get; }
 
-        public float GetByObject(int objectId)
+        public float CountPrice(int objectId)
         {
             return Repository.CountMaterialsPrice(objectId);
         }
 
-        public IEnumerable<MaterialsPriceForm> GetMaterialsContracts(int objectId)
+        public IEnumerable<MaterialsPriceForm> GetByObject(int objectId)
         {
             return Mapper.Map<IEnumerable<MaterialsPriceForm>>(Repository.GetMaterialsContracts(objectId));
         }
