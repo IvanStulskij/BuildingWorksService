@@ -13,7 +13,7 @@ namespace BuildingWorks.Services.Implementations
 {
     public abstract class Service<T, TResource, TForm> : IService<TResource, TForm>
         where T : class, IPersistable<int>
-        where TResource: class
+        where TResource: class, IResource
         where TForm: class
 
     {
@@ -35,7 +35,7 @@ namespace BuildingWorks.Services.Implementations
                 throw new EntityNotFoundException();
             }
 
-            var entity = Mapper.Map<T>(form);
+            T entity = Mapper.Map<T>(form);
             entity = await Insert(entity);
 
             await Context.SaveChangesAsync();
@@ -44,14 +44,14 @@ namespace BuildingWorks.Services.Implementations
 
         public async Task<TResource> Delete(int id)
         {
-            var entity = await Find(id);
+            T entity = await Find(id);
 
             if (entity == null)
             {
                 throw new EntityNotFoundException();
             }
 
-            Repository.Delete(entity);
+            await Repository.Delete(entity);
             await Context.SaveChangesAsync();
             return Mapper.Map<TResource>(entity);
         }
@@ -67,7 +67,7 @@ namespace BuildingWorks.Services.Implementations
 
         public async Task<TResource> GetById(int id)
         {
-            var entity = await Repository.GetById(id);
+            T entity = await Repository.GetById(id);
 
             if (entity == null)
             {
@@ -77,16 +77,16 @@ namespace BuildingWorks.Services.Implementations
             return Mapper.Map<TResource>(entity);
         }
 
-        public async Task<TResource> Update(int id, TForm form)
+        public async Task<TResource> Update(TResource resource)
         {
-            var entity = await Find(id);
+            T entity = await Find(resource.Id);
 
             if (entity == null)
             {
                 throw new EntityNotFoundException();
             }
 
-            entity = await Repository.Update(Mapper.Map<T>(form));
+            entity = await Repository.Update(Mapper.Map<T>(resource));
             await Context.SaveChangesAsync();
             return Mapper.Map<TResource>(entity);
         }
@@ -104,12 +104,12 @@ namespace BuildingWorks.Services.Implementations
 
         protected async ValueTask<T> Find(int id)
         {
-            var entity = await Context.FindAsync<T>(id);
+            T entity = await Context.FindAsync<T>(id);
+
             if (entity is null)
             {
                 throw new EntityNotFoundException();
             }
-                
 
             return entity;
         }
@@ -117,7 +117,7 @@ namespace BuildingWorks.Services.Implementations
 
     public abstract class ConditionalService<T, TResource, TForm> : Service<T, TResource, TForm>
         where T : class, IPersistable<int>
-        where TResource : class
+        where TResource : class, IResource
         where TForm : class
 
     {
@@ -128,7 +128,7 @@ namespace BuildingWorks.Services.Implementations
             _set = context.Set<T>();
         }
 
-        public async Task<IEnumerable<Plan>> GetByCondition(Condition condition, string tableName)
+        public IEnumerable<T> GetByCondition(Condition condition, string tableName)
         {
             var conditionalSelectQuery = new TemplateConditionalSelectQuery
                 (
@@ -137,10 +137,9 @@ namespace BuildingWorks.Services.Implementations
                     condition.CompatibleValue
                 );
 
-            return await Context
-                .Plans
+            return _set
                 .FromSqlRaw(conditionalSelectQuery.Query)
-                .ToListAsync();
+                .AsNoTracking();
         }
     }
 }

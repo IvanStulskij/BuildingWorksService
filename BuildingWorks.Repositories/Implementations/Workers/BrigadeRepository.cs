@@ -1,8 +1,6 @@
 ﻿using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Workers;
 using BuildingWorks.Repositories.Abstractions.Workers;
-using BuildingWorks.Repositories.Implementations;
-using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations.Workers
 {
@@ -12,18 +10,13 @@ namespace BuildingWorks.Repositories.Implementations.Workers
         {
         }
 
-        public async Task<Brigade> GetById(int id)
-        {
-            return await _context.Brigades.FirstOrDefaultAsync(brigade => brigade.Id == id);
-        }
-
-        public IEnumerable<Brigade> GetObjectBrigades(int objectCode)
+        public IEnumerable<Brigade> GetObjectBrigades(int objectId)
         {
             return _context.Brigades
-                .Where(buildingObject => buildingObject.ObjectId == objectCode);
+                .Where(buildingObject => buildingObject.ObjectId == objectId);
         }
 
-        public IEnumerable<int> SelectBrigadesCodes()
+        public IEnumerable<int> GetCodes()
         {
             return Get().Select(brigade => brigade.Id);
         }

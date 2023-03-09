@@ -24,7 +24,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(StreetResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var street = await _service.GetById(id);
+            StreetResource street = await _service.GetById(id);
+
+            if (street == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
 
             return Ok(street);
         }
@@ -37,7 +42,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(IEnumerable<StreetResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var streets = await _service.GetAll();
+            IEnumerable<StreetResource> streets = await _service.GetAll();
 
             return Ok(streets);
         }
@@ -51,7 +56,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(StreetResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] StreetForm form)
         {
-            var response = await _service.Create(form);
+            StreetResource response = await _service.Create(form);
 
             return Ok(response);
         }
@@ -65,7 +70,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(StreetResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
+            StreetResource response = await _service.Delete(id);
 
             return Ok(response);
         }
@@ -79,7 +84,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(StreetResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] StreetResource resource)
         {
-            var response = await _service.Update(resource.Id, resource);
+            StreetResource response = await _service.Update(resource);
 
             return Ok(response);
         }

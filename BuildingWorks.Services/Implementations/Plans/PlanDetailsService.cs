@@ -23,14 +23,14 @@ namespace BuildingWorks.Services.Implementations.Plans
             return Repository.CountDonePercent(planId);
         }
 
-        public IEnumerable<PlanDetail> GetByPlan(int planId)
+        public IEnumerable<PlanDetailResource> GetByPlan(int planId)
         {
-            return Repository.FindByPlan(planId);
+            return Mapper.Map<IEnumerable<PlanDetailResource>>(Repository.FindByPlan(planId));
         }
 
-        public IEnumerable<PlanDetail> GetCompleted(IEnumerable<PlanDetail> planDetails)
+        public IEnumerable<PlanDetailResource> GetCompleted(IEnumerable<PlanDetail> planDetails)
         {
-            return Repository.FindCompleted(planDetails);
+            return Mapper.Map<IEnumerable<PlanDetailResource>>(Repository.FindCompleted(planDetails));
         }
     }
 }

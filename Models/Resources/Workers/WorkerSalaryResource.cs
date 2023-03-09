@@ -2,7 +2,7 @@
 
 namespace BuildingWorks.Models.Resources.Workers
 {
-    public class WorkerSalaryResource : WorkerSalaryForm, IPersistable<int>
+    public class WorkerSalaryResource : WorkerSalaryForm, IResource
     {
         public int Id { get; set; }
     }

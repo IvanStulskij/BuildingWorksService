@@ -2,7 +2,7 @@
 {
     public class EntityNotFoundException : Exception
     {
-        public EntityNotFoundException() : base ("The entity doesn't exist")
+        public EntityNotFoundException() : base ("The entity doesn't found")
         { }
     }
 }

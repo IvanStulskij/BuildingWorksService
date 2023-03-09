@@ -1,11 +1,12 @@
-﻿using BuildingWorks.Databasable;
+﻿using System.Linq.Expressions;
+using BuildingWorks.Common.Extensions;
+using BuildingWorks.Databasable;
 using BuildingWorks.Repositories.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace BuildingWorks.Repositories.Implementations
 {
-    public abstract class Repository<T, TKey> : IRepository<T> where T : class
+    public abstract class Repository<T, TKey> : IRepository<T> where T : class, IPersistable<int>
     {
         protected readonly BuildingWorksDbContext _context;
         private readonly DbSet<T> _set;
@@ -43,10 +44,15 @@ namespace BuildingWorks.Repositories.Implementations
             return entity;
         }
 
-        public void Delete(T entity)
+        public async Task Delete(T entity)
         {
             _set.Remove(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<T> GetById(int id)
+        {
+            return await _set.FirstOrDefaultAsync(item => item.Id == id);
         }
 
         public IQueryable<T> GetByCondition(Expression<Func<T, bool>> condition)

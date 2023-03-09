@@ -24,7 +24,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(TownResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var town = await _service.GetById(id);
+            TownResource town = await _service.GetById(id);
+
+            if (town == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
 
             return Ok(town);
         }
@@ -37,7 +42,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(IEnumerable<TownResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var towns = await _service.GetAll();
+            IEnumerable<TownResource> towns = await _service.GetAll();
 
             return Ok(towns);
         }
@@ -51,7 +56,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(TownResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] TownForm form)
         {
-            var response = await _service.Create(form);
+            TownResource response = await _service.Create(form);
 
             return Ok(response);
         }
@@ -65,7 +70,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(TownResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
+            TownResource response = await _service.Delete(id);
 
             return Ok(response);
         }
@@ -79,7 +84,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(TownResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] TownResource resource)
         {
-            var response = await _service.Update(resource.Id, resource);
+            TownResource response = await _service.Update(resource);
 
             return Ok(response);
         }

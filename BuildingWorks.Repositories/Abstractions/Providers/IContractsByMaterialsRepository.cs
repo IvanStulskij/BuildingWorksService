@@ -2,9 +2,9 @@
 
 namespace BuildingWorks.Repositories.Abstractions.Providers
 {
-    public interface IMaterialPriceRepository : IRepository<ContractsByMaterials, int>
+    public interface IContractsByMaterialsRepository : IRepository<ContractsByMaterials, int>
     {
-        float GetMaterialsPrice(int objectId);
+        float CountMaterialsPrice(int objectId);
 
         IEnumerable<ContractsByMaterials> GetMaterialsContracts(int objectId);
     }

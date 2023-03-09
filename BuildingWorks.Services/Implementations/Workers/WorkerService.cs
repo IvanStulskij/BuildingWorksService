@@ -19,9 +19,9 @@ namespace BuildingWorks.Services.Implementations.Workers
 
         public override IWorkerRepository Repository { get; }
 
-        public IEnumerable<WorkerResource> GetByBrigade(int brigadeCode)
+        public IEnumerable<WorkerResource> GetByBrigade(int brigadeId)
         {
-            return Mapper.Map<IEnumerable<WorkerResource>>(Repository.GetBrigadeWorkers(brigadeCode));
+            return Mapper.Map<IEnumerable<WorkerResource>>(Repository.GetByBrigade(brigadeId));
         }
 
         public IEnumerable<WorkerResource> GetByCondition(Condition condition)

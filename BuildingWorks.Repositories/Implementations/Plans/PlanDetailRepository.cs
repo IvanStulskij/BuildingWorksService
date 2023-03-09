@@ -3,7 +3,6 @@ using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Models;
 using BuildingWorks.Repositories.Abstractions.Plans;
-using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations.Plans
 {
@@ -35,11 +34,6 @@ namespace BuildingWorks.Repositories.Implementations.Plans
         public IEnumerable<PlanDetail> FindCompleted(IEnumerable<PlanDetail> planDetails)
         {
             return planDetails.Where(planDetail => planDetail.IsCompleted);
-        }
-
-        public async Task<PlanDetail> GetById(int id)
-        {
-            return await _context.PlansDetails.FirstOrDefaultAsync(planDetail => planDetail.Id == id);
         }
     }
 }

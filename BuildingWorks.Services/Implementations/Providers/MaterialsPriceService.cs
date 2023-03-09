@@ -10,19 +10,19 @@ namespace BuildingWorks.Services.Implementations.Providers
     public class MaterialsPriceService : Service<ContractsByMaterials, MaterialsPriceResource, MaterialsPriceForm>,
         IMaterialsPriceService
     {
-        public MaterialsPriceService(BuildingWorksDbContext context, IMapper mapper, IMaterialPriceRepository repository) : base(context, mapper)
+        public MaterialsPriceService(BuildingWorksDbContext context, IMapper mapper, IContractsByMaterialsRepository repository) : base(context, mapper)
         {
             Repository = repository;
         }
 
-        public override IMaterialPriceRepository Repository { get; }
+        public override IContractsByMaterialsRepository Repository { get; }
 
-        public float GetByObject(int objectId)
+        public float CountPrice(int objectId)
         {
-            return Repository.GetMaterialsPrice(objectId);
+            return Repository.CountMaterialsPrice(objectId);
         }
 
-        public IEnumerable<MaterialsPriceForm> GetMaterialsContracts(int objectId)
+        public IEnumerable<MaterialsPriceForm> GetByObject(int objectId)
         {
             return Mapper.Map<IEnumerable<MaterialsPriceForm>>(Repository.GetMaterialsContracts(objectId));
         }

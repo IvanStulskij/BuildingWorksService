@@ -4,8 +4,8 @@ namespace BuildingWorks.Services.Interfaces.Providers
 {
     public interface IMaterialsPriceService : IService<MaterialsPriceResource, MaterialsPriceForm>
     {
-        IEnumerable<MaterialsPriceForm> GetMaterialsContracts(int objectId);
+        IEnumerable<MaterialsPriceForm> GetByObject(int objectId);
 
-        float GetByObject(int objectId);
+        float CountPrice(int objectId);
     }
 }

@@ -6,6 +6,6 @@ namespace BuildingWorks.Services.Interfaces.Workers
     {
         IEnumerable<BrigadeResource> GetByObject(int objectCode);
 
-        IEnumerable<int> GetBrigadesCodes();
+        IEnumerable<int> GetCodes();
     }
 }

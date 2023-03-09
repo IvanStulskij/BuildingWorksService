@@ -6,11 +6,11 @@ namespace BuildingWorksService.Contorllers.Providers
 {
     [ApiController]
     [Route("/api/materials-price")]
-    public class MaterialsPriceController : ControllerBase
+    public class MaterialPriceController : ControllerBase
     {
         private readonly IMaterialsPriceService _service;
 
-        public MaterialsPriceController(IMaterialsPriceService service)
+        public MaterialPriceController(IMaterialsPriceService service)
         {
             _service = service;
         }
@@ -24,9 +24,14 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(MaterialsPriceResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var entitiy = await _service.GetById(id);
+            MaterialsPriceResource price = await _service.GetById(id);
 
-            return Ok(entitiy);
+            if (price == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
+
+            return Ok(price);
         }
 
         /// <summary>
@@ -37,9 +42,9 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(IEnumerable<MaterialsPriceResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var entities = await _service.GetAll();
+            IEnumerable<MaterialsPriceResource> prices = await _service.GetAll();
 
-            return Ok(entities);
+            return Ok(prices);
         }
 
         /// <summary>
@@ -47,19 +52,19 @@ namespace BuildingWorksService.Contorllers.Providers
         /// </summary>
         /// <param name="objectId"> Object id to get contracts-by-material. </param>
         /// <returns> The list of contracts-by-material. </returns>
-        [HttpGet("getMaterialsContracts")]
+        [HttpGet("getByObject")]
         [ProducesResponseType(typeof(IEnumerable<MaterialsPriceResource>), StatusCodes.Status200OK)]
-        public IActionResult GetMaterialsContracts([FromQuery] int objectId)
+        public IActionResult GetByObject([FromQuery] int objectId)
         {
-            var entities = _service.GetMaterialsContracts(objectId);
+            var entities = _service.GetByObject(objectId);
             return Ok(entities);
         }
 
         [HttpGet("getByObject")]
         [ProducesResponseType(typeof(float), StatusCodes.Status200OK)]
-        public IActionResult GetByObject([FromQuery] int objectId)
+        public IActionResult CountPrice([FromQuery] int objectId)
         {
-            var price = _service.GetByObject(objectId);
+            var price = _service.CountPrice(objectId);
             return Ok(price);
         }
 
@@ -99,7 +104,7 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(MaterialsPriceResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] MaterialsPriceResource resource)
         {
-            var response = await _service.Update(resource.Id, resource);
+            var response = await _service.Update(resource);
             return Ok(response);
         }
     }

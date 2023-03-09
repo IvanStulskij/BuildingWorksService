@@ -15,6 +15,6 @@ namespace BuildingWorks.Models.Resources.Plans
 
         public float Price { get; set; }
 
-        public string Plan { get; set; }
+        public int PlanId { get; set; }
     }
 }

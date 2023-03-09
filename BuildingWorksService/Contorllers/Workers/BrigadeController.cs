@@ -26,6 +26,11 @@ namespace BuildingWorksService.Contorllers.Workers
         {
             var brigade = await _service.GetById(id);
 
+            if (brigade == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
+
             return Ok(brigade);
         }
 
@@ -53,6 +58,11 @@ namespace BuildingWorksService.Contorllers.Workers
         {
             var brigades = _service.GetByObject(objectId);
 
+            if (brigades == null || !brigades.Any())
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
+
             return Ok(brigades);
         }
 
@@ -62,9 +72,9 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> The list of brigades codes. </returns>
         [HttpGet("getCodes")]
         [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
-        public IActionResult GetBrigadesCodes()
+        public IActionResult GetCodes()
         {
-            var codes = _service.GetBrigadesCodes();
+            var codes = _service.GetCodes();
 
             return Ok(codes);
         }
@@ -78,9 +88,9 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(BrigadeResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] BrigadeForm form)
         {
-            var response = await _service.Create(form);
+            var brigade = await _service.Create(form);
 
-            return Ok(response);
+            return Ok(brigade);
         }
 
         /// <summary>
@@ -92,8 +102,8 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
-            return Ok(response);
+            var brigade = await _service.Delete(id);
+            return Ok(brigade);
         }
 
         /// <summary>
@@ -105,7 +115,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(BrigadeResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] BrigadeResource brigade)
         {
-            var response = await _service.Update(brigade.Id, brigade);
+            var response = await _service.Update(brigade);
             return Ok(response);
         }
     }

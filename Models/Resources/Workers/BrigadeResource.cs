@@ -9,8 +9,8 @@ namespace BuildingWorks.Models.Resources.Workers
 
     public class BrigadeForm
     {
-        public string BuildingObject { get; set; }
+        public int ObjectId { get; set; }
 
-        public string Brigadier { get; set; }
+        public int BrigadierId { get; set; }
     }
 }

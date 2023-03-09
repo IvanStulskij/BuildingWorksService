@@ -24,9 +24,14 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(ProviderResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var activity = await _service.GetById(id);
+            var provider = await _service.GetById(id);
 
-            return Ok(activity);
+            if (provider == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
+
+            return Ok(provider);
         }
 
         /// <summary>
@@ -78,7 +83,7 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(ProviderResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] ProviderResource provider)
         {
-            var response = await _service.Update(provider.Id, provider);
+            var response = await _service.Update(provider);
             return Ok(response);
         }
     }

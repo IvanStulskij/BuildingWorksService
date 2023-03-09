@@ -1,8 +1,7 @@
-﻿using BuildingWorks.Databasable;
+﻿using BuildingWorks.Common.Exceptions;
+using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Workers;
 using BuildingWorks.Repositories.Abstractions.Workers;
-using BuildingWorks.Repositories.Implementations;
-using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations.Workers
 {
@@ -12,19 +11,20 @@ namespace BuildingWorks.Repositories.Implementations.Workers
         {
         }
 
-        public async Task<WorkerSalary> GetById(int id)
-        {
-            return await _context.WorkersSalaries.FirstOrDefaultAsync(workerSalary => workerSalary.Id == id);
-        }
-
-        public float GetObjectTotalSalaries(int objectCode)
+        public float GetTotalSalaries(int objectCode)
         {
             IEnumerable<Brigade> brigades = _context.Brigades.Where(brigade => brigade.ObjectId == objectCode);
+
+            if (brigades == null || !brigades.Any())
+            {
+                throw new EntityNotFoundException();
+            }
+            
             float totalSalariesAmount = 0;
 
-            foreach (var brigade in brigades)
+            foreach (Brigade brigade in brigades)
             {
-                foreach (var worker in brigade.Workers)
+                foreach (Worker worker in brigade.Workers)
                 {
                     IEnumerable<WorkerSalary> workerSalaries = worker.WorkersSalaries;
                     float workerSalaryByPeriod = 0;

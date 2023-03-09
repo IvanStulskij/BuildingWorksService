@@ -27,8 +27,14 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var activity = await _service.GetById(id);
-            return Ok(activity);
+            PlanResource plan = await _service.GetById(id);
+
+            if (plan == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
+
+            return Ok(plan);
         }
 
         /// <summary>
@@ -39,8 +45,9 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(List<PlanResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var response = await _service.GetAll();
-            return Ok(response);
+            IEnumerable<PlanResource> plans = await _service.GetAll();
+
+            return Ok(plans);
         }
 
         /// <summary>
@@ -51,8 +58,9 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPropertiesNames()
         {
-            var response = await _service.GetPropertiesNames();
-            return Ok(response);
+            IEnumerable<string> propertiesNames = await _service.GetPropertiesNames();
+
+            return Ok(propertiesNames);
         }
 
         /// <summary>
@@ -61,10 +69,16 @@ namespace BuildingWorksService.Contorllers.Plans
         /// <returns> The list of plans by condition </returns>
         [HttpGet("getByCondition")]
         [ProducesResponseType(typeof(List<Plan>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetByCondition([FromQuery] Condition condition)
+        public IActionResult GetByCondition([FromQuery] Condition condition)
         {
-            var response = await _service.GetByCondition(condition, TablesNames.PlansName);
-            return Ok(response);
+            IEnumerable<Plan> plans = _service.GetByCondition(condition, TablesNames.PlansName);
+
+            if (plans == null || !plans.Any())
+            {
+                return NotFound(ExceptionMessages.EntityByConditionNotExists);
+            }
+
+            return Ok(plans);
         }
 
         /// <summary>
@@ -76,8 +90,9 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] PlanForm resource)
         {
-            var response = await _service.Create(resource);
-            return Ok(response);
+            PlanResource plan = await _service.Create(resource);
+
+            return Ok(plan);
         }
 
         /// <summary>
@@ -89,8 +104,9 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
-            return Ok(response);
+            PlanResource plan = await _service.Delete(id);
+
+            return Ok(plan);
         }
 
         /// <summary>
@@ -102,7 +118,8 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] PlanResource resource)
         {
-            var response = await _service.Update(resource.Id, resource);
+            PlanResource response = await _service.Update(resource);
+
             return Ok(response);
         }
     }

@@ -27,6 +27,11 @@ namespace BuildingWorksService.Contorllers.Workers
         {
             var worker = await _service.GetById(id);
 
+            if (worker == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
+
             return Ok(worker);
         }
 
@@ -53,6 +58,12 @@ namespace BuildingWorksService.Contorllers.Workers
         public IActionResult GetByBrigade([FromQuery] int brigadeCode)
         {
             var workers = _service.GetByBrigade(brigadeCode);
+
+            if (workers == null || !workers.Any())
+            {
+                return NotFound("There are no workers for those brigade");
+            }
+
             return Ok(workers);
         }
 
@@ -66,6 +77,12 @@ namespace BuildingWorksService.Contorllers.Workers
         public IActionResult GetByCondition([FromBody] Condition condition)
         {
             var workers = _service.GetByCondition(condition);
+
+            if (workers == null || !workers.Any())
+            {
+                return NotFound("There are no workers for those condition");
+            }
+
             return Ok(workers);
         }
 
@@ -105,7 +122,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(WorkerResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] WorkerResource provider)
         {
-            var response = await _service.Update(provider.Id, provider);
+            var response = await _service.Update(provider);
             return Ok(response);
         }
     }
