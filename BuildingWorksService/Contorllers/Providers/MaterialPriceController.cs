@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Models.Resources.Providers;
+﻿using BuildingWorks.Models;
+using BuildingWorks.Models.Resources.Providers;
 using BuildingWorks.Services.Interfaces.Providers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,9 +41,9 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <returns> The list of contracts-by-material. </returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<MaterialsPriceResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            IEnumerable<MaterialsPriceResource> prices = await _service.GetAll();
+            IEnumerable<MaterialsPriceResource> prices = await _service.GetAll(pagination);
 
             return Ok(prices);
         }

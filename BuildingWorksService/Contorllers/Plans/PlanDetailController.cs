@@ -1,4 +1,5 @@
 ﻿using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Models;
 using BuildingWorks.Models.Resources.Plans;
 using BuildingWorks.Services.Interfaces.Plans;
 using Microsoft.AspNetCore.Mvc;
@@ -41,9 +42,9 @@ namespace BuildingWorksService.Contorllers.Plans
         /// <returns> The list of all plan-details. </returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<PlanDetailResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            IEnumerable<PlanDetailResource> planDetails = await _service.GetAll();
+            IEnumerable<PlanDetailResource> planDetails = await _service.GetAll(pagination);
             
             return Ok(planDetails);
         }

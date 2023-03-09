@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BuildingWorks.Models.Resources.Providers;
 using BuildingWorks.Services.Interfaces.Providers;
+using BuildingWorks.Models;
 
 namespace BuildingWorksService.Contorllers.Providers
 {
@@ -40,9 +41,9 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <returns> The list of providers. </returns>
         [HttpGet]
         [ProducesResponseType(typeof(List<ProviderResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            var providers = await _service.GetAll();
+            var providers = await _service.GetAll(pagination);
 
             return Ok(providers);
         }

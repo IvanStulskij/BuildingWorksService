@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Models.Resources.BuildingObject.Addresses;
+﻿using BuildingWorks.Models;
+using BuildingWorks.Models.Resources.BuildingObject.Addresses;
 using BuildingWorks.Services.Interfaces.BuildingObjects;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,9 +41,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         /// <returns> The list of towns. </returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<TownResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            IEnumerable<TownResource> towns = await _service.GetAll();
+            IEnumerable<TownResource> towns = await _service.GetAll(pagination);
 
             return Ok(towns);
         }
