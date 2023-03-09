@@ -25,8 +25,14 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanDetailResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var activity = await _service.GetById(id);
-            return Ok(activity);
+            PlanDetailResource planDetail = await _service.GetById(id);
+
+            if (planDetail == null)
+            {
+                return NotFound("Entity with such id doesn't exist");
+            }
+
+            return Ok(planDetail);
         }
 
         /// <summary>
@@ -37,8 +43,9 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(IEnumerable<PlanDetailResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var response = await _service.GetAll();
-            return Ok(response);
+            IEnumerable<PlanDetailResource> planDetails = await _service.GetAll();
+            
+            return Ok(planDetails);
         }
 
         /// <summary>
@@ -50,8 +57,9 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(float), StatusCodes.Status200OK)]
         public IActionResult CountDonePercent([FromQuery] int planId)
         {
-            var response = _service.CountDonePercent(planId);
-            return Ok(response);
+            float donePercent = _service.CountDonePercent(planId);
+
+            return Ok(donePercent);
         }
 
         /// <summary>
@@ -63,8 +71,14 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(IEnumerable<PlanDetail>), StatusCodes.Status200OK)]
         public IActionResult GetByPlan([FromQuery] int planId)
         {
-            var response = _service.GetByPlan(planId);
-            return Ok(response);
+            IEnumerable<PlanDetailResource> planDetails = _service.GetByPlan(planId);
+
+            if (planDetails == null || !planDetails.Any())
+            {
+                return NotFound("No entities found for that plan");
+            }
+
+            return Ok(planDetails);
         }
 
         /// <summary>
@@ -76,8 +90,14 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanDetail), StatusCodes.Status200OK)]
         public IActionResult GetCompleted([FromBody] IEnumerable<PlanDetail> planDetails)
         {
-            var response = _service.GetCompleted(planDetails);
-            return Ok(response);
+            IEnumerable<PlanDetailResource> completed = _service.GetCompleted(planDetails);
+
+            if (completed == null || !completed.Any())
+            {
+                return NotFound("No completed entities");
+            }
+
+            return Ok(completed);
         }
 
         /// <summary>
@@ -89,8 +109,8 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanDetailResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] PlanDetailForm form)
         {
-            var response = await _service.Create(form);
-            return Ok(response);
+            PlanDetailResource planDetail = await _service.Create(form);
+            return Ok(planDetail);
         }
 
         /// <summary>
@@ -102,8 +122,9 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanDetailResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
-            return Ok(response);
+            PlanDetailResource planDetail = await _service.Delete(id);
+
+            return Ok(planDetail);
         }
 
         /// <summary>
@@ -115,8 +136,9 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanDetailResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] PlanDetailResource resource)
         {
-            var response = await _service.Update(resource);
-            return Ok(response);
+            PlanDetailResource planDetail = await _service.Update(resource);
+
+            return Ok(planDetail);
         }
     }
 }

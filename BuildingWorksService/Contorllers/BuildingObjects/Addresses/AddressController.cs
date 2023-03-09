@@ -24,7 +24,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(AddressResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var address = await _service.GetById(id);
+            AddressResource address = await _service.GetById(id);
+
+            if (address == null)
+            {
+                return NotFound("Entity with such id does't exist");
+            }
 
             return Ok(address);
         }
@@ -37,7 +42,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(IEnumerable<AddressResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var addresses = await _service.GetAll();
+            IEnumerable<AddressResource> addresses = await _service.GetAll();
 
             return Ok(addresses);
         }
@@ -50,7 +55,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(IEnumerable<AddressResource>), StatusCodes.Status200OK)]
         public IActionResult GetByPosition([FromQuery] string regionName, string townName, string streetName)
         {
-            var address = _service.GetByPosition(regionName, townName, streetName);
+            AddressResource address = _service.GetByPosition(regionName, townName, streetName);
+
+            if (address == null)
+            {
+                return NotFound("Entity with such params does't exist");
+            }
 
             return Ok(address);
         }
@@ -64,7 +74,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(AddressResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] AddressForm form)
         {
-            var response = await _service.Create(form);
+            AddressResource response = await _service.Create(form);
 
             return Ok(response);
         }
@@ -78,7 +88,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(AddressResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
+            AddressResource response = await _service.Delete(id);
 
             return Ok(response);
         }
@@ -92,7 +102,8 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(AddressResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] AddressResource resource)
         {
-            var response = await _service.Update(resource);
+            AddressResource response = await _service.Update(resource);
+
             return Ok(response);
         }
     }

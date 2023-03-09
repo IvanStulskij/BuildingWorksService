@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Databasable.Entities.Workers;
+﻿using BuildingWorks.Databasable.Entities.Providers;
+using BuildingWorks.Databasable.Entities.Workers;
 using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,11 @@ namespace BuildingWorksService.Contorllers.Workers
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var workerSalary = await _service.GetById(id);
+
+            if (workerSalary == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
 
             return Ok(workerSalary);
         }
@@ -63,7 +69,7 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <param name="form"> Form to create worker-salary. </param>
         /// <returns> Created worker-salary. </returns>
         [HttpPost]
-        [ProducesResponseType(typeof(WorkerSalary), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(WorkerSalaryResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] WorkerSalaryForm form)
         {
             var response = await _service.Create(form);

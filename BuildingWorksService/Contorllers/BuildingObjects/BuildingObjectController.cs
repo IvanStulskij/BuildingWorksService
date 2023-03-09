@@ -24,7 +24,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         [ProducesResponseType(typeof(BuildingObjectResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var buildingObject = await _service.GetById(id);
+            BuildingObjectResource buildingObject = await _service.GetById(id);
+
+            if (buildingObject == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
 
             return Ok(buildingObject);
         }
@@ -37,7 +42,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         [ProducesResponseType(typeof(IEnumerable<BuildingObjectResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var buildingObjects = await _service.GetAll();
+            IEnumerable<BuildingObjectResource> buildingObjects = await _service.GetAll();
 
             return Ok(buildingObjects);
         }
@@ -48,12 +53,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         /// <param name="form"> Form to create building object. </param>
         /// <returns> Created building-object. </returns>
         [HttpPost]
-        [ProducesResponseType(typeof(BuildingObjectResource), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(BuildingObjectResource), StatusCodes.Status201Created)]
         public async Task<IActionResult> Create([FromBody] BuildingObjectForm form)
         {
-            var response = await _service.Create(form);
+            BuildingObjectResource buildingObject = await _service.Create(form);
 
-            return Ok(response);
+            return Ok(buildingObject);
         }
 
         /// <summary>
@@ -62,12 +67,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         /// <param name="id"> Id to delete building-object. </param>
         /// <returns> Deleted building-object. </returns>
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(BuildingObjectResource), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(BuildingObjectResource), StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
+            BuildingObjectResource buildingObject = await _service.Delete(id);
 
-            return Ok(response);
+            return Ok(buildingObject);
         }
 
         /// <summary>
@@ -79,8 +84,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         [ProducesResponseType(typeof(BuildingObjectResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] BuildingObjectResource resource)
         {
-            var response = await _service.Update(resource);
-            return Ok(response);
+            BuildingObjectResource buildingObject = await _service.Update(resource);
+
+            return Ok(buildingObject);
         }
     }
 }

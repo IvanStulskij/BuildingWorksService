@@ -24,7 +24,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(RegionResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var region = await _service.GetById(id);
+            RegionResource region = await _service.GetById(id);
+
+            if (region == null)
+            {
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
+            }
 
             return Ok(region);
         }
@@ -37,7 +42,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(IEnumerable<RegionResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var regions = await _service.GetAll();
+            IEnumerable<RegionResource> regions = await _service.GetAll();
 
             return Ok(regions);
         }
@@ -51,9 +56,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(RegionResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] RegionForm form)
         {
-            var response = await _service.Create(form);
+            RegionResource region = await _service.Create(form);
 
-            return Ok(response);
+            return Ok(region);
         }
 
         /// <summary>
@@ -65,7 +70,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(RegionResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
+            RegionResource response = await _service.Delete(id);
 
             return Ok(response);
         }
@@ -79,7 +84,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         [ProducesResponseType(typeof(RegionResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] RegionResource resource)
         {
-            var response = await _service.Update(resource);
+            RegionResource response = await _service.Update(resource);
 
             return Ok(response);
         }
