@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using BuildingWorks.Common.Extensions;
 using BuildingWorks.Databasable;
+using BuildingWorks.Models;
 using BuildingWorks.Repositories.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,9 +18,10 @@ namespace BuildingWorks.Repositories.Implementations
             _set = context.Set<T>();
         }
 
-        public IQueryable<T> Get()
+        public IQueryable<T> Get(PaginationParameters pagination)
         {
-            return _set;
+            return _set
+                .Take((pagination.EntitiesPerPage * (pagination.CurrentPage - 1))..(pagination.EntitiesPerPage * pagination.CurrentPage));
         }
 
         public async Task<T> Insert(T entity)

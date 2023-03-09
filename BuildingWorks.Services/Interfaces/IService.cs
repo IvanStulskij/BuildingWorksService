@@ -1,8 +1,10 @@
-﻿namespace BuildingWorks.Services.Interfaces
+﻿using BuildingWorks.Models;
+
+namespace BuildingWorks.Services.Interfaces
 {
     public interface IService<TResource, TResourceForm> where TResource : class
     {
-        Task<IEnumerable<TResource>> GetAll();
+        Task<IEnumerable<TResource>> GetAll(PaginationParameters pagination);
 
         Task<TResource> GetById(int id);
 
