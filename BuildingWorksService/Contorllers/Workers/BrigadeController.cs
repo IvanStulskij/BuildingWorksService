@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BuildingWorksService.Contorllers.Workers
 {
     [ApiController]
-    [Route("/api/brigades")]
+    [Route("/api/v1/brigades")]
     public class BrigadeController : ControllerBase
     {
         private readonly IBrigadeService _service;

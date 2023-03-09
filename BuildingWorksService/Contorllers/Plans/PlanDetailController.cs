@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BuildingWorksService.Contorllers.Plans
 {
     [ApiController]
-    [Route("/api/plan-details")]
+    [Route("/api/v1/plan-details")]
     public class PlanDetailController : ControllerBase
     {
         private readonly IPlanDetailsService _service;

@@ -7,7 +7,7 @@ using Models;
 namespace BuildingWorksService.Contorllers.Workers
 {
     [ApiController]
-    [Route("/api/workers")]
+    [Route("/api/v1/workers")]
     public class WorkerController : ControllerBase
     {
         private readonly IWorkerService _service;

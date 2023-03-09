@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BuildingWorksService.Contorllers.Providers
 {
     [ApiController]
-    [Route("/api/materials")]
+    [Route("/api/v1/materials")]
     public class MaterialController : ControllerBase
     {
         private readonly IMaterialService _service;

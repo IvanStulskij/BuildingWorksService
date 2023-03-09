@@ -1,14 +1,11 @@
-﻿using BuildingWorks.Databasable.Entities.Providers;
-using BuildingWorks.Databasable.Entities.Workers;
-using BuildingWorks.Models;
-using BuildingWorks.Models.Resources.Workers;
+﻿using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildingWorksService.Contorllers.Workers
 {
     [ApiController]
-    [Route("/api/workers-salaries")]
+    [Route("/api/v1/workers-salaries")]
     public class WorkerSalaryController : ControllerBase
     {
         private readonly IWorkerSalaryService _service;

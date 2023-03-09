@@ -6,7 +6,7 @@ using BuildingWorks.Models;
 namespace BuildingWorksService.Contorllers.Providers
 {
     [ApiController]
-    [Route("/api/providers")]
+    [Route("/api/v1/providers")]
     public class ProviderController : ControllerBase
     {
         private readonly IProviderService _service;

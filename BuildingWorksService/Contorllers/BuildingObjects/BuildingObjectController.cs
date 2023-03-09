@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BuildingWorksService.Contorllers.BuildingObjects
 {
     [ApiController]
-    [Route("/api/building-objects")]
+    [Route("/api/v1/building-objects")]
     public class BuildingObjectController : ControllerBase
     {
         private readonly IBuildingObjectService _service;

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BuildingWorksService.Contorllers.Providers
 {
     [ApiController]
-    [Route("/api/materials-price")]
+    [Route("/api/v1/materials-price")]
     public class MaterialPriceController : ControllerBase
     {
         private readonly IMaterialsPriceService _service;

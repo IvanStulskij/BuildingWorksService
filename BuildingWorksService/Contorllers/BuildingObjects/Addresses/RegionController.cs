@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 {
     [ApiController]
-    [Route("/api/regions")]
+    [Route("/api/v1/regions")]
     public class RegionController : ControllerBase
     {
         private readonly IRegionService _service;

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 {
     [ApiController]
-    [Route("/api/addresses")]
+    [Route("/api/v1/addresses")]
     public class AddressController : ControllerBase
     {
         private readonly IAddressService _service;

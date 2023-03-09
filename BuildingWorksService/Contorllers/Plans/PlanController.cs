@@ -9,7 +9,7 @@ using Models;
 namespace BuildingWorksService.Contorllers.Plans
 {
     [ApiController]
-    [Route("/api/plans")]
+    [Route("/api/v1/plans")]
     public sealed class PlanController : ControllerBase
     {
         private readonly IPlanService _service;

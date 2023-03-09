@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 {
     [ApiController]
-    [Route("/api/towns")]
+    [Route("/api/v1/towns")]
     public class TownController : ControllerBase
     {
         private readonly ITownService _service;
