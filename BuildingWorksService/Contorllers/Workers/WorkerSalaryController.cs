@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Models.Resources.Workers;
+﻿using BuildingWorks.Models;
+using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
 using Microsoft.AspNetCore.Mvc;
 

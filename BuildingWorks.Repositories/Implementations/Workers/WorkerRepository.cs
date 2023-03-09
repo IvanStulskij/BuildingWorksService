@@ -14,9 +14,9 @@ namespace BuildingWorks.Repositories.Implementations.Workers
         {
         }
 
-        public IEnumerable<Worker> GetByBrigade(int brigadeId)
+        public IEnumerable<Worker> GetByBrigade(PaginationParameters pagination, int brigadeId)
         {
-            return Get().Where(worker => worker.BrigadeId == brigadeId);
+            return Get(pagination).Where(worker => worker.BrigadeId == brigadeId);
         }
 
         public IEnumerable<Worker> GetByCondition(Condition conditition)

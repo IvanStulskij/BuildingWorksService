@@ -1,5 +1,6 @@
 ﻿using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Workers;
+using BuildingWorks.Models;
 using BuildingWorks.Repositories.Abstractions.Workers;
 
 namespace BuildingWorks.Repositories.Implementations.Workers
@@ -16,9 +17,9 @@ namespace BuildingWorks.Repositories.Implementations.Workers
                 .Where(buildingObject => buildingObject.ObjectId == objectId);
         }
 
-        public IEnumerable<int> GetCodes()
+        public IEnumerable<int> GetCodes(PaginationParameters pagination)
         {
-            return Get().Select(brigade => brigade.Id);
+            return Get(pagination).Select(brigade => brigade.Id);
         }
     }
 }

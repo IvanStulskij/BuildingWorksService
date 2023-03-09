@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Models.Resources.Workers;
+﻿using BuildingWorks.Models;
+using BuildingWorks.Models.Resources.Workers;
 
 namespace BuildingWorks.Services.Interfaces.Workers
 {
@@ -6,6 +7,6 @@ namespace BuildingWorks.Services.Interfaces.Workers
     {
         IEnumerable<BrigadeResource> GetByObject(int objectCode);
 
-        IEnumerable<int> GetCodes();
+        IEnumerable<int> GetCodes(PaginationParameters pagination);
     }
 }

@@ -73,9 +73,9 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> The list of brigades codes. </returns>
         [HttpGet("getCodes")]
         [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
-        public IActionResult GetCodes()
+        public IActionResult GetCodes([FromQuery] PaginationParameters pagination)
         {
-            var codes = _service.GetCodes();
+            var codes = _service.GetCodes(pagination);
 
             return Ok(codes);
         }

@@ -56,10 +56,10 @@ namespace BuildingWorks.Services.Implementations
             return Mapper.Map<TResource>(entity);
         }
 
-        public async Task<IEnumerable<TResource>> GetAll()
+        public async Task<IEnumerable<TResource>> GetAll(PaginationParameters pagination)
         {
             return await Repository
-                .Get()
+                .Get(pagination)
                 .OrderBy(x => x.Id)
                 .ProjectTo<TResource>(Mapper)
                 .ToListAsync();

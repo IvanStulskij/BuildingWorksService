@@ -72,7 +72,7 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(IEnumerable<PlanDetail>), StatusCodes.Status200OK)]
         public IActionResult GetByPlan([FromQuery] int planId)
         {
-            IEnumerable<PlanDetailResource> planDetails = _service.GetByPlan(planId);
+            IEnumerable<PlanDetail> planDetails = _service.GetByPlan(planId);
 
             if (planDetails == null || !planDetails.Any())
             {
@@ -91,7 +91,7 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(PlanDetail), StatusCodes.Status200OK)]
         public IActionResult GetCompleted([FromBody] IEnumerable<PlanDetail> planDetails)
         {
-            IEnumerable<PlanDetailResource> completed = _service.GetCompleted(planDetails);
+            IEnumerable<PlanDetail> completed = _service.GetCompleted(planDetails);
 
             if (completed == null || !completed.Any())
             {

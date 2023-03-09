@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Workers;
+using BuildingWorks.Models;
 using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Repositories.Abstractions.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
@@ -23,9 +24,9 @@ namespace BuildingWorks.Services.Implementations.Workers
             return Mapper.Map<IEnumerable<BrigadeResource>>(Repository.GetObjectBrigades(objectId));
         }
 
-        public IEnumerable<int> GetCodes()
+        public IEnumerable<int> GetCodes(PaginationParameters pagination)
         {
-            return Repository.GetCodes();
+            return Repository.GetCodes(pagination);
         }
     }
 }
