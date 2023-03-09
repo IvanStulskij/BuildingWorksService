@@ -14,8 +14,8 @@ namespace BuildingWorks.Repositories.Implementations.Plans
 
         public float CountDonePercent(int planId)
         {
-            IEnumerable<PlanDetail> plansDetails = FindByPlan(planId);
-            IEnumerable<PlanDetail> donePlanDetails = FindCompleted(plansDetails);
+            IEnumerable<PlanDetail> plansDetails = GetByPlan(planId);
+            IEnumerable<PlanDetail> donePlanDetails = GetCompleted(plansDetails);
 
             float totalCount = Convert.ToSingle(plansDetails.Count());
             float doneCount = Convert.ToSingle(donePlanDetails.Count());
@@ -25,13 +25,13 @@ namespace BuildingWorks.Repositories.Implementations.Plans
             return MathF.Round(planBenefit.Count() * 100, MathConstants.DigitsToOutput);
         }
 
-        public IEnumerable<PlanDetail> FindByPlan(int planId)
+        public IEnumerable<PlanDetail> GetByPlan(int planId)
         {
             return _context.PlansDetails
                 .Where(planDetail => planDetail.PlanId == planId);
         }
 
-        public IEnumerable<PlanDetail> FindCompleted(IEnumerable<PlanDetail> planDetails)
+        public IEnumerable<PlanDetail> GetCompleted(IEnumerable<PlanDetail> planDetails)
         {
             return planDetails.Where(planDetail => planDetail.IsCompleted);
         }
