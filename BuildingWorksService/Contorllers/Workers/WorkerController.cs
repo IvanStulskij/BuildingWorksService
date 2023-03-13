@@ -56,9 +56,9 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> The list of workers by brigade. </returns>
         [HttpGet("getByBrigade")]
         [ProducesResponseType(typeof(IEnumerable<WorkerResource>), StatusCodes.Status200OK)]
-        public IActionResult GetByBrigade([FromQuery] int brigadeCode)
+        public IActionResult GetByBrigade([FromRoute] PaginationParameters pagination, [FromQuery] int brigadeCode)
         {
-            var workers = _service.GetByBrigade(brigadeCode);
+            var workers = _service.GetByBrigade(pagination, brigadeCode);
 
             if (workers == null || !workers.Any())
             {

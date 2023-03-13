@@ -7,8 +7,8 @@ namespace BuildingWorks.Services.Interfaces.Plans
     {
         float CountDonePercent(int planId);
 
-        IEnumerable<PlanDetailResource> GetByPlan(int planId);
+        IEnumerable<PlanDetail> GetByPlan(int planId);
 
-        IEnumerable<PlanDetailResource> GetCompleted(IEnumerable<PlanDetail> planDetails);
+        IEnumerable<PlanDetail> GetCompleted(IEnumerable<PlanDetail> planDetails);
     }
 }

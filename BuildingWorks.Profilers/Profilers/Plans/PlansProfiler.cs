@@ -1,16 +1,13 @@
-﻿using AutoMapper;
-using BuildingWorks.Databasable.Entities.Plans;
+﻿using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Models.Overview;
 using BuildingWorks.Models.Resources.Plans;
 
 namespace BuildingWorks.Profilers.Profilers.Plans
 {
-    public class PlansProfiler : Profile
+    public class PlansProfiler : BaseOverviewProfiler<Plan, PlanForm, PlanResource, PlanOverview>
     {
-        public PlansProfiler()
+        protected override void ConfigureOverviewProfiling()
         {
-            CreateMap<Plan, PlanResource>().ReverseMap();
-            CreateMap<Plan, PlanForm>().ReverseMap();
             CreateMap<Plan, PlanOverview>()
                 .ForMember(x => x.CompleteTime, c => c.MapFrom(x => x.CompleteTime))
                 .ForMember(x => x.IsCompleted, c => c.MapFrom(x => x.IsCompleted))

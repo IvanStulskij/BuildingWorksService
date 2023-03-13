@@ -5,12 +5,10 @@ using BuildingWorks.Models.Resources.Providers;
 
 namespace BuildingWorks.Profilers.Profilers.Providers
 {
-    public class MaterialProfiler : Profile
+    public class MaterialProfiler : BaseOverviewProfiler<Material, MaterialForm, MaterialResource, MaterialOverivew>
     {
-        public MaterialProfiler()
+        protected override void ConfigureOverviewProfiling()
         {
-            CreateMap<Material, MaterialForm>().ReverseMap();
-            CreateMap<Material, MaterialResource>().ReverseMap();
             CreateMap<Material, MaterialOverivew>()
                 .ForMember(x => x.Name, c => c.MapFrom(x => x.Name))
                 .ForMember(x => x.Measure, c => c.MapFrom(x => x.Measure))
