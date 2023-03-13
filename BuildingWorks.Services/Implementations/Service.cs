@@ -141,4 +141,24 @@ namespace BuildingWorks.Services.Implementations
                 .AsNoTracking();
         }
     }
+
+    public abstract class OverviewService<T, TResource, TForm, TOverview> : Service<T, TResource, TForm>,
+        
+        IOverviewService<TResource, TForm, TOverview>
+        where T : class, IPersistable<int>
+        where TResource : class, IResource
+        where TForm : class
+    {
+        public OverviewService(BuildingWorksDbContext context, IMapper mapper) : base(context, mapper)
+        {
+        }
+
+        public async Task<IEnumerable<TOverview>> GetAllOverview(PaginationParameters pagination)
+        {
+            return Repository
+                .Get(pagination)
+                .OrderBy(x => x.Id)
+                .ProjectTo<TOverview>(Mapper);
+        }
+    }
 }
