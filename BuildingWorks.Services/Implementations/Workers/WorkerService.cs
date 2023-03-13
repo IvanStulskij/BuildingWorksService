@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Workers;
+using BuildingWorks.Models;
 using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Repositories.Abstractions.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
@@ -19,9 +20,9 @@ namespace BuildingWorks.Services.Implementations.Workers
 
         public override IWorkerRepository Repository { get; }
 
-        public IEnumerable<WorkerResource> GetByBrigade(int brigadeId)
+        public IEnumerable<WorkerResource> GetByBrigade(PaginationParameters pagination, int brigadeId)
         {
-            return Mapper.Map<IEnumerable<WorkerResource>>(Repository.GetByBrigade(brigadeId));
+            return Mapper.Map<IEnumerable<WorkerResource>>(Repository.GetByBrigade(pagination, brigadeId));
         }
 
         public IEnumerable<WorkerResource> GetByCondition(Condition condition)

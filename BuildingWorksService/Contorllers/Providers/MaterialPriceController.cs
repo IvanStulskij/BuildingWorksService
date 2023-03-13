@@ -54,14 +54,14 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <param name="objectId"> Object id to get contracts-by-material. </param>
         /// <returns> The list of contracts-by-material. </returns>
         [HttpGet("getByObject")]
-        [ProducesResponseType(typeof(IEnumerable<MaterialsPriceResource>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<MaterialsPriceForm>), StatusCodes.Status200OK)]
         public IActionResult GetByObject([FromQuery] int objectId)
         {
             var entities = _service.GetByObject(objectId);
             return Ok(entities);
         }
 
-        [HttpGet("getByObject")]
+        [HttpGet("countPrice")]
         [ProducesResponseType(typeof(float), StatusCodes.Status200OK)]
         public IActionResult CountPrice([FromQuery] int objectId)
         {

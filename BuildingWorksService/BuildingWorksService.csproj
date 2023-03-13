@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BuildingWorks.Databasable\BuildingWorks.Databasable.csproj" />
+    <ProjectReference Include="..\BuildingWorks.Profilers\BuildingWorks.Profilers.csproj" />
     <ProjectReference Include="..\BuildingWorks.Services\BuildingWorks.Services.csproj" />
     <ProjectReference Include="..\Models\BuildingWorks.Models.csproj" />
   </ItemGroup>
