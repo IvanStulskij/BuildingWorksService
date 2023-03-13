@@ -1,6 +1,6 @@
 ﻿namespace BuildingWorks.Models
 {
-    public abstract class PaginationParameters
+    public class PaginationParameters
     {
         public int EntitiesPerPage { get; set; }
 

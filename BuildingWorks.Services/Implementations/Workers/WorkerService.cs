@@ -20,7 +20,7 @@ namespace BuildingWorks.Services.Implementations.Workers
 
         public override IWorkerRepository Repository { get; }
 
-        public IEnumerable<WorkerResource> GetByBrigade(PaginationParameters pagination,int brigadeId)
+        public IEnumerable<WorkerResource> GetByBrigade(PaginationParameters pagination, int brigadeId)
         {
             return Mapper.Map<IEnumerable<WorkerResource>>(Repository.GetByBrigade(pagination, brigadeId));
         }

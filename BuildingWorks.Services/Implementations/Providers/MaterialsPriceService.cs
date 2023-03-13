@@ -19,12 +19,12 @@ namespace BuildingWorks.Services.Implementations.Providers
 
         public float CountPrice(int objectId)
         {
-            return Repository.CountMaterialsPrice(objectId);
+            return Repository.CountPrice(objectId);
         }
 
         public IEnumerable<MaterialsPriceForm> GetByObject(int objectId)
         {
-            return Mapper.Map<IEnumerable<MaterialsPriceForm>>(Repository.GetMaterialsContracts(objectId));
+            return Mapper.Map<IEnumerable<MaterialsPriceForm>>(Repository.GetByObject(objectId));
         }
     }
 }

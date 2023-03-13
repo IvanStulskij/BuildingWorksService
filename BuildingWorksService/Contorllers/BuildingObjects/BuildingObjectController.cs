@@ -41,7 +41,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         /// <returns> The list of building-objects. </returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<BuildingObjectResource>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
+        public async Task<IActionResult> GetAll([FromQuery] PaginationParameters pagination)
         {
             IEnumerable<BuildingObjectResource> buildingObjects = await _service.GetAll(pagination);
 

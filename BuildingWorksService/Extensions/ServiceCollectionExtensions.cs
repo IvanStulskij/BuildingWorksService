@@ -1,4 +1,6 @@
-﻿using BuildingWorks.Repositories.Abstractions.Addresses;
+﻿using AutoMapper;
+using BuildingWorks.Profilers.Profilers.BuildingObjects;
+using BuildingWorks.Repositories.Abstractions.Addresses;
 using BuildingWorks.Repositories.Abstractions.BuildingObjects;
 using BuildingWorks.Repositories.Abstractions.Plans;
 using BuildingWorks.Repositories.Abstractions.Providers;
@@ -61,7 +63,7 @@ namespace BuildingWorksService.Extensions
         {
             var assemblyTypes = new[]
             {
-                typeof(AssemblyInfo)
+                typeof(BuildingObjectProfiler)
             };
 
             services.AddAutoMapper(assemblyTypes);

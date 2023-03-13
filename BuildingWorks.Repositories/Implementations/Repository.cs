@@ -20,8 +20,9 @@ namespace BuildingWorks.Repositories.Implementations
 
         public IQueryable<T> Get(PaginationParameters pagination)
         {
-            return _set
-                .Take((pagination.EntitiesPerPage * (pagination.CurrentPage - 1))..(pagination.EntitiesPerPage * pagination.CurrentPage));
+            var entitiesByPage = _set.ToList().Take((pagination.EntitiesPerPage * (pagination.CurrentPage - 1))..(pagination.EntitiesPerPage * pagination.CurrentPage));
+            
+            return entitiesByPage.AsQueryable();
         }
 
         public async Task<T> Insert(T entity)

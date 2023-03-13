@@ -11,15 +11,15 @@ namespace BuildingWorks.Repositories.Implementations.Providers
         {
         }
 
-        public IEnumerable<ContractsByMaterials> GetMaterialsContracts(int objectId)
+        public IEnumerable<ContractsByMaterials> GetByObject(int objectId)
         {
             return _context.ContractsByMaterials
                 .Where(contractPart => contractPart.BuildingObjectId == objectId);
         }
 
-        public float CountMaterialsPrice(int objectId)
+        public float CountPrice(int objectId)
         {
-            IEnumerable<ContractsByMaterials> contractsByMaterials = GetMaterialsContracts(objectId).AsQueryable().IncludeMaterials();
+            IEnumerable<ContractsByMaterials> contractsByMaterials = GetByObject(objectId).AsQueryable().IncludeMaterials();
 
             return (float)contractsByMaterials
                 .Select(contractsByMaterial => contractsByMaterial.Material.PricePerOne * contractsByMaterial.Amount).Sum();
