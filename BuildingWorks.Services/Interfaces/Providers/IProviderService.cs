@@ -1,8 +1,9 @@
-﻿using BuildingWorks.Models.Resources.Providers;
+﻿using BuildingWorks.Models.Overview;
+using BuildingWorks.Models.Resources.Providers;
 
 namespace BuildingWorks.Services.Interfaces.Providers
 {
-    public interface IProviderService : IService<ProviderResource, ProviderForm>
+    public interface IProviderService : IOverviewService<ProviderResource, ProviderForm, ProviderOverview>
     {
     }
 }
