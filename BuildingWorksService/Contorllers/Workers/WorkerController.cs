@@ -1,4 +1,6 @@
 ﻿using BuildingWorks.Models;
+using BuildingWorks.Models.Overview;
+using BuildingWorks.Models.Resources.BuildingObject;
 using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +36,19 @@ namespace BuildingWorksService.Contorllers.Workers
             }
 
             return Ok(worker);
+        }
+
+        /// <summary>
+        /// Get all workers overview.
+        /// </summary>
+        /// <returns> The list of workers. </returns>
+        [HttpGet("overview")]
+        [ProducesResponseType(typeof(IEnumerable<WorkerOverview>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllOverview([FromQuery] PaginationParameters pagination)
+        {
+            IEnumerable<WorkerOverview> workers = await _service.GetAllOverview(pagination);
+
+            return Ok(workers);
         }
 
         /// <summary>
