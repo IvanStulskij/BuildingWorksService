@@ -1,16 +1,13 @@
-﻿using AutoMapper;
-using BuildingWorks.Databasable.Entities.Workers;
+﻿using BuildingWorks.Databasable.Entities.Workers;
 using BuildingWorks.Models.Overview;
 using BuildingWorks.Models.Resources.Workers;
 
 namespace BuildingWorks.Profilers.Profilers.Workers
 {
-    public class WorkersProfiler : Profile
+    public class WorkersProfiler : BaseOverviewProfiler<Worker, WorkerForm, WorkerResource, WorkerOverview>
     {
-        public WorkersProfiler()
+        protected override void ConfigureOverviewProfiling()
         {
-            CreateMap<Worker, WorkerResource>().ReverseMap();
-            CreateMap<Worker, WorkerForm>().ReverseMap();
             CreateMap<Worker, WorkerOverview>()
                 .ForMember(x => x.FullName, c => c.MapFrom(x => x.FullName))
                 .ForMember(x => x.StartWorkDate, c => c.MapFrom(x => x.StartWorkDate))

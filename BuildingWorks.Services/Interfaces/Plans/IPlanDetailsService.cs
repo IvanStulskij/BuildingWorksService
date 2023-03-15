@@ -1,9 +1,10 @@
 ﻿using BuildingWorks.Databasable.Entities.Plans;
+using BuildingWorks.Models.Overview;
 using BuildingWorks.Models.Resources.Plans;
 
 namespace BuildingWorks.Services.Interfaces.Plans
 {
-    public interface IPlanDetailsService : IService<PlanDetailResource, PlanDetailForm>
+    public interface IPlanDetailsService : IOverviewService<PlanDetailResource, PlanDetailForm, PlanDetailOverview>
     {
         float CountDonePercent(int planId);
 

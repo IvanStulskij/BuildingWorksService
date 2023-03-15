@@ -14,4 +14,10 @@ namespace BuildingWorks.Services.Interfaces
 
         Task<TResource> Delete(int id);
     }
+
+    public interface IOverviewService<TResource, TResourceForm, TOverview> : IService<TResource, TResourceForm>
+        where TResource : class
+    {
+        Task<IEnumerable<TOverview>> GetAllOverview(PaginationParameters pagination);
+    }
 }

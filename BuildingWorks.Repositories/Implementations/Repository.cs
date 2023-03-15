@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations
 {
-    public abstract class Repository<T, TKey> : IRepository<T> where T : class, IPersistable<int>
+    public abstract class Repository<T, TKey> : IRepository<T> where T : class, IPersistable<int> 
     {
         protected readonly BuildingWorksDbContext _context;
         private readonly DbSet<T> _set;

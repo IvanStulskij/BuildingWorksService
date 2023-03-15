@@ -1,8 +1,9 @@
-﻿using BuildingWorks.Models.Resources.BuildingObject;
+﻿using BuildingWorks.Models.Overview;
+using BuildingWorks.Models.Resources.BuildingObject;
 
 namespace BuildingWorks.Services.Interfaces.BuildingObjects
 {
-    public interface IBuildingObjectService : IService<BuildingObjectResource, BuildingObjectForm>
+    public interface IBuildingObjectService : IOverviewService<BuildingObjectResource, BuildingObjectForm, BuildingObjectOverview>
     {
     }
 }

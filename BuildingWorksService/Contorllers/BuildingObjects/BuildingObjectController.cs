@@ -1,4 +1,5 @@
 ﻿using BuildingWorks.Models;
+using BuildingWorks.Models.Overview;
 using BuildingWorks.Models.Resources.BuildingObject;
 using BuildingWorks.Services.Interfaces.BuildingObjects;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,19 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         public async Task<IActionResult> GetAll([FromQuery] PaginationParameters pagination)
         {
             IEnumerable<BuildingObjectResource> buildingObjects = await _service.GetAll(pagination);
+
+            return Ok(buildingObjects);
+        }
+
+        /// <summary>
+        /// Get all building-objects overview.
+        /// </summary>
+        /// <returns> The list of building-objects. </returns>
+        [HttpGet("overview")]
+        [ProducesResponseType(typeof(IEnumerable<BuildingObjectResource>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllOverview([FromQuery] PaginationParameters pagination)
+        {
+            IEnumerable<BuildingObjectOverview> buildingObjects = await _service.GetAllOverview(pagination);
 
             return Ok(buildingObjects);
         }

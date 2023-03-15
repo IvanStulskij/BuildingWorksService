@@ -2,6 +2,7 @@
 using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Workers;
 using BuildingWorks.Models;
+using BuildingWorks.Models.Overview;
 using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Repositories.Abstractions.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
@@ -10,7 +11,7 @@ using Models;
 namespace BuildingWorks.Services.Implementations.Workers
 {
     public class WorkerService :
-        Service<Worker, WorkerResource, WorkerForm>,
+        OverviewService<Worker, WorkerResource, WorkerForm, WorkerOverview>,
         IWorkerService
     {
         public WorkerService(BuildingWorksDbContext context, IMapper mapper, IWorkerRepository repository) : base(context, mapper)

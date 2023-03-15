@@ -1,4 +1,6 @@
 ﻿using BuildingWorks.Models;
+using BuildingWorks.Models.Overview;
+using BuildingWorks.Models.Resources.BuildingObject;
 using BuildingWorks.Models.Resources.Providers;
 using BuildingWorks.Services.Interfaces.Providers;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +46,19 @@ namespace BuildingWorksService.Contorllers.Providers
         public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
             IEnumerable<MaterialResource> materials = await _service.GetAll(pagination);
+
+            return Ok(materials);
+        }
+
+        /// <summary>
+        /// Get all materials overview.
+        /// </summary>
+        /// <returns> The list of materials. </returns>
+        [HttpGet("overview")]
+        [ProducesResponseType(typeof(IEnumerable<MaterialOverivew>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllOverview([FromQuery] PaginationParameters pagination)
+        {
+            IEnumerable<MaterialOverivew> materials = await _service.GetAllOverview(pagination);
 
             return Ok(materials);
         }

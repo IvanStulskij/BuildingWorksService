@@ -2,6 +2,8 @@
 using BuildingWorks.Models.Resources.Providers;
 using BuildingWorks.Services.Interfaces.Providers;
 using BuildingWorks.Models;
+using BuildingWorks.Models.Overview;
+using BuildingWorks.Models.Resources.BuildingObject;
 
 namespace BuildingWorksService.Contorllers.Providers
 {
@@ -44,6 +46,19 @@ namespace BuildingWorksService.Contorllers.Providers
         public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
             var providers = await _service.GetAll(pagination);
+
+            return Ok(providers);
+        }
+
+        /// <summary>
+        /// Get all providers overview.
+        /// </summary>
+        /// <returns> The list of providers. </returns>
+        [HttpGet("overview")]
+        [ProducesResponseType(typeof(IEnumerable<ProviderOverview>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllOverview([FromQuery] PaginationParameters pagination)
+        {
+            IEnumerable<ProviderOverview> providers = await _service.GetAllOverview(pagination);
 
             return Ok(providers);
         }

@@ -4,11 +4,12 @@ using BuildingWorks.Models.Resources.Providers;
 using BuildingWorks.Services.Interfaces.Providers;
 using BuildingWorks.Databasable;
 using BuildingWorks.Repositories.Abstractions.Providers;
+using BuildingWorks.Models.Overview;
 
 namespace BuildingWorks.Services.Implementations.Providers
 {
     public class ProviderService :
-        Service<Provider, ProviderResource, ProviderForm>,
+        OverviewService<Provider, ProviderResource, ProviderForm, ProviderOverview>,
         IProviderService
     {
         public ProviderService(BuildingWorksDbContext context, IMapper mapper, IProviderRepository repository) : base(context, mapper)

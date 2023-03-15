@@ -1,8 +1,9 @@
-﻿using BuildingWorks.Models.Resources.Providers;
+﻿using BuildingWorks.Models.Overview;
+using BuildingWorks.Models.Resources.Providers;
 
 namespace BuildingWorks.Services.Interfaces.Providers
 {
-    public interface IMaterialService : IService<MaterialResource, MaterialForm>
+    public interface IMaterialService : IOverviewService<MaterialResource, MaterialForm, MaterialOverivew>
     {
     }
 }
