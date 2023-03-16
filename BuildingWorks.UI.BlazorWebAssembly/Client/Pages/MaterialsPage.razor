@@ -1,0 +1,44 @@
+﻿@page "/materials"
+@using BuildingWorks.Models.Overview
+@inject HttpClient Http
+
+
+<h1>Materials</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (materials == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price per one</th>
+                <th>Measure</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var material in materials)
+            {
+                <tr>
+                    <td>@material.Name</td>
+                    <td>@material.PricePerOne</td>
+                    <td>@material.Measure</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private MaterialOverivew[]? materials;
+
+    protected override async Task OnInitializedAsync()
+    {
+        materials = await Http.GetFromJsonAsync<MaterialOverivew[]>("materials/overview?EntitiesPerPage=3&CurrentPage=1");
+    }
+}

@@ -1,14 +1,13 @@
-﻿@page "/fetchdata"
+﻿@page "/providers"
 @using BuildingWorks.Models.Overview
 @inject HttpClient Http
 
 
-
-<h1>Weather forecast</h1>
+<h1>Providers</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (buildingObjects == null)
+@if (providers == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -24,13 +23,12 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var buildingObject in buildingObjects)
+            @foreach (var provider in providers)
             {
                 <tr>
-                    <td>@buildingObject.Name</td>
-                    <td>@buildingObject.Type</td>
-                    <td>@buildingObject.Customer</td>
-                    <td>@buildingObject.Type</td>
+                    <td>@provider.Name</td>
+                    <td>@provider.Country</td>
+                    <td>@provider.AdditionalData</td>
                 </tr>
             }
         </tbody>
@@ -38,10 +36,10 @@ else
 }
 
 @code {
-    private BuildingObjectOverview[]? buildingObjects;
+    private ProviderOverview[]? providers;
 
     protected override async Task OnInitializedAsync()
     {
-        buildingObjects = await Http.GetFromJsonAsync<BuildingObjectOverview[]>("building-objects/overview?EntitiesPerPage=3&CurrentPage=1");
+        providers = await Http.GetFromJsonAsync<ProviderOverview[]>("providers/overview?EntitiesPerPage=3&CurrentPage=1");
     }
 }
