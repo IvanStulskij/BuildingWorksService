@@ -42,6 +42,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        buildingObjects = await Http.GetFromJsonAsync<BuildingObjectOverview[]>("building-objects");
+        buildingObjects = await Http.GetFromJsonAsync<BuildingObjectOverview[]>("building-objects/overview?EntitiesPerPage=3&CurrentPage=1");
     }
 }
