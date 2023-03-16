@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Models;
+﻿using BuildingWorks.Databasable.Entities.BuildingObjects.Address;
+using BuildingWorks.Models;
 using BuildingWorks.Models.Resources.BuildingObject.Addresses;
 using BuildingWorks.Services.Interfaces.BuildingObjects;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,11 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
             IEnumerable<StreetResource> streets = await _service.GetAll(pagination);
+
+            if (streets == null || !streets.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
 
             return Ok(streets);
         }

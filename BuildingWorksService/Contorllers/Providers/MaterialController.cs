@@ -1,6 +1,5 @@
 ﻿using BuildingWorks.Models;
 using BuildingWorks.Models.Overview;
-using BuildingWorks.Models.Resources.BuildingObject;
 using BuildingWorks.Models.Resources.Providers;
 using BuildingWorks.Services.Interfaces.Providers;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +46,11 @@ namespace BuildingWorksService.Contorllers.Providers
         {
             IEnumerable<MaterialResource> materials = await _service.GetAll(pagination);
 
+            if (materials == null || !materials.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
+
             return Ok(materials);
         }
 
@@ -59,6 +63,11 @@ namespace BuildingWorksService.Contorllers.Providers
         public async Task<IActionResult> GetAllOverview([FromQuery] PaginationParameters pagination)
         {
             IEnumerable<MaterialOverivew> materials = await _service.GetAllOverview(pagination);
+
+            if (materials == null || !materials.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
 
             return Ok(materials);
         }

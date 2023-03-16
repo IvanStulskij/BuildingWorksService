@@ -2,7 +2,6 @@
 using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Models;
 using BuildingWorks.Models.Overview;
-using BuildingWorks.Models.Resources.BuildingObject;
 using BuildingWorks.Models.Resources.Plans;
 using BuildingWorks.Services.Interfaces.Plans;
 using Microsoft.AspNetCore.Mvc;
@@ -50,6 +49,11 @@ namespace BuildingWorksService.Contorllers.Plans
         {
             IEnumerable<PlanResource> plans = await _service.GetAll(pagination);
 
+            if (plans == null || !plans.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
+
             return Ok(plans);
         }
 
@@ -62,6 +66,11 @@ namespace BuildingWorksService.Contorllers.Plans
         public async Task<IActionResult> GetAllOverview([FromQuery] PaginationParameters pagination)
         {
             IEnumerable<PlanOverview> plans = await _service.GetAllOverview(pagination);
+
+            if (plans == null || !plans.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
 
             return Ok(plans);
         }

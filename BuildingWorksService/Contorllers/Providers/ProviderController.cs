@@ -3,7 +3,6 @@ using BuildingWorks.Models.Resources.Providers;
 using BuildingWorks.Services.Interfaces.Providers;
 using BuildingWorks.Models;
 using BuildingWorks.Models.Overview;
-using BuildingWorks.Models.Resources.BuildingObject;
 
 namespace BuildingWorksService.Contorllers.Providers
 {
@@ -27,7 +26,7 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(ProviderResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var provider = await _service.GetById(id);
+            ProviderResource provider = await _service.GetById(id);
 
             if (provider == null)
             {
@@ -45,7 +44,12 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(List<ProviderResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            var providers = await _service.GetAll(pagination);
+            IEnumerable<ProviderResource> providers = await _service.GetAll(pagination);
+
+            if (providers == null || !providers.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
 
             return Ok(providers);
         }
@@ -59,6 +63,11 @@ namespace BuildingWorksService.Contorllers.Providers
         public async Task<IActionResult> GetAllOverview([FromQuery] PaginationParameters pagination)
         {
             IEnumerable<ProviderOverview> providers = await _service.GetAllOverview(pagination);
+
+            if (providers == null || !providers.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
 
             return Ok(providers);
         }

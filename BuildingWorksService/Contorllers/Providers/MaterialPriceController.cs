@@ -45,6 +45,11 @@ namespace BuildingWorksService.Contorllers.Providers
         {
             IEnumerable<MaterialsPriceResource> prices = await _service.GetAll(pagination);
 
+            if (prices == null || !prices.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
+
             return Ok(prices);
         }
 
@@ -57,8 +62,9 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(IEnumerable<MaterialsPriceForm>), StatusCodes.Status200OK)]
         public IActionResult GetByObject([FromQuery] int objectId)
         {
-            var entities = _service.GetByObject(objectId);
-            return Ok(entities);
+            IEnumerable<MaterialsPriceForm> prices = _service.GetByObject(objectId);
+
+            return Ok(prices);
         }
 
         [HttpGet("countPrice")]

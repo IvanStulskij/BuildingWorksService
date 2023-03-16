@@ -45,6 +45,11 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
         {
             IEnumerable<TownResource> towns = await _service.GetAll(pagination);
 
+            if (towns == null || !towns.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
+
             return Ok(towns);
         }
 

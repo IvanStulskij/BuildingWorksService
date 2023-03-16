@@ -25,7 +25,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(WorkerSalaryResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var workerSalary = await _service.GetById(id);
+            WorkerSalaryResource workerSalary = await _service.GetById(id);
 
             if (workerSalary == null)
             {
@@ -43,7 +43,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(IEnumerable<WorkerSalaryResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            var salaries = await _service.GetAll(pagination);
+            IEnumerable<WorkerSalaryResource> salaries = await _service.GetAll(pagination);
 
             return Ok(salaries);
         }
@@ -57,7 +57,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(float), StatusCodes.Status200OK)]
         public IActionResult GetTotalByObject([FromQuery] int objectId)
         {
-            var totalSalariesAmount = _service.GetTotalByObject(objectId);
+            var totalSalariesAmount = _service.GetTotalBAmountByObject(objectId);
 
             return Ok(totalSalariesAmount);
         }
