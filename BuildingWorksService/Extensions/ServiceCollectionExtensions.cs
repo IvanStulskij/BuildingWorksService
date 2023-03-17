@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using BuildingWorks.Profilers.Profilers.Addresses;
+﻿using BuildingWorks.Profilers.Profilers.Addresses;
 using BuildingWorks.Profilers.Profilers.BuildingObjects;
 using BuildingWorks.Profilers.Profilers.Contracts;
 using BuildingWorks.Profilers.Profilers.Plans;
@@ -66,25 +65,7 @@ namespace BuildingWorksService.Extensions
 
         public static void AddAutoMapper(this IServiceCollection services)
         {
-            var assemblyTypes = new[]
-            {
-                typeof(BuildingObjectProfiler),
-                typeof(AddressesProfiler),
-                typeof(RegionsProfiler),
-                typeof(TownsProfiler),
-                typeof(StreetsProfiler),
-                typeof(PlanDetailsProfiler),
-                typeof(PlansProfiler),
-                typeof(MaterialProfiler),
-                typeof(MaterialsPriceProfiler),
-                typeof(ProvidersProfiler),
-                typeof(BrigadeProfiler),
-                typeof(WorkerSalaryProfiler),
-                typeof(WorkersProfiler),
-                typeof(ContractsProfiler),
-            };
-
-            services.AddAutoMapper(assemblyTypes);
+            services.AddAutoMapper(AssemblyInfo.Types);
         }
     }
 }
