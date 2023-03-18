@@ -18,6 +18,7 @@ namespace BuildingWorks.Profilers.Profilers.BuildingObjects
 
                     dest.Address = string.Empty;
                 })
+                .ForMember(x => x.Id, c => c.MapFrom(x => x.Id))
                 .ForMember(x => x.Name, c => c.MapFrom(x => x.ObjectName))
                 .ForMember(x => x.Customer, c => c.MapFrom(x => x.ObjectCustomer))
                 .ForMember(x => x.Type, c => c.MapFrom(x => x.ObjectType));
