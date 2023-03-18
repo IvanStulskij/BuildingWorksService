@@ -7,8 +7,8 @@ namespace BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces
 {
     public interface IPlanService : IOverviewService<PlanForm, PlanResource, PlanOverview>
     {
-        IEnumerable<string> GetPropertiesNames();
+        Task<IEnumerable<string>> GetPropertiesNames();
 
-        IEnumerable<Plan> GetByCondition(Condition condition);
+        Task<IEnumerable<Plan>> GetByCondition(Condition condition);
     }
 }

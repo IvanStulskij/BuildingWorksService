@@ -7,8 +7,8 @@ namespace BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces
 {
     public interface IWorkerService : IOverviewService<WorkerForm, WorkerResource, WorkerOverview>
     {
-        IEnumerable<WorkerResource> GetByCondition(Condition condition);
+        Task<IEnumerable<WorkerResource>> GetByCondition(Condition condition);
 
-        IEnumerable<WorkerResource> GetByBrigade(PaginationParameters pagination, int brigadeCode);
+        Task<IEnumerable<WorkerResource>> GetByBrigade(PaginationParameters pagination, int brigadeCode);
     }
 }
