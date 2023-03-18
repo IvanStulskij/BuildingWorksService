@@ -1,7 +1,8 @@
 ﻿@page "/workers"
 @using BuildingWorks.Models.Overview
+@using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @inject HttpClient Http
-
+@inject IWorkerService service;
 
 <h1>Workers</h1>
 
@@ -36,10 +37,14 @@ else
 }
 
 @code {
-    private WorkerOverview[]? workers;
+    private List<WorkerOverview>? workers;
 
     protected override async Task OnInitializedAsync()
     {
-        workers = await Http.GetFromJsonAsync<WorkerOverview[]>("workers/overview?EntitiesPerPage=3&CurrentPage=1");
+        workers = (await service.GetAllOverview(new Models.PaginationParameters
+            {
+                CurrentPage = 1,
+                EntitiesPerPage = 3,
+            })).ToList();
     }
 }

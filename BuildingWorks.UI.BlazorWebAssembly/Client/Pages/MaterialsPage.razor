@@ -1,7 +1,8 @@
 ﻿@page "/materials"
 @using BuildingWorks.Models.Overview
+@using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @inject HttpClient Http
-
+@inject IMaterialService service;
 
 <h1>Materials</h1>
 
@@ -35,10 +36,14 @@ else
 }
 
 @code {
-    private MaterialOverivew[]? materials;
+    private List<MaterialOverivew>? materials;
 
     protected override async Task OnInitializedAsync()
     {
-        materials = await Http.GetFromJsonAsync<MaterialOverivew[]>("materials/overview?EntitiesPerPage=3&CurrentPage=1");
+        materials = (await service.GetAllOverview(new Models.PaginationParameters
+            {
+                CurrentPage = 1,
+                EntitiesPerPage = 3,
+            })).ToList();
     }
 }

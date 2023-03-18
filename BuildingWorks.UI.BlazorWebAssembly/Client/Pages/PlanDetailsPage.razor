@@ -1,7 +1,8 @@
 ﻿@page "/planDetails"
 @using BuildingWorks.Models.Overview
+@using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @inject HttpClient Http
-
+@inject IPlanDetailService service;
 
 <h1>PlanDetials</h1>
 
@@ -36,10 +37,14 @@ else
 }
 
 @code {
-    private PlanDetailOverview[]? planDetails;
+    private List<PlanDetailOverview>? planDetails;
 
     protected override async Task OnInitializedAsync()
     {
-        planDetails = await Http.GetFromJsonAsync<PlanDetailOverview[]>("plan-details/overview?EntitiesPerPage=3&CurrentPage=1");
+        planDetails = (await service.GetAllOverview(new Models.PaginationParameters
+            {
+                CurrentPage = 1,
+                EntitiesPerPage = 3,
+            })).ToList();
     }
 }

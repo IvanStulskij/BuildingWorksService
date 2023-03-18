@@ -1,7 +1,8 @@
 ﻿@page "/providers"
 @using BuildingWorks.Models.Overview
+@using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @inject HttpClient Http
-
+@inject IProviderService service;
 
 <h1>Providers</h1>
 
@@ -36,10 +37,14 @@ else
 }
 
 @code {
-    private ProviderOverview[]? providers;
+    private List<ProviderOverview>? providers;
 
     protected override async Task OnInitializedAsync()
     {
-        providers = await Http.GetFromJsonAsync<ProviderOverview[]>("providers/overview?EntitiesPerPage=3&CurrentPage=1");
+        providers = (await service.GetAllOverview(new Models.PaginationParameters
+            {
+                CurrentPage = 1,
+                EntitiesPerPage = 3,
+            })).ToList();
     }
 }

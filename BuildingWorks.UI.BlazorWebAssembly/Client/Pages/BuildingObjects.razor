@@ -60,6 +60,6 @@ else
     private async Task Delete(int id)
     {
         await service.Delete(id);
-        buildingObjects.Remove(buildingObjects.First(x => x.Id == id));
+        buildingObjects?.Remove(buildingObjects.First(x => x.Id == id));
     }
 }
