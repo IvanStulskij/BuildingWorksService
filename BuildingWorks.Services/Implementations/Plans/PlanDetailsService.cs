@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Plans;
-using BuildingWorks.Models;
 using BuildingWorks.Models.Overview;
 using BuildingWorks.Models.Resources.Plans;
 using BuildingWorks.Repositories.Abstractions.Plans;
-using BuildingWorks.Services.Interfaces;
+using BuildingWorks.Services.Bases;
 using BuildingWorks.Services.Interfaces.Plans;
 
 namespace BuildingWorks.Services.Implementations.Plans

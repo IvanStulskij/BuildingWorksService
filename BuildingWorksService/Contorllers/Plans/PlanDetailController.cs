@@ -111,7 +111,7 @@ namespace BuildingWorksService.Contorllers.Plans
         /// </summary>
         /// <param name="planDetails"> The list of all plan-details. </param>
         /// <returns> The list of completed plan-details. </returns>
-        [HttpGet("getCompleted")]
+        [HttpPost("getCompleted")]
         [ProducesResponseType(typeof(PlanDetail), StatusCodes.Status200OK)]
         public IActionResult GetCompleted([FromBody] IEnumerable<PlanDetail> planDetails)
         {
