@@ -93,10 +93,10 @@ namespace BuildingWorksService.Contorllers.Plans
         /// </summary>
         /// <returns> The list of plans by condition </returns>
         [HttpGet("getByCondition")]
-        [ProducesResponseType(typeof(List<Plan>), StatusCodes.Status200OK)]
-        public IActionResult GetByCondition([FromQuery] Condition condition)
+        [ProducesResponseType(typeof(List<PlanResource>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetByCondition([FromQuery] Condition condition)
         {
-            IEnumerable<Plan> plans = _service.GetByCondition(condition, TablesNames.PlansName);
+            IEnumerable<PlanResource> plans = await _service.GetByCondition(condition, TablesNames.PlansName);
 
             if (plans == null || !plans.Any())
             {
