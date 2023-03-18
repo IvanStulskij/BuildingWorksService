@@ -1,6 +1,6 @@
 ﻿namespace BuildingWorks.Models.Overview
 {
-    public class PlanDetailOverview
+    public class PlanDetailOverview : Overview
     {
         public string WorkPart { get; set; }
 

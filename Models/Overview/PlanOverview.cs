@@ -1,6 +1,6 @@
 ﻿namespace BuildingWorks.Models.Overview
 {
-    public class PlanOverview
+    public class PlanOverview : Overview
     {
         public DateTime CompleteTime { get; set; }
 
