@@ -1,6 +1,5 @@
 ﻿using BuildingWorks.Models;
 using BuildingWorks.Models.Overview;
-using BuildingWorks.Models.Resources.BuildingObject;
 using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
 using Microsoft.AspNetCore.Mvc;
@@ -48,6 +47,11 @@ namespace BuildingWorksService.Contorllers.Workers
         {
             IEnumerable<WorkerOverview> workers = await _service.GetAllOverview(pagination);
 
+            if (workers == null || !workers.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
+
             return Ok(workers);
         }
 
@@ -59,7 +63,12 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(IEnumerable<WorkerResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            var workers = await _service.GetAll(pagination);
+            IEnumerable<WorkerResource> workers = await _service.GetAll(pagination);
+
+            if (workers == null || !workers.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
 
             return Ok(workers);
         }
@@ -73,7 +82,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(IEnumerable<WorkerResource>), StatusCodes.Status200OK)]
         public IActionResult GetByBrigade([FromRoute] PaginationParameters pagination, [FromQuery] int brigadeCode)
         {
-            var workers = _service.GetByBrigade(pagination, brigadeCode);
+            IEnumerable<WorkerResource> workers = _service.GetByBrigade(pagination, brigadeCode);
 
             if (workers == null || !workers.Any())
             {
@@ -92,7 +101,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(IEnumerable<WorkerResource>), StatusCodes.Status200OK)]
         public IActionResult GetByCondition([FromBody] Condition condition)
         {
-            var workers = _service.GetByCondition(condition);
+            IEnumerable<WorkerResource> workers = _service.GetByCondition(condition);
 
             if (workers == null || !workers.Any())
             {

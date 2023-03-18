@@ -25,7 +25,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(BrigadeResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var brigade = await _service.GetById(id);
+            BrigadeResource brigade = await _service.GetById(id);
 
             if (brigade == null)
             {
@@ -43,7 +43,12 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
-            var brigades = await _service.GetAll(pagination);
+            IEnumerable<BrigadeResource> brigades = await _service.GetAll(pagination);
+
+            if (brigades == null || !brigades.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
 
             return Ok(brigades);
         }
@@ -61,7 +66,7 @@ namespace BuildingWorksService.Contorllers.Workers
 
             if (brigades == null || !brigades.Any())
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
             }
 
             return Ok(brigades);

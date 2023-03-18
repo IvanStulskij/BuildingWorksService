@@ -1,7 +1,6 @@
 ﻿using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Models;
 using BuildingWorks.Models.Overview;
-using BuildingWorks.Models.Resources.BuildingObject;
 using BuildingWorks.Models.Resources.Plans;
 using BuildingWorks.Services.Interfaces.Plans;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +31,7 @@ namespace BuildingWorksService.Contorllers.Plans
 
             if (planDetail == null)
             {
-                return NotFound("Entity with such id doesn't exist");
+                return NotFound(ExceptionMessages.EntityByIdNotExists);
             }
 
             return Ok(planDetail);
@@ -47,7 +46,12 @@ namespace BuildingWorksService.Contorllers.Plans
         public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
             IEnumerable<PlanDetailResource> planDetails = await _service.GetAll(pagination);
-            
+
+            if (planDetails == null || !planDetails.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
+
             return Ok(planDetails);
         }
 
@@ -60,6 +64,11 @@ namespace BuildingWorksService.Contorllers.Plans
         public async Task<IActionResult> GetAllOverview([FromQuery] PaginationParameters pagination)
         {
             IEnumerable<PlanDetailOverview> planDetails = await _service.GetAllOverview(pagination);
+
+            if (planDetails == null || !planDetails.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
 
             return Ok(planDetails);
         }
@@ -91,7 +100,7 @@ namespace BuildingWorksService.Contorllers.Plans
 
             if (planDetails == null || !planDetails.Any())
             {
-                return NotFound("No entities found for that plan");
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
             }
 
             return Ok(planDetails);
@@ -126,6 +135,7 @@ namespace BuildingWorksService.Contorllers.Plans
         public async Task<IActionResult> Create([FromBody] PlanDetailForm form)
         {
             PlanDetailResource planDetail = await _service.Create(form);
+
             return Ok(planDetail);
         }
 
@@ -139,7 +149,7 @@ namespace BuildingWorksService.Contorllers.Plans
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             PlanDetailResource planDetail = await _service.Delete(id);
-
+            
             return Ok(planDetail);
         }
 

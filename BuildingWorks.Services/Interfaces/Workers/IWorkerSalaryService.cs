@@ -4,6 +4,6 @@ namespace BuildingWorks.Services.Interfaces.Workers
 {
     public interface IWorkerSalaryService : IService<WorkerSalaryResource, WorkerSalaryForm>
     {
-        float GetTotalByObject(int objectId);
+        float GetTotalBAmountByObject(int objectId);
     }
 }

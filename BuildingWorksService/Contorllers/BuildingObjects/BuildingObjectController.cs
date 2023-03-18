@@ -46,6 +46,11 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         {
             IEnumerable<BuildingObjectResource> buildingObjects = await _service.GetAll(pagination);
 
+            if (buildingObjects == null || !buildingObjects.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
+
             return Ok(buildingObjects);
         }
 
@@ -58,6 +63,11 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
         public async Task<IActionResult> GetAllOverview([FromQuery] PaginationParameters pagination)
         {
             IEnumerable<BuildingObjectOverview> buildingObjects = await _service.GetAllOverview(pagination);
+
+            if (buildingObjects == null || !buildingObjects.Any())
+            {
+                return NotFound(ExceptionMessages.NoEntitiesInDb);
+            }
 
             return Ok(buildingObjects);
         }
