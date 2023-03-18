@@ -18,7 +18,7 @@ namespace BuildingWorks.UI.BlazorWebAssembly.Client.Services
 
         public async Task<IEnumerable<TForm>> GetAll(PaginationParameters pagination)
         {
-            var entities = await _http.GetFromJsonAsync<IEnumerable<TForm>>($"{Path}?EntitesPerPage={pagination.EntitiesPerPage}&CurrentPage={pagination.CurrentPage}");
+            var entities = await _http.GetFromJsonAsync<IEnumerable<TForm>>($"{_entity}?EntitesPerPage={pagination.EntitiesPerPage}&CurrentPage={pagination.CurrentPage}");
 
             if (entities == null)
             {
@@ -47,15 +47,17 @@ namespace BuildingWorks.UI.BlazorWebAssembly.Client.Services
     public abstract class OverviewService<TForm, TResource, TOverivew> : Service<TForm, TResource>, IOverviewService<TForm, TResource, TOverivew>
     {
         private readonly HttpClient _http;
+        private readonly string _entity;
 
-        public OverviewService(HttpClient http, string entityPath) : base(http, entityPath)
+        public OverviewService(HttpClient http, string entity) : base(http, entity)
         {
             _http = http;
+            _entity = entity;
         }
 
         public async Task<IEnumerable<TOverivew>> GetAllOverview(PaginationParameters pagination)
         {
-            var entities = await _http.GetFromJsonAsync<IEnumerable<TOverivew>>($"{Path}/overview?EntitiesPerPage={pagination.EntitiesPerPage}&CurrentPage={pagination.CurrentPage}");
+            var entities = await _http.GetFromJsonAsync<IEnumerable<TOverivew>>($"{_entity}/overview?EntitiesPerPage={pagination.EntitiesPerPage}&CurrentPage={pagination.CurrentPage}");
 
             if (entities == null)
             {

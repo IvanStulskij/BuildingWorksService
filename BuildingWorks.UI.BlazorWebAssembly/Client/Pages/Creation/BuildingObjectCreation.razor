@@ -1,0 +1,27 @@
+﻿@page "/buildingObjectCreation"
+@using BuildingWorks.Models.Overview
+@using BuildingWorks.Models.Resources.BuildingObject
+@using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
+@inject HttpClient Http
+@inject IBuildingObjectService service;
+
+<h1>Building object creation</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<EditForm Model="CreatedForm">
+    <InputText Value="CreatedForm.ObjectName"></InputText>
+    <InputText Value="CreatedForm.ObjectType"></InputText>
+    <InputText Value="CreatedForm.ObjectCustomer"></InputText>
+    <InputText Value="CreatedForm.RegionId"></InputText>
+    <button class="btn btn-primary">Create</button>
+</EditForm>
+
+@code {
+    public BuildingObjectResource CreatedForm { get; set; }
+
+    private async Task Create()
+    {
+        await service.Create(CreatedForm);
+    }
+}
