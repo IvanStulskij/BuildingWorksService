@@ -46,4 +46,10 @@ else
                 EntitiesPerPage = 3,
             })).ToList();
     }
+
+    private async Task Delete(int id)
+    {
+        await service.Delete(id);
+        materials?.Remove(materials.First(x => x.Id == id));
+    }
 }
