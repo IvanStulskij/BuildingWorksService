@@ -1,9 +1,12 @@
-﻿@page "/fetchdata"
+﻿@page "/buildingObjects"
 @using System.Linq;
 @using BuildingWorks.Models.Overview
+@using BuildingWorks.UI.BlazorWebAssembly.Client.Pages.Creation;
 @using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @inject HttpClient Http
+@inject NavigationManager NavigationManager;
 @inject IBuildingObjectService service;
+@inject NavigationManager Navigation;
 
 <h1>Building objects</h1>
 
@@ -16,7 +19,7 @@
 else
 {
     <div class="px-3">
-        <NavLink class="nav-link" href="buildingObjectCreation">
+        <NavLink class="nav-link" href="buildingObjects/create/">
             <span class="oi oi-plus" aria-hidden="true"></span> Building object creation
         </NavLink>
     </div>
@@ -38,7 +41,8 @@ else
                     <td>@buildingObject.Type</td>
                     <td>@buildingObject.Customer</td>
                     <td>@buildingObject.Type</td>
-                    <td><img src="~/favicon.png" @onclick="(() => Delete(buildingObject.Id))"/></td>
+                    <td><img src="~/favicon.png" @onclick="(() => Delete(buildingObject.Id))" /></td>
+                    <td><a @onclick="() => MoveToUpdatedForm(buildingObject.Id)">fdfdfdfdfd</a></td>
                 </tr>
             }
         </tbody>
@@ -55,6 +59,19 @@ else
                 CurrentPage = 1,
                 EntitiesPerPage = 3,
             })).ToList();
+    }
+
+    private RouteData InitRouteData(BuildingObjectOverview buildingObject)
+    {
+        return new RouteData(typeof(BuildingObjectCreation), new Dictionary<string, object>
+        {
+            {"UpdatedForm", buildingObject}
+        });
+    }
+
+    private void MoveToUpdatedForm(int buildingObjectId)
+    {
+        NavigationManager.NavigateTo($"/buildingObjects/create/{buildingObjectId}");
     }
 
     private async Task Delete(int id)
