@@ -1,23 +1,28 @@
-﻿@page "/buildingObjectCreation"
+﻿@page "/providers/create/"
+@page "/providers/create/{UpdatedFormId:int}"
 @using BuildingWorks.Models.Overview
 @using BuildingWorks.Models.Resources.BuildingObject
+@using BuildingWorks.Models.Resources.Providers;
 @using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @using Microsoft.AspNetCore.Components.Forms
 @inject HttpClient Http
-@inject IBuildingObjectService service;
+@inject IProviderService service;
 
 <h1>Building object creation</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 <EditForm Model="CreatedForm">
-    <InputText @bind-Value="@CreatedForm.ObjectName"></InputText>
-    <InputText @bind-Value="@CreatedForm.ObjectType"></InputText>
-    <InputText @bind-Value="@CreatedForm.ObjectCustomer"></InputText>
+    <InputText @bind-Value="@CreatedForm.Name"></InputText>
+    <InputText @bind-Value="@CreatedForm.Country"></InputText>
+    <InputText @bind-Value="@CreatedForm.AdditionalData"></InputText>
     <button class="btn btn-primary" @onclick="(() => Create())">Create</button>
 </EditForm>
 
 @code {
-    public BuildingObjectResource CreatedForm { get; set; } = new BuildingObjectResource();
+    [Parameter]
+    public int UpdatedFormId  { get; set; }
+
+    public ProviderResource CreatedForm { get; set; } = new ProviderResource();
 
     private async Task Create()
     {

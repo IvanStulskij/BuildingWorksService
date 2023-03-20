@@ -1,4 +1,5 @@
-﻿@page "/buildingObjectCreation"
+﻿@page "/buildingObjects/create/"
+@page "/buildingObjects/create/{UpdatedFormId:int}"
 @using BuildingWorks.Models.Overview
 @using BuildingWorks.Models.Resources.BuildingObject
 @using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
@@ -17,10 +18,31 @@
 </EditForm>
 
 @code {
+    [Parameter]
+    public int UpdatedFormId { get; set; }
+
     public BuildingObjectResource CreatedForm { get; set; } = new BuildingObjectResource();
+    private bool _isCreate;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _isCreate = UpdatedFormId == 0;
+
+        if (UpdatedFormId != 0)
+        {
+            CreatedForm = await service.GetById(UpdatedFormId);
+        }
+    }
 
     private async Task Create()
     {
-        await service.Create(CreatedForm);
+        if (_isCreate == false)
+        {
+            await service.Create(CreatedForm);
+        }
+        else
+        {
+            await service.Update(CreatedForm);
+        }
     }
 }

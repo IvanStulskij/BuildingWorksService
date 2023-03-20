@@ -1,23 +1,31 @@
-﻿@page "/buildingObjectCreation"
+﻿@page "/plans/create/"
+@page "/plans/create/{UpdatedFormId:int}"
 @using BuildingWorks.Models.Overview
 @using BuildingWorks.Models.Resources.BuildingObject
+@using BuildingWorks.Models.Resources.Plans;
 @using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @using Microsoft.AspNetCore.Components.Forms
 @inject HttpClient Http
-@inject IBuildingObjectService service;
+@inject IPlanService service;
 
 <h1>Building object creation</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 <EditForm Model="CreatedForm">
-    <InputText @bind-Value="@CreatedForm.ObjectName"></InputText>
-    <InputText @bind-Value="@CreatedForm.ObjectType"></InputText>
-    <InputText @bind-Value="@CreatedForm.ObjectCustomer"></InputText>
-    <button class="btn btn-primary" @onclick="(() => Create())">Create</button>
+    <!--
+    <InputText @bind-Value="@CreatedForm.IsCompleted.ToString()"></InputText>
+        <InputText @bind-Value="@CreatedForm.CompleteTime.ToString()"></InputText>
+        <InputText @bind-Value="@CreatedForm.Cost.ToString()"></InputText>
+        <InputText @bind-Value="@CreatedForm.ObjectId.ToString()"></InputText>
+        <button class="btn btn-primary" @onclick="(() => Create())">Create</button>
+    -->
 </EditForm>
 
 @code {
-    public BuildingObjectResource CreatedForm { get; set; } = new BuildingObjectResource();
+    [Parameter]
+    public int UpdatedFormId { get; set; }
+
+    public PlanResource CreatedForm { get; set; } = new PlanResource();
 
     private async Task Create()
     {
