@@ -23,9 +23,27 @@
     public int UpdatedFormId  { get; set; }
 
     public ProviderResource CreatedForm { get; set; } = new ProviderResource();
+    private bool _isCreate;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _isCreate = UpdatedFormId == 0;
+
+        if (UpdatedFormId != 0)
+        {
+            CreatedForm = await service.GetById(UpdatedFormId);
+        }
+    }
 
     private async Task Create()
     {
-        await service.Create(CreatedForm);
+        if (_isCreate == false)
+        {
+            await service.Create(CreatedForm);
+        }
+        else
+        {
+            await service.Update(CreatedForm);
+        }
     }
 }
