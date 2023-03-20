@@ -6,6 +6,8 @@ namespace BuildingWorks.UI.BlazorWebAssembly.Client.Services
     {
         Task<IEnumerable<TForm>> GetAll(PaginationParameters pagination);
 
+        Task<TResource> GetById(int id);
+
         Task Create(TForm entity);
 
         Task Delete(int id);

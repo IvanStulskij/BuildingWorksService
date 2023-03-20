@@ -42,6 +42,11 @@ namespace BuildingWorks.UI.BlazorWebAssembly.Client.Services
         {
             await _http.PutAsJsonAsync($"{_entity}", entity);
         }
+
+        public async Task<TResource> GetById(int id)
+        {
+            return await _http.GetFromJsonAsync<TResource>($"{_entity}/{id}");
+        }
     }
 
     public abstract class OverviewService<TForm, TResource, TOverivew> : Service<TForm, TResource>, IOverviewService<TForm, TResource, TOverivew>
