@@ -61,14 +61,6 @@ else
             })).ToList();
     }
 
-    private RouteData InitRouteData(BuildingObjectOverview buildingObject)
-    {
-        return new RouteData(typeof(BuildingObjectCreation), new Dictionary<string, object>
-        {
-            {"UpdatedForm", buildingObject}
-        });
-    }
-
     private void MoveToUpdatedForm(int buildingObjectId)
     {
         NavigationManager.NavigateTo($"/buildingObjects/create/{buildingObjectId}");

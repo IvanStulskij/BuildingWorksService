@@ -11,7 +11,7 @@ namespace BuildingWorks.Profilers.Profilers.Plans
             CreateMap<PlanDetail, PlanDetailOverview>()
                 .ForMember(x => x.WorkPart, c => c.MapFrom(x => x.WorkPart))
                 .ForMember(x => x.IsCompleted, c => c.MapFrom(x => x.IsCompleted))
-                .ForMember(x => x.Price, c => c.MapFrom(x => x.Price))
+                .ForMember(x => x.Price, c => c.MapFrom(x => x.Price.ToString()))
                 .ForMember(x => x.PlanId, c => c.MapFrom(x => x.PlanId));
         }
     }
