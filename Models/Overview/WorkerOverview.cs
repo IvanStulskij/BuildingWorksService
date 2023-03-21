@@ -4,7 +4,7 @@
     {
         public string FullName { get; set; }
 
-        public DateTime StartWorkDate { get; set; }
+        public string StartWorkDate { get; set; }
         
         public string Post { get; set; }
 

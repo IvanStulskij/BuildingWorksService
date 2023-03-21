@@ -2,11 +2,11 @@
 {
     public class PlanOverview : Overview
     {
-        public DateTime CompleteTime { get; set; }
+        public string CompleteTime { get; set; }
 
         public bool IsCompleted { get; set; }
 
-        public decimal Cost { get; set; }
+        public string Cost { get; set; }
 
         public string? PathToImage { get; set; }
 
