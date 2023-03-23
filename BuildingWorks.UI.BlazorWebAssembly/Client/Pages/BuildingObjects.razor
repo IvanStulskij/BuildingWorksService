@@ -1,5 +1,6 @@
 ﻿@page "/buildingObjects"
 @using System.Linq;
+@using BuildingWorks.Common.GlobalConstants;
 @using BuildingWorks.Models.Overview
 @using BuildingWorks.UI.BlazorWebAssembly.Client.Pages.Creation;
 @using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
@@ -43,6 +44,9 @@ else
                     <td>@buildingObject.Type</td>
                     <td><img src="~/favicon.png" @onclick="(() => Delete(buildingObject.Id))" /></td>
                     <td><a @onclick="() => MoveToUpdatedForm(buildingObject.Id)">fdfdfdfdfd</a></td>
+                    <span class="price">
+                        @CountPrice(buildingObject.Id)
+                    </span>
                 </tr>
             }
         </tbody>
@@ -57,7 +61,7 @@ else
         buildingObjects = (await service.GetAllOverview(new Models.PaginationParameters
             {
                 CurrentPage = 1,
-                EntitiesPerPage = 3,
+                EntitiesPerPage = PaginationConstants.EntitesPerPage,
             })).ToList();
     }
 
@@ -71,4 +75,10 @@ else
         await service.Delete(id);
         buildingObjects?.Remove(buildingObjects.First(x => x.Id == id));
     }
+
+    private async Task<float> CountPrice(int objectId)
+    {
+        return await service.CountPrice(objectId);
+    }
+
 }

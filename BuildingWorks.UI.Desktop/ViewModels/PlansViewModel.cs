@@ -1,6 +1,7 @@
 ﻿using BuildingWorks.Models.Bases.PlansBase;
 using BuildingWorks.Models.Databasable.Contexts;
 using BuildingWorks.Models.Databasable.Tables.Plans;
+using BuildingWorks.Models.Resources.Plans;
 using BuildingWorks.ViewModels.Operations;
 using BuildingWorks.ViewModels.Plans;
 
@@ -11,7 +12,7 @@ namespace BuildingWorks.ViewModels
         public PlansDataViewModel PlansDataViewModel { get; private set; } = new PlansDataViewModel();
         public PlansDetailsViewModel PlansDetailsViewModel { get; } = new PlansDetailsViewModel();
         public DataViewModel<Plan> DataViewModel { get; set; }
-        public RemoveViewModel<Plan> RemoveViewModel { get; set; }
+        public RemoveViewModel<Plan, PlanResource> RemoveViewModel { get; set; }
         private readonly PlansContext _context = new PlansContext();
         private readonly PlanBase _planBase;
 
@@ -19,7 +20,7 @@ namespace BuildingWorks.ViewModels
         {
             _planBase = new PlanBase(_context);
             DataViewModel = new DataViewModel<Plan>(_context.Plans);
-            RemoveViewModel = new RemoveViewModel<Plan>(DataViewModel, _context.Plans, _planBase);
+            RemoveViewModel = new RemoveViewModel<Plan, PlanResource>(DataViewModel, _context.Plans, _planBase);
         }
     }
 }
