@@ -5,5 +5,6 @@ namespace BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces
 {
     public interface IBuildingObjectService : IOverviewService<BuildingObjectForm, BuildingObjectResource, BuildingObjectOverview>
     {
+        Task<float> CountPrice(int id);
     }
 }

@@ -1,8 +1,10 @@
 ﻿@page "/providers"
+@using BuildingWorks.Common.GlobalConstants;
 @using BuildingWorks.Models.Overview
 @using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @inject HttpClient Http
 @inject IProviderService service;
+@inject NavigationManager NavigationManager;
 
 <h1>Providers</h1>
 
@@ -30,6 +32,7 @@ else
                     <td>@provider.Name</td>
                     <td>@provider.Country</td>
                     <td>@provider.AdditionalData</td>
+                    <td><a @onclick="() => MoveToUpdatedForm(provider.Id)">fdfdfdfdfd</a></td>
                 </tr>
             }
         </tbody>
@@ -44,7 +47,7 @@ else
         providers = (await service.GetAllOverview(new Models.PaginationParameters
             {
                 CurrentPage = 1,
-                EntitiesPerPage = 3,
+                EntitiesPerPage = PaginationConstants.EntitesPerPage,
             })).ToList();
     }
 
@@ -52,5 +55,10 @@ else
     {
         await service.Delete(id);
         providers?.Remove(providers.First(x => x.Id == id));
+    }
+
+    private void MoveToUpdatedForm(int buildingObjectId)
+    {
+        NavigationManager.NavigateTo($"/buildingObjects/create/{buildingObjectId}");
     }
 }

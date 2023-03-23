@@ -1,8 +1,10 @@
 ﻿@page "/planDetails"
+@using BuildingWorks.Common.GlobalConstants;
 @using BuildingWorks.Models.Overview
 @using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @inject HttpClient Http
 @inject IPlanDetailService service;
+@inject NavigationManager NavigationManager;
 
 <h1>PlanDetials</h1>
 
@@ -30,6 +32,7 @@ else
                     <td>@planDetail.IsCompleted</td>
                     <td>@planDetail.Price</td>
                     <td>@planDetail.WorkPart</td>
+                    <td><a @onclick="() => MoveToUpdatedForm(planDetail.Id)">fdfdfdfdfd</a></td>
                 </tr>
             }
         </tbody>
@@ -44,7 +47,7 @@ else
         planDetails = (await service.GetAllOverview(new Models.PaginationParameters
             {
                 CurrentPage = 1,
-                EntitiesPerPage = 3,
+                EntitiesPerPage = PaginationConstants.EntitesPerPage,
             })).ToList();
     }
 
@@ -52,5 +55,10 @@ else
     {
         await service.Delete(id);
         planDetails?.Remove(planDetails.First(x => x.Id == id));
+    }
+
+    private void MoveToUpdatedForm(int buildingObjectId)
+    {
+        NavigationManager.NavigateTo($"/buildingObjects/create/{buildingObjectId}");
     }
 }

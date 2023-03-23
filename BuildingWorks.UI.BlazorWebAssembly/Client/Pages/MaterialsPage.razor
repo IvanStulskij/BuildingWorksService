@@ -1,14 +1,16 @@
 ﻿@page "/materials"
+@using BuildingWorks.Common.GlobalConstants;
 @using BuildingWorks.Models.Overview
 @using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
 @inject HttpClient Http
 @inject IMaterialService service;
+@inject NavigationManager NavigationManager;
 
 <h1>Materials</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (materials == null)
+@if (_materials == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -23,33 +25,41 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var material in materials)
+            @foreach (var material in _materials)
             {
                 <tr>
                     <td>@material.Name</td>
                     <td>@material.PricePerOne</td>
                     <td>@material.Measure</td>
+                    <td><a @onclick="() => MoveToUpdatedForm(material.Id)">fdfdfdfdfd</a></td>
                 </tr>
             }
         </tbody>
     </table>
+    
 }
 
 @code {
-    private List<MaterialOverivew>? materials;
+    private List<MaterialOverivew>? _materials;
+    private float _price;
 
     protected override async Task OnInitializedAsync()
     {
-        materials = (await service.GetAllOverview(new Models.PaginationParameters
+        _materials = (await service.GetAllOverview(new Models.PaginationParameters
             {
                 CurrentPage = 1,
-                EntitiesPerPage = 3,
+                EntitiesPerPage = PaginationConstants.EntitesPerPage,
             })).ToList();
     }
 
     private async Task Delete(int id)
     {
         await service.Delete(id);
-        materials?.Remove(materials.First(x => x.Id == id));
+        _materials?.Remove(_materials.First(x => x.Id == id));
+    }
+
+    private void MoveToUpdatedForm(int buildingObjectId)
+    {
+        NavigationManager.NavigateTo($"/buildingObjects/create/{buildingObjectId}");
     }
 }
