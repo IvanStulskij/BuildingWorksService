@@ -24,7 +24,7 @@ namespace BuildingWorks.Repositories.Implementations.Workers
             string propertyName = conditition.PropertyName;
             string compatibleValue = conditition.CompatibleValue;
 
-            var conditionalSelectQuery = new TemplateConditionalSelectQuery(TablesNames.WorkersTableName, propertyName, compatibleValue);
+            var conditionalSelectQuery = new TemplateConditionalSelectQuery(TablesNames.Workers, propertyName, compatibleValue);
 
             return _context.Workers.FromSqlRaw(conditionalSelectQuery.Query).AsEnumerable();
         }

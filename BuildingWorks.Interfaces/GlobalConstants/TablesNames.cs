@@ -2,8 +2,8 @@
 {
     public static class TablesNames
     {
-        public const string PlansName = "Plans";
+        public const string Plans = "Plans";
 
-        public const string WorkersTableName = "Workers";
+        public const string Workers = "Workers";
     }
 }

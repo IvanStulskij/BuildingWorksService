@@ -96,7 +96,7 @@ namespace BuildingWorksService.Contorllers.Plans
         [ProducesResponseType(typeof(List<PlanResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetByCondition([FromQuery] Condition condition)
         {
-            IEnumerable<PlanResource> plans = await _service.GetByCondition(condition, TablesNames.PlansName);
+            IEnumerable<PlanResource> plans = await _service.GetByCondition(condition, TablesNames.Plans);
 
             if (plans == null || !plans.Any())
             {

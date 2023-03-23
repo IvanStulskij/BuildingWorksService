@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Models;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Models;
 using BuildingWorks.Models.Overview;
 using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
@@ -99,9 +100,9 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> The list of workers by condition. </returns>
         [HttpGet("getByCondition")]
         [ProducesResponseType(typeof(IEnumerable<WorkerResource>), StatusCodes.Status200OK)]
-        public IActionResult GetByCondition([FromBody] Condition condition)
+        public async Task<IActionResult> GetByCondition([FromBody] Condition condition)
         {
-            IEnumerable<WorkerResource> workers = _service.GetByCondition(condition);
+            IEnumerable<WorkerResource> workers = await _service.GetByCondition(condition, TablesNames.Workers);
 
             if (workers == null || !workers.Any())
             {
