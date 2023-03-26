@@ -20,19 +20,19 @@ namespace BuildingWorks.Services.Implementations.Plans
 
         public override IPlanDetailRepository Repository { get; }
 
-        public float CountDonePercent(int planId)
+        public async Task<float> CountDonePercent(int planId)
         {
-            return Repository.CountDonePercent(planId);
+            return await Repository.CountDonePercent(planId);
         }
 
-        public IEnumerable<PlanDetail> GetByPlan(int planId)
+        public async Task<IEnumerable<PlanDetail>> GetByPlan(int planId)
         {
-            return Repository.GetByPlan(planId);
+            return await Repository.GetByPlan(planId);
         }
 
-        public IEnumerable<PlanDetail> GetCompleted(IEnumerable<PlanDetail> planDetails)
+        public async Task<IEnumerable<PlanDetail>> GetCompleted(IEnumerable<PlanDetail> planDetails)
         {
-            return Repository.GetCompleted(planDetails);
+            return await Repository.GetCompleted(planDetails);
         }
     }
 }

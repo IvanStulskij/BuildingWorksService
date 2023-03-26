@@ -3,6 +3,7 @@ using BuildingWorks.Databasable;
 using BuildingWorks.Databasable.Entities.Plans;
 using BuildingWorks.Models;
 using BuildingWorks.Repositories.Abstractions.Plans;
+using Microsoft.EntityFrameworkCore;
 
 namespace BuildingWorks.Repositories.Implementations.Plans
 {
@@ -12,10 +13,10 @@ namespace BuildingWorks.Repositories.Implementations.Plans
         {
         }
 
-        public float CountDonePercent(int planId)
+        public async Task<float> CountDonePercent(int planId)
         {
-            IEnumerable<PlanDetail> plansDetails = GetByPlan(planId);
-            IEnumerable<PlanDetail> donePlanDetails = GetCompleted(plansDetails);
+            IEnumerable<PlanDetail> plansDetails = await GetByPlan(planId);
+            IEnumerable<PlanDetail> donePlanDetails = await GetCompleted(plansDetails);
 
             float totalCount = Convert.ToSingle(plansDetails.Count());
             float doneCount = Convert.ToSingle(donePlanDetails.Count());
@@ -25,15 +26,16 @@ namespace BuildingWorks.Repositories.Implementations.Plans
             return MathF.Round(planBenefit.Count() * 100, MathConstants.DigitsToOutput);
         }
 
-        public IEnumerable<PlanDetail> GetByPlan(int planId)
+        public async Task<IEnumerable<PlanDetail>> GetByPlan(int planId)
         {
             return _context.PlansDetails
-                .Where(planDetail => planDetail.PlanId == planId);
+                .Where(planDetail => planDetail.PlanId == planId)
+                .AsNoTracking();
         }
 
-        public IEnumerable<PlanDetail> GetCompleted(IEnumerable<PlanDetail> planDetails)
+        public async Task<IEnumerable<PlanDetail>> GetCompleted(IEnumerable<PlanDetail> planDetails)
         {
-            return planDetails.Where(planDetail => planDetail.IsCompleted);
+            return await planDetails.Where(planDetail => planDetail.IsCompleted);
         }
     }
 }
