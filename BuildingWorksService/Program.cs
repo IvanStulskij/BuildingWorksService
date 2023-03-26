@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Models.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Logging.AddConsole();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("ApiCors", policy =>
@@ -23,6 +23,7 @@ builder.Services.AddDbContext<BuildingWorksDbContext>(options =>
     options.EnableSensitiveDataLogging();
 });
 
+builder.Services.AddLogging();
 builder.Services.AddScoped<IDbContext>(provider => provider.GetService<BuildingWorksDbContext>());
 builder.Services.AddRepositories();
 builder.Services.AddServices();
@@ -42,6 +43,7 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     options.RoutePrefix = string.Empty;
 });
+app.UseHttpLogging();
 
 app.UseCors("ApiCors");
 
