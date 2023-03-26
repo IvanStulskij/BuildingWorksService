@@ -10,10 +10,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
     public class TownController : ControllerBase
     {
         private readonly ITownService _service;
+        private readonly ILogger _logger;
 
-        public TownController(ITownService service)
+        public TownController(ITownService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -29,7 +31,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (town == null)
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
+
+                return NotFound();
             }
 
             return Ok(town);
@@ -47,7 +51,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (towns == null || !towns.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(towns);

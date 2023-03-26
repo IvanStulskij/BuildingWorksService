@@ -1,5 +1,4 @@
-﻿using BuildingWorks.Databasable.Entities.BuildingObjects.Address;
-using BuildingWorks.Models;
+﻿using BuildingWorks.Models;
 using BuildingWorks.Models.Resources.BuildingObject.Addresses;
 using BuildingWorks.Services.Interfaces.BuildingObjects;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +10,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
     public class StreetController : ControllerBase
     {
         private readonly IStreetService _service;
+        private readonly ILogger _logger;
 
-        public StreetController(IStreetService service)
+        public StreetController(IStreetService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -30,7 +31,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (street == null)
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
+
+                return NotFound();
             }
 
             return Ok(street);
@@ -48,7 +51,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (streets == null || !streets.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(streets);

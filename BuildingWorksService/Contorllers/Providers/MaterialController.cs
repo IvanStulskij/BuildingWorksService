@@ -81,7 +81,7 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(MaterialResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] MaterialForm form)
         {
-            var material = await _service.Create(form);
+            MaterialResource material = await _service.Create(form);
 
             return Ok(material);
         }
@@ -95,7 +95,7 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(MaterialResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var material = await _service.Delete(id);
+            MaterialResource material = await _service.Delete(id);
 
             return Ok(material);
         }
@@ -109,7 +109,7 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(MaterialResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] MaterialResource resource)
         {
-            var material = await _service.Update(resource);
+            MaterialResource material = await _service.Update(resource);
 
             return Ok(material);
         }

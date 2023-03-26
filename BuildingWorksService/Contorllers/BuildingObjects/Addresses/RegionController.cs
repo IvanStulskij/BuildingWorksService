@@ -10,10 +10,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
     public class RegionController : ControllerBase
     {
         private readonly IRegionService _service;
+        private readonly ILogger _logger;
 
-        public RegionController(IRegionService service)
+        public RegionController(IRegionService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -29,7 +31,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (region == null)
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
+
+                return NotFound();
             }
 
             return Ok(region);
@@ -47,7 +51,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (regions == null || !regions.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(regions);

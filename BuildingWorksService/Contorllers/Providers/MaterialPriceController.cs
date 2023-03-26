@@ -71,7 +71,8 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(float), StatusCodes.Status200OK)]
         public IActionResult CountPrice([FromQuery] int objectId)
         {
-            var price = _service.CountPrice(objectId);
+            float price = _service.CountPrice(objectId);
+
             return Ok(price);
         }
 
@@ -84,7 +85,7 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(MaterialsPriceResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] MaterialsPriceForm form)
         {
-            var response = await _service.Create(form);
+            MaterialsPriceResource response = await _service.Create(form);
 
             return Ok(response);
         }
@@ -98,7 +99,8 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(IEnumerable<MaterialsPriceResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
+            MaterialsPriceResource response = await _service.Delete(id);
+
             return Ok(response);
         }
 
@@ -111,7 +113,8 @@ namespace BuildingWorksService.Contorllers.Providers
         [ProducesResponseType(typeof(MaterialsPriceResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] MaterialsPriceResource resource)
         {
-            var response = await _service.Update(resource);
+            MaterialsPriceResource response = await _service.Update(resource);
+
             return Ok(response);
         }
     }
