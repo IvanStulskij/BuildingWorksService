@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Profilers.Profilers.Addresses;
+﻿using BuildingWorks.EntityValidator.Implementations;
+using BuildingWorks.Profilers.Profilers.Addresses;
 using BuildingWorks.Profilers.Profilers.BuildingObjects;
 using BuildingWorks.Profilers.Profilers.Contracts;
 using BuildingWorks.Profilers.Profilers.Plans;
@@ -9,7 +10,7 @@ namespace BuildingWorks.Services
 {
     public static class AssemblyInfo
     {
-        public readonly static Type[] Types = new []
+        public readonly static Type[] MappingTypes = new []
         {
             typeof(BuildingObjectProfiler),
             typeof(AddressesProfiler),
@@ -25,6 +26,15 @@ namespace BuildingWorks.Services
             typeof(WorkerSalaryProfiler),
             typeof(WorkersProfiler),
             typeof(ContractsProfiler),
+        };
+
+
+        public readonly static Type[] ValidationTypes = new[]
+        {
+            typeof(BuildingObjectValidator),
+            typeof(MaterialValidator),
+            typeof(PlanValidator),
+            typeof(WorkerSalaryValidator),
         };
     }
 }
