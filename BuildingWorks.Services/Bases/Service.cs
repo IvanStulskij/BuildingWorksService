@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Models;
 using BuildingWorks.Databasable;
 using BuildingWorks.Common.Extensions;
 using BuildingWorks.Services.Interfaces;
@@ -9,12 +7,12 @@ using BuildingWorks.Repositories.Abstractions;
 using BuildingWorks.Models;
 using BuildingWorks.Common.Exceptions;
 
-namespace BuildingWorks.Services.Implementations
+namespace BuildingWorks.Services.Bases
 {
     public abstract class Service<T, TResource, TForm> : IService<TResource, TForm>
         where T : class, IPersistable<int>
-        where TResource: class, IResource
-        where TForm: class
+        where TResource : class, IResource
+        where TForm : class
 
     {
         protected readonly IMapper Mapper;
@@ -111,54 +109,6 @@ namespace BuildingWorks.Services.Implementations
             }
 
             return entity;
-        }
-    }
-
-    public abstract class ConditionalService<T, TResource, TForm> : Service<T, TResource, TForm>
-        where T : class, IPersistable<int>
-        where TResource : class, IResource
-        where TForm : class
-
-    {
-        private readonly DbSet<T> _set;
-
-        public ConditionalService(BuildingWorksDbContext context, IMapper mapper) : base(context, mapper)
-        {
-            _set = context.Set<T>();
-        }
-
-        public IEnumerable<T> GetByCondition(Condition condition, string tableName)
-        {
-            var conditionalSelectQuery = new TemplateConditionalSelectQuery
-                (
-                    tableName,
-                    condition.PropertyName,
-                    condition.CompatibleValue
-                );
-
-            return _set
-                .FromSqlRaw(conditionalSelectQuery.Query)
-                .AsNoTracking();
-        }
-    }
-
-    public abstract class OverviewService<T, TResource, TForm, TOverview> : Service<T, TResource, TForm>,
-        
-        IOverviewService<TResource, TForm, TOverview>
-        where T : class, IPersistable<int>
-        where TResource : class, IResource
-        where TForm : class
-    {
-        public OverviewService(BuildingWorksDbContext context, IMapper mapper) : base(context, mapper)
-        {
-        }
-
-        public async Task<IEnumerable<TOverview>> GetAllOverview(PaginationParameters pagination)
-        {
-            return Repository
-                .Get(pagination)
-                .OrderBy(x => x.Id)
-                .ProjectTo<TOverview>(Mapper);
         }
     }
 }

@@ -4,6 +4,7 @@ using BuildingWorks.Databasable.Entities.Providers;
 using BuildingWorks.Models.Overview;
 using BuildingWorks.Models.Resources.Providers;
 using BuildingWorks.Repositories.Abstractions.Providers;
+using BuildingWorks.Services.Bases;
 using BuildingWorks.Services.Interfaces.Providers;
 
 namespace BuildingWorks.Services.Implementations.Providers

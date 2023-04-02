@@ -1,6 +1,6 @@
 ﻿namespace BuildingWorks.Models.Overview
 {
-    public class BuildingObjectOverview
+    public class BuildingObjectOverview : Overview
     {
         public string Name { get; set; }
 

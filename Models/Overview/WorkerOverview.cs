@@ -1,6 +1,6 @@
 ﻿namespace BuildingWorks.Models.Overview
 {
-    public class WorkerOverview
+    public class WorkerOverview : Overview
     {
         public string FullName { get; set; }
 

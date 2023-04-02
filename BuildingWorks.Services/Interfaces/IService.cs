@@ -1,8 +1,11 @@
-﻿using BuildingWorks.Models;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Models;
+using BuildingWorks.Models.Overview;
+using Models;
 
 namespace BuildingWorks.Services.Interfaces
 {
-    public interface IService<TResource, TResourceForm> where TResource : class
+    public interface IService<TResource, TResourceForm> where TResource : class, IResource
     {
         Task<IEnumerable<TResource>> GetAll(PaginationParameters pagination);
 
@@ -16,8 +19,15 @@ namespace BuildingWorks.Services.Interfaces
     }
 
     public interface IOverviewService<TResource, TResourceForm, TOverview> : IService<TResource, TResourceForm>
-        where TResource : class
+        where TResource : class, IResource
+        where TOverview: Overview
     {
         Task<IEnumerable<TOverview>> GetAllOverview(PaginationParameters pagination);
+    }
+
+    public interface IConditionalService<T, TResource, TForm> : IService<TResource, TForm>
+        where TResource : class, IResource
+    {
+        Task<IEnumerable<TResource>> GetByCondition(Condition condition, string tableName);
     }
 }
