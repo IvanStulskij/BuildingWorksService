@@ -1,0 +1,65 @@
+﻿@page "/fetchdata"
+@using System.Linq;
+@using BuildingWorks.Models.Overview
+@using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
+@inject HttpClient Http
+@inject IBuildingObjectService service;
+
+<h1>Building objects</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (buildingObjects == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="px-3">
+        <NavLink class="nav-link" href="buildingObjectCreation">
+            <span class="oi oi-plus" aria-hidden="true"></span> Building object creation
+        </NavLink>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var buildingObject in buildingObjects)
+            {
+                <tr>
+                    <td>@buildingObject.Name</td>
+                    <td>@buildingObject.Type</td>
+                    <td>@buildingObject.Customer</td>
+                    <td>@buildingObject.Type</td>
+                    <td><img src="~/favicon.png" @onclick="(() => Delete(buildingObject.Id))"/></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<BuildingObjectOverview>? buildingObjects;
+
+    protected override async Task OnInitializedAsync()
+    {
+        buildingObjects = (await service.GetAllOverview(new Models.PaginationParameters
+            {
+                CurrentPage = 1,
+                EntitiesPerPage = 3,
+            })).ToList();
+    }
+
+    private async Task Delete(int id)
+    {
+        await service.Delete(id);
+        buildingObjects?.Remove(buildingObjects.First(x => x.Id == id));
+    }
+}
