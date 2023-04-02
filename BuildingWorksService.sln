@@ -26,6 +26,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingWorks.UI.BlazorWebA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingWorks.EntityValidator", "EntityValidator\BuildingWorks.EntityValidator.csproj", "{E44C6106-679A-411A-92E9-EF7450B3264B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingWorks.Authentification", "BuildingWorks.Authentification\BuildingWorks.Authentification.csproj", "{0718918E-3A2E-4B42-8C94-DCB1E51D863D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{E44C6106-679A-411A-92E9-EF7450B3264B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E44C6106-679A-411A-92E9-EF7450B3264B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E44C6106-679A-411A-92E9-EF7450B3264B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0718918E-3A2E-4B42-8C94-DCB1E51D863D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0718918E-3A2E-4B42-8C94-DCB1E51D863D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0718918E-3A2E-4B42-8C94-DCB1E51D863D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0718918E-3A2E-4B42-8C94-DCB1E51D863D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
