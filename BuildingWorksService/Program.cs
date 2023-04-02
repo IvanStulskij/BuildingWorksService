@@ -1,7 +1,9 @@
 using BuildingWorks.Databasable;
+using BuildingWorks.Databasable.Entities.Registration;
 using BuildingWorksService.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Models.Contexts;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole();
@@ -22,7 +24,8 @@ builder.Services.AddDbContext<BuildingWorksDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), ServerVersion.Parse("6.14"));
     options.EnableSensitiveDataLogging();
 });
-
+builder.Services.AddAuthentication().AddCookie("cookie");
+builder.Services.AddAuthorization();
 builder.Services.AddLogging();
 builder.Services.AddScoped<IDbContext>(provider => provider.GetService<BuildingWorksDbContext>());
 builder.Services.AddRepositories();
@@ -36,6 +39,10 @@ var app = builder.Build();
 
 app.ConfigureExceptionHandler();
 
+app.MapGet("/login", async (HttpContext context) =>
+{
+    var claims = new List<Claim>();
+});
 
 app.UseSwagger();
 app.UseSwaggerUI(options =>
