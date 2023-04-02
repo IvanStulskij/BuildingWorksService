@@ -31,7 +31,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (address == null)
             {
-                _logger.LogWarning("Entity with such id does't exist");
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
 
                 return NotFound();
             }
@@ -52,6 +52,7 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
             if (addresses == null || !addresses.Any())
             {
                 _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
                 return NotFound();
             }
 

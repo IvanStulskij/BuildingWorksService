@@ -16,14 +16,12 @@ namespace BuildingWorks.Services.Bases
 
     {
         protected readonly IMapper Mapper;
-        protected readonly BuildingWorksDbContext Context;
 
         public abstract IRepository<T, int> Repository { get; }
 
-        public Service(BuildingWorksDbContext context, IMapper mapper)
+        public Service(IMapper mapper)
         {
             Mapper = mapper;
-            Context = context;
         }
 
         public async Task<TResource> Create(TForm form)
@@ -36,7 +34,6 @@ namespace BuildingWorks.Services.Bases
             T entity = Mapper.Map<T>(form);
             entity = await Insert(entity);
 
-            await Context.SaveChangesAsync();
             return Mapper.Map<TResource>(entity);
         }
 
@@ -50,7 +47,6 @@ namespace BuildingWorks.Services.Bases
             }
 
             await Repository.Delete(entity);
-            await Context.SaveChangesAsync();
             return Mapper.Map<TResource>(entity);
         }
 
@@ -76,7 +72,7 @@ namespace BuildingWorks.Services.Bases
 
         public async Task<TResource> Update(TResource resource)
         {
-            T entity = await Find(resource.Id);
+            T entity = await Repository.GetById(resource.Id);
 
             if (entity == null)
             {
@@ -84,7 +80,7 @@ namespace BuildingWorks.Services.Bases
             }
 
             entity = await Repository.Update(Mapper.Map<T>(resource));
-            await Context.SaveChangesAsync();
+
             return Mapper.Map<TResource>(entity);
         }
 
@@ -96,18 +92,6 @@ namespace BuildingWorks.Services.Bases
             }
 
             entity = await Repository.Insert(entity);
-            return entity;
-        }
-
-        protected async ValueTask<T> Find(int id)
-        {
-            T entity = await Context.FindAsync<T>(id);
-
-            if (entity is null)
-            {
-                throw new EntityNotFoundException();
-            }
-
             return entity;
         }
     }

@@ -60,7 +60,7 @@ namespace BuildingWorks.Repositories.Implementations
 
         public IQueryable<T> GetByCondition(Expression<Func<T, bool>> condition)
         {
-            return _context.Set<T>().Where(condition);
+            return _context.Set<T>().AsNoTracking().Where(condition);
         }
     }
 }
