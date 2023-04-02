@@ -1,0 +1,56 @@
+﻿@page "/providers"
+@using BuildingWorks.Models.Overview
+@using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
+@inject HttpClient Http
+@inject IProviderService service;
+
+<h1>Providers</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (providers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var provider in providers)
+            {
+                <tr>
+                    <td>@provider.Name</td>
+                    <td>@provider.Country</td>
+                    <td>@provider.AdditionalData</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<ProviderOverview>? providers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        providers = (await service.GetAllOverview(new Models.PaginationParameters
+            {
+                CurrentPage = 1,
+                EntitiesPerPage = 3,
+            })).ToList();
+    }
+
+    private async Task Delete(int id)
+    {
+        await service.Delete(id);
+        providers?.Remove(providers.First(x => x.Id == id));
+    }
+}

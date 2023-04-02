@@ -1,0 +1,56 @@
+﻿@page "/workers"
+@using BuildingWorks.Models.Overview
+@using BuildingWorks.UI.BlazorWebAssembly.Client.Services.Interfaces;
+@inject HttpClient Http
+@inject IWorkerService service;
+
+<h1>Workers</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (workers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var worker in workers)
+            {
+                <tr>
+                    <td>@worker.FullName</td>
+                    <td>@worker.Post</td>
+                    <td>@worker.StartWorkDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<WorkerOverview>? workers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        workers = (await service.GetAllOverview(new Models.PaginationParameters
+            {
+                CurrentPage = 1,
+                EntitiesPerPage = 3,
+            })).ToList();
+    }
+
+    private async Task Delete(int id)
+    {
+        await service.Delete(id);
+        workers?.Remove(workers.First(x => x.Id == id));
+    }
+}
