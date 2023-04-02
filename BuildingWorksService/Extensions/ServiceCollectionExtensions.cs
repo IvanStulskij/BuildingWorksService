@@ -1,10 +1,4 @@
-﻿using BuildingWorks.Profilers.Profilers.Addresses;
-using BuildingWorks.Profilers.Profilers.BuildingObjects;
-using BuildingWorks.Profilers.Profilers.Contracts;
-using BuildingWorks.Profilers.Profilers.Plans;
-using BuildingWorks.Profilers.Profilers.Providers;
-using BuildingWorks.Profilers.Profilers.Workers;
-using BuildingWorks.Repositories.Abstractions.Addresses;
+﻿using BuildingWorks.Repositories.Abstractions.Addresses;
 using BuildingWorks.Repositories.Abstractions.BuildingObjects;
 using BuildingWorks.Repositories.Abstractions.Plans;
 using BuildingWorks.Repositories.Abstractions.Providers;
@@ -24,6 +18,7 @@ using BuildingWorks.Services.Interfaces.BuildingObjects;
 using BuildingWorks.Services.Interfaces.Plans;
 using BuildingWorks.Services.Interfaces.Providers;
 using BuildingWorks.Services.Interfaces.Workers;
+using FluentValidation;
 
 namespace BuildingWorksService.Extensions
 {
@@ -65,7 +60,12 @@ namespace BuildingWorksService.Extensions
 
         public static void AddAutoMapper(this IServiceCollection services)
         {
-            services.AddAutoMapper(AssemblyInfo.Types);
+            services.AddAutoMapper(AssemblyInfo.MappingTypes);
+        }
+
+        public static void AddValidation(this IServiceCollection services)
+        {
+            services.AddValidatorsFromAssembly(typeof(AssemblyInfo.ValidationTypes).Assembly);
         }
     }
 }
