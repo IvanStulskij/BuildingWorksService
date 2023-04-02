@@ -12,10 +12,12 @@ namespace BuildingWorksService.Contorllers.Plans
     public class PlanDetailController : ControllerBase
     {
         private readonly IPlanDetailsService _service;
+        private readonly ILogger _logger;
 
-        public PlanDetailController(IPlanDetailsService service)
+        public PlanDetailController(IPlanDetailsService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -31,7 +33,9 @@ namespace BuildingWorksService.Contorllers.Plans
 
             if (planDetail == null)
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
+
+                return NotFound();
             }
 
             return Ok(planDetail);
@@ -49,7 +53,9 @@ namespace BuildingWorksService.Contorllers.Plans
 
             if (planDetails == null || !planDetails.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(planDetails);
@@ -67,7 +73,9 @@ namespace BuildingWorksService.Contorllers.Plans
 
             if (planDetails == null || !planDetails.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(planDetails);
@@ -80,9 +88,9 @@ namespace BuildingWorksService.Contorllers.Plans
         /// <returns> Done percent of plan. </returns>
         [HttpGet("countDonePercent")]
         [ProducesResponseType(typeof(float), StatusCodes.Status200OK)]
-        public IActionResult CountDonePercent([FromQuery] int planId)
+        public async Task<IActionResult> CountDonePercent([FromQuery] int planId)
         {
-            float donePercent = _service.CountDonePercent(planId);
+            float donePercent = await _service.CountDonePercent(planId);
 
             return Ok(donePercent);
         }
@@ -94,13 +102,15 @@ namespace BuildingWorksService.Contorllers.Plans
         /// <returns> The list of plan-details. </returns>
         [HttpGet("getByPlan")]
         [ProducesResponseType(typeof(IEnumerable<PlanDetail>), StatusCodes.Status200OK)]
-        public IActionResult GetByPlan([FromQuery] int planId)
+        public async Task<IActionResult> GetByPlan([FromQuery] int planId)
         {
-            IEnumerable<PlanDetail> planDetails = _service.GetByPlan(planId);
+            IEnumerable<PlanDetail> planDetails = await _service.GetByPlan(planId);
 
             if (planDetails == null || !planDetails.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(planDetails);
@@ -113,13 +123,15 @@ namespace BuildingWorksService.Contorllers.Plans
         /// <returns> The list of completed plan-details. </returns>
         [HttpPost("getCompleted")]
         [ProducesResponseType(typeof(PlanDetail), StatusCodes.Status200OK)]
-        public IActionResult GetCompleted([FromBody] IEnumerable<PlanDetail> planDetails)
+        public async Task<IActionResult> GetCompleted([FromBody] IEnumerable<PlanDetail> planDetails)
         {
-            IEnumerable<PlanDetail> completed = _service.GetCompleted(planDetails);
+            IEnumerable<PlanDetail> completed = await _service.GetCompleted(planDetails);
 
             if (completed == null || !completed.Any())
             {
-                return NotFound("No completed entities");
+                _logger.LogWarning("No completed entities");
+
+                return NotFound();
             }
 
             return Ok(completed);

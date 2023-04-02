@@ -14,10 +14,12 @@ namespace BuildingWorksService.Contorllers.Plans
     public sealed class PlanController : ControllerBase
     {
         private readonly IPlanService _service;
+        private readonly ILogger _logger;
 
-        public PlanController(IPlanService service)
+        public PlanController(IPlanService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -33,7 +35,9 @@ namespace BuildingWorksService.Contorllers.Plans
 
             if (plan == null)
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
+
+                return NotFound();
             }
 
             return Ok(plan);
@@ -51,7 +55,9 @@ namespace BuildingWorksService.Contorllers.Plans
 
             if (plans == null || !plans.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(plans);
@@ -69,7 +75,9 @@ namespace BuildingWorksService.Contorllers.Plans
 
             if (plans == null || !plans.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(plans);
@@ -80,7 +88,7 @@ namespace BuildingWorksService.Contorllers.Plans
         /// </summary>
         /// <returns> The list of plan entity properties names. </returns>
         [HttpGet("getPropertiesNames")]
-        [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<string>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPropertiesNames()
         {
             IEnumerable<string> propertiesNames = await _service.GetPropertiesNames();
@@ -93,14 +101,16 @@ namespace BuildingWorksService.Contorllers.Plans
         /// </summary>
         /// <returns> The list of plans by condition </returns>
         [HttpGet("getByCondition")]
-        [ProducesResponseType(typeof(List<PlanResource>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<PlanResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetByCondition([FromQuery] Condition condition)
         {
             IEnumerable<PlanResource> plans = await _service.GetByCondition(condition, TablesNames.PlansName);
 
             if (plans == null || !plans.Any())
             {
-                return NotFound(ExceptionMessages.EntityByConditionNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByConditionNotExists);
+
+                return NotFound();
             }
 
             return Ok(plans);

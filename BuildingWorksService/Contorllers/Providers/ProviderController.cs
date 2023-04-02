@@ -41,7 +41,7 @@ namespace BuildingWorksService.Contorllers.Providers
         /// </summary>
         /// <returns> The list of providers. </returns>
         [HttpGet]
-        [ProducesResponseType(typeof(List<ProviderResource>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<ProviderResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll([FromRoute] PaginationParameters pagination)
         {
             IEnumerable<ProviderResource> providers = await _service.GetAll(pagination);
@@ -92,10 +92,11 @@ namespace BuildingWorksService.Contorllers.Providers
         /// <param name="id"> Id to delete provider. </param>
         /// <returns> Deleted provider. </returns>
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(List<ProviderResource>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<ProviderResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
+            ProviderResource response = await _service.Delete(id);
+
             return Ok(response);
         }
 

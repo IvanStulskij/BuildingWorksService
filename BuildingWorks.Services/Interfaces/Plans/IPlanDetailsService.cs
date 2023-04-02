@@ -6,10 +6,10 @@ namespace BuildingWorks.Services.Interfaces.Plans
 {
     public interface IPlanDetailsService : IOverviewService<PlanDetailResource, PlanDetailForm, PlanDetailOverview>
     {
-        float CountDonePercent(int planId);
+        Task<float> CountDonePercent(int planId);
 
-        IEnumerable<PlanDetail> GetByPlan(int planId);
+        Task<IEnumerable<PlanDetail>> GetByPlan(int planId);
 
-        IEnumerable<PlanDetail> GetCompleted(IEnumerable<PlanDetail> planDetails);
+        Task<IEnumerable<PlanDetail>> GetCompleted(IEnumerable<PlanDetail> planDetails);
     }
 }

@@ -10,10 +10,12 @@ namespace BuildingWorksService.Contorllers.Workers
     public class BrigadeController : ControllerBase
     {
         private readonly IBrigadeService _service;
+        private readonly ILogger _logger;
 
-        public BrigadeController(IBrigadeService service)
+        public BrigadeController(IBrigadeService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -29,7 +31,9 @@ namespace BuildingWorksService.Contorllers.Workers
 
             if (brigade == null)
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
+
+                return NotFound();
             }
 
             return Ok(brigade);
@@ -47,7 +51,9 @@ namespace BuildingWorksService.Contorllers.Workers
 
             if (brigades == null || !brigades.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(brigades);
@@ -62,11 +68,13 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
         public IActionResult GetByObject([FromQuery] int objectId)
         {
-            var brigades = _service.GetByObject(objectId);
+            IEnumerable<BrigadeResource> brigades = _service.GetByObject(objectId);
 
             if (brigades == null || !brigades.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(brigades);
@@ -77,10 +85,10 @@ namespace BuildingWorksService.Contorllers.Workers
         /// </summary>
         /// <returns> The list of brigades codes. </returns>
         [HttpGet("getCodes")]
-        [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<int>), StatusCodes.Status200OK)]
         public IActionResult GetCodes([FromQuery] PaginationParameters pagination)
         {
-            var codes = _service.GetCodes(pagination);
+            IEnumerable<int> codes = _service.GetCodes(pagination);
 
             return Ok(codes);
         }
@@ -94,7 +102,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(BrigadeResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] BrigadeForm form)
         {
-            var brigade = await _service.Create(form);
+            BrigadeResource brigade = await _service.Create(form);
 
             return Ok(brigade);
         }
@@ -108,7 +116,8 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(IEnumerable<BrigadeResource>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var brigade = await _service.Delete(id);
+            BrigadeResource brigade = await _service.Delete(id);
+
             return Ok(brigade);
         }
 
@@ -121,7 +130,8 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(BrigadeResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] BrigadeResource brigade)
         {
-            var response = await _service.Update(brigade);
+            BrigadeResource response = await _service.Update(brigade);
+
             return Ok(response);
         }
     }

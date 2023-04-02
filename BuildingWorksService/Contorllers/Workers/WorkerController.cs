@@ -1,4 +1,5 @@
-﻿using BuildingWorks.Models;
+﻿using BuildingWorks.Common.Extensions;
+using BuildingWorks.Models;
 using BuildingWorks.Models.Overview;
 using BuildingWorks.Models.Resources.Workers;
 using BuildingWorks.Services.Interfaces.Workers;
@@ -12,10 +13,12 @@ namespace BuildingWorksService.Contorllers.Workers
     public class WorkerController : ControllerBase
     {
         private readonly IWorkerService _service;
+        private readonly ILogger _logger;
 
-        public WorkerController(IWorkerService service)
+        public WorkerController(IWorkerService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -31,7 +34,9 @@ namespace BuildingWorksService.Contorllers.Workers
 
             if (worker == null)
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
+
+                return NotFound();
             }
 
             return Ok(worker);
@@ -49,7 +54,9 @@ namespace BuildingWorksService.Contorllers.Workers
 
             if (workers == null || !workers.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(workers);
@@ -67,7 +74,9 @@ namespace BuildingWorksService.Contorllers.Workers
 
             if (workers == null || !workers.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(workers);
@@ -99,13 +108,15 @@ namespace BuildingWorksService.Contorllers.Workers
         /// <returns> The list of workers by condition. </returns>
         [HttpGet("getByCondition")]
         [ProducesResponseType(typeof(IEnumerable<WorkerResource>), StatusCodes.Status200OK)]
-        public IActionResult GetByCondition([FromBody] Condition condition)
+        public async Task<IActionResult> GetByCondition([FromBody] Condition condition)
         {
-            IEnumerable<WorkerResource> workers = _service.GetByCondition(condition);
+            IEnumerable<WorkerResource> workers = await _service.GetByCondition(condition, TablesNames.WorkersTableName);
 
             if (workers == null || !workers.Any())
             {
-                return NotFound("There are no workers for those condition");
+                _logger.LogWarning("There are no workers for those condition");
+
+                return NotFound();
             }
 
             return Ok(workers);

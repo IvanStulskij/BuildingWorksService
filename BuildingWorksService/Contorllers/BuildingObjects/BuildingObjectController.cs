@@ -11,10 +11,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
     public class BuildingObjectController : ControllerBase
     {
         private readonly IBuildingObjectService _service;
+        private readonly ILogger _logger;
 
-        public BuildingObjectController(IBuildingObjectService service)
+        public BuildingObjectController(IBuildingObjectService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -30,7 +32,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
 
             if (buildingObject == null)
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
+
+                return NotFound();
             }
 
             return Ok(buildingObject);
@@ -48,7 +52,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
 
             if (buildingObjects == null || !buildingObjects.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(buildingObjects);
@@ -66,7 +72,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects
 
             if (buildingObjects == null || !buildingObjects.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+
+                return NotFound();
             }
 
             return Ok(buildingObjects);

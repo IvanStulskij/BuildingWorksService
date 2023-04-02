@@ -10,10 +10,12 @@ namespace BuildingWorksService.Contorllers.Workers
     public class WorkerSalaryController : ControllerBase
     {
         private readonly IWorkerSalaryService _service;
+        private readonly ILogger _logger;
 
-        public WorkerSalaryController(IWorkerSalaryService service)
+        public WorkerSalaryController(IWorkerSalaryService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -29,7 +31,9 @@ namespace BuildingWorksService.Contorllers.Workers
 
             if (workerSalary == null)
             {
-                return NotFound(ExceptionMessages.EntityByIdNotExists);
+                _logger.LogWarning(ExceptionMessages.EntityByIdNotExists);
+
+                return NotFound();
             }
 
             return Ok(workerSalary);
@@ -57,7 +61,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(float), StatusCodes.Status200OK)]
         public IActionResult GetTotalByObject([FromQuery] int objectId)
         {
-            var totalSalariesAmount = _service.GetTotalBAmountByObject(objectId);
+            float totalSalariesAmount = _service.GetTotalBAmountByObject(objectId);
 
             return Ok(totalSalariesAmount);
         }
@@ -71,7 +75,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(WorkerSalaryResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create([FromBody] WorkerSalaryForm form)
         {
-            var response = await _service.Create(form);
+            WorkerSalaryResource response = await _service.Create(form);
 
             return Ok(response);
         }
@@ -85,7 +89,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(WorkerSalaryResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var response = await _service.Delete(id);
+            WorkerSalaryResource response = await _service.Delete(id);
 
             return Ok(response);
         }
@@ -99,7 +103,7 @@ namespace BuildingWorksService.Contorllers.Workers
         [ProducesResponseType(typeof(WorkerSalaryResource), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update([FromBody] WorkerSalaryResource resource)
         {
-            var response = await _service.Update(resource);
+            WorkerSalaryResource response = await _service.Update(resource);
 
             return Ok(response);
         }

@@ -10,10 +10,12 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
     public class AddressController : ControllerBase
     {
         private readonly IAddressService _service;
+        private readonly ILogger _logger;
 
-        public AddressController(IAddressService service)
+        public AddressController(IAddressService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         /// <summary>
@@ -29,7 +31,9 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (address == null)
             {
-                return NotFound("Entity with such id does't exist");
+                _logger.LogWarning("Entity with such id does't exist");
+
+                return NotFound();
             }
 
             return Ok(address);
@@ -47,7 +51,8 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (addresses == null || !addresses.Any())
             {
-                return NotFound(ExceptionMessages.NoEntitiesInDb);
+                _logger.LogWarning(ExceptionMessages.NoEntitiesInDb);
+                return NotFound();
             }
 
             return Ok(addresses);
@@ -65,7 +70,8 @@ namespace BuildingWorksService.Contorllers.BuildingObjects.Addresses
 
             if (address == null)
             {
-                return NotFound("Entity with such params does't exist");
+                _logger.LogWarning("Entity with such params does't exist");
+                return NotFound();
             }
 
             return Ok(address);
